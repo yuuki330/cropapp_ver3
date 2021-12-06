@@ -66,7 +66,7 @@ def job():
     browser.close()
 
 def main():
-    schedule.every(1).minutes.do(job)
+    schedule.every(10).seconds.do(job)
 
     while True:
         schedule.run_pending()
