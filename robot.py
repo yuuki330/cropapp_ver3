@@ -98,6 +98,7 @@ def job():
     # herokuのchromedriverのPATHを指定
     driver_path = '/app/.chromedriver/bin/chromedriver'
     options = webdriver.ChromeOptions()
+    options.use_chromium = True
     options.add_argument('--headless')
     #※headlessにしている
     chrome_service = fs.Service(options=options, executable_path=driver_path)
