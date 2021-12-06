@@ -1,9 +1,9 @@
-from PIL.ImageOps import grayscale
+#from PIL.ImageOps import grayscale
 import pyautogui as pgui
 import time
 import pyperclip as clip
 from selenium import webdriver
-from webdriver_manager.chrome import ChromeDriverManager
+#from webdriver_manager.chrome import ChromeDriverManager
 import schedule
 
 pgui.FAILSAFE = True
