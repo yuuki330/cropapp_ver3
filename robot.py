@@ -60,7 +60,15 @@ def water(browser):
 
 def job():
     #browser = webdriver.Chrome("./chromedriver.exe")
-    browser = webdriver.Chrome(ChromeDriverManager().install())
+    #browser = webdriver.Chrome(ChromeDriverManager().install())
+
+    # herokuのchromedriverのPATHを指定
+    driver_path = '/app/.chromedriver/bin/chromedriver'
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    #※headlessにしている
+    browser = webdriver.Chrome(options=options, executable_path=driver_path)
+
     open_farmlab(browser)
     test_move(browser)
     #water(browser)
