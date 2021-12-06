@@ -1,6 +1,6 @@
 import time
 from selenium import webdriver
-#from webdriver_manager.chrome import ChromeDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
 import schedule
 
 def open_farmlab(browser):
@@ -59,7 +59,8 @@ def water(browser):
     # time.sleep(60)
 
 def job():
-    browser = webdriver.Chrome("./chromedriver.exe")
+    #browser = webdriver.Chrome("./chromedriver.exe")
+    browser = webdriver.Chrome(ChromeDriverManager().install())
     open_farmlab(browser)
     test_move(browser)
     #water(browser)
