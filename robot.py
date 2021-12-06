@@ -99,7 +99,8 @@ def job():
     driver_path = '/app/.chromedriver/bin/chromedriver'
     options = webdriver.ChromeOptions()
     options.use_chromium = True
-    options.add_argument('--headless')
+    options.add_argument('headless')
+    options.add_argument("disable-gpu")
     #※headlessにしている
     chrome_service = fs.Service(options=options, executable_path=driver_path)
     browser = webdriver.Chrome(service=chrome_service)
