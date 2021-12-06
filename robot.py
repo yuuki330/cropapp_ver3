@@ -1,7 +1,6 @@
 import time
 from selenium import webdriver
-#from webdriver_manager.chrome import ChromeDriverManager
-import ChromeDriverManager
+from webdriver_manager.chrome import ChromeDriverManager
 import schedule
 
 def open_farmlab(browser):
