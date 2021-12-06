@@ -1,4 +1,2 @@
 schedule
 selenium
-pyperclip
-pyautogui
