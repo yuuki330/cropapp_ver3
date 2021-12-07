@@ -2,8 +2,6 @@ import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome import service as fs
-from msedge.selenium_tools import ChromeOptions
-from msedge.selenium_tools import Chrome
 #from webdriver_manager.chrome import ChromeDriverManager
 import schedule
 

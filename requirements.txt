@@ -1,3 +1,2 @@
 schedule
 selenium
-msedge.selenium_tools
