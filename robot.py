@@ -104,7 +104,8 @@ def job():
     # chrome_service = fs.Service(executable_path=driver_path)
     # browser = webdriver.Chrome(service=chrome_service)
     browser = webdriver.Chrome("/app/.chromedriver/bin/chromedriver", options=options)
-
+    browser.set_window_size('1200', '1000')
+    
     open_farmlab(browser)
     test_move(browser)
     #water(browser)
