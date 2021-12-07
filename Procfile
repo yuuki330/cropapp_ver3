@@ -1,1 +1,1 @@
-worker: python robot.py
+web: python sample_line.py
