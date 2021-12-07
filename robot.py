@@ -102,7 +102,8 @@ def job():
     options.add_argument('headless')
     options.add_argument("disable-gpu")
     #※headlessにしている
-    chrome_service = fs.Service(options=options, executable_path=driver_path)
+    #chrome_service = fs.Service(options=options, executable_path=driver_path)
+    chrome_service = fs.Service(executable_path=driver_path)
     browser = webdriver.Chrome(service=chrome_service)
 
     open_farmlab(browser)
