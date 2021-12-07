@@ -97,14 +97,13 @@ def job():
 
     # herokuのchromedriverのPATHを指定
     #driver_path = '/app/.chromedriver/bin/chromedriver'
-    # options = webdriver.ChromeOptions()
-    # options.use_chromium = True
-    # options.add_argument('headless')
-    # options.add_argument("disable-gpu")
+    options = webdriver.ChromeOptions()
+    options.add_argument('--headless')
+    options.add_argument("disable-dev-shm-usage")
     #※headlessにしている
     # chrome_service = fs.Service(executable_path=driver_path)
     # browser = webdriver.Chrome(service=chrome_service)
-    browser = webdriver.Chrome("/app/.chromedriver/bin/chromedriver")
+    browser = webdriver.Chrome("/app/.chromedriver/bin/chromedriver", options=options)
 
     open_farmlab(browser)
     test_move(browser)
