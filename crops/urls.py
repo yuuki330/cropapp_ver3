@@ -21,5 +21,5 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("cropapp.urls")),
-    path('yuki/', include("cropapp.urls")),
+    path('about/', include("cropapp.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
