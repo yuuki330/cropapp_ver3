@@ -42,11 +42,10 @@ function init() {
         function ( error ) {
             console.log( 'An error happened' );
             console.log( error );
-            console.log( modelpath );
         }
     );
-    // renderer.gammaOutput = true;
-    // renderer.gammaFactor = 2.2;
+    renderer.gammaOutput = true;
+    renderer.gammaFactor = 2.2;
     renderer.outputEncoding = THREE.sRGBEncoding;
 
 

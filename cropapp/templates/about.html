@@ -5,13 +5,18 @@
   <meta charset="UTF-8" />
   <link rel="stylesheet" href="{% static 'css/about.css' %}">
   <!-- three.jsを読み込む -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/99/three.js"></script>
+  <script src="https://unpkg.com/three@0.131.3/build/three.min.js"></script>
   <script src="https://unpkg.com/three@0.131.3/examples/js/loaders/GLTFLoader.js"></script>
-  <script src="https://unpkg.com/browse/three@0.131.3/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://unpkg.com/three@0.131.3/examples/js/controls/OrbitControls.js"></script>
   <!-- index.jsを読み込む -->
   <script src="{% static 'js/about.js' %}"></script>
 </head>
 <body>
+    <script>
+        var modelpath = "{% static 'models/gltfTest_PBRMaterial.glb' %}";
+        // let modelname = modelpath.replace(“NotNeededPathInfo”, “”); 
+        // modelpath.replace(modelname,””)
+    </script>
     <div id="main_canvas">
         <canvas id="canvas" width="100%" height="100%"></canvas>
     </div>

@@ -19,12 +19,12 @@ function init() {
     camera = new THREE.PerspectiveCamera(45, width / height, 1, 10000);
     camera.position.set(0, 400, -1000);
     
-    //const controls = new THREE.OrbitControls(camera);
-    camera.lookAt(new THREE.Vector3(0, 400, 0));
+    const controls = new THREE.OrbitControls(camera);
+    //camera.lookAt(new THREE.Vector3(0, 400, 0));
 
     // Load GLTF or GLB
     const loader = new THREE.GLTFLoader();
-    const url = modelpath;
+    const url = '{% static "models/scene.gltf" %}';
     
     let model = null;
     loader.load(
@@ -42,12 +42,10 @@ function init() {
         function ( error ) {
             console.log( 'An error happened' );
             console.log( error );
-            console.log( modelpath );
         }
     );
-    // renderer.gammaOutput = true;
-    // renderer.gammaFactor = 2.2;
-    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.gammaOutput = true;
+    renderer.gammaFactor = 2.2;
 
 
     // 平行光源
@@ -60,7 +58,7 @@ function init() {
     // 初回実行
     tick();
     function tick() {
-        // controls.update();
+        controls.update();
         
         scene.traverse(function(obj) {
             if(obj.name == "J_Bip_C_Chest"){
@@ -68,7 +66,7 @@ function init() {
             }
         });
         if (model != null){
-            //console.log(model);
+            console.log(model);
         }
         renderer.render(scene, camera);
         requestAnimationFrame(tick);

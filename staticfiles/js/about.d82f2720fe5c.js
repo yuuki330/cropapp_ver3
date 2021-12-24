@@ -42,12 +42,10 @@ function init() {
         function ( error ) {
             console.log( 'An error happened' );
             console.log( error );
-            console.log( modelpath );
         }
     );
-    // renderer.gammaOutput = true;
-    // renderer.gammaFactor = 2.2;
-    renderer.outputEncoding = THREE.sRGBEncoding;
+    renderer.gammaOutput = true;
+    renderer.gammaFactor = 2.2;
 
 
     // 平行光源
