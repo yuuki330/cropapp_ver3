@@ -24,7 +24,8 @@ function init() {
 
     // Load GLTF or GLB
     const loader = new THREE.GLTFLoader();
-    const url = modelpath;
+    //const url = modelpath;
+    const url ="./gltfTest_PBRMaterial.glb"
     
     let model = null;
     loader.load(
