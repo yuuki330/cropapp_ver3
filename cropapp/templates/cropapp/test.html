@@ -1,46 +1,14 @@
-<!Doctype html>
+<!DOCTYPE html>
 <html>
-  <head>
-    <title>Camera Test</title>
-    <script type="text/javascript">
-
-
-      function videoStart(){
-        var constraints = { audio: false, video: { facingMode: "environment" } };
-
-        navigator.mediaDevices.getUserMedia( constraints )
-        .then(
-          function( stream ) {
-            var video = document.querySelector( 'video' );
-            video.srcObject = stream;
-            video.onloadedmetadata = function( e ) {
-              video.play();
-            };
-          }
-        )
-      };
-
-
-      function videoStop(){
-        var constraints = { audio: false, video: { facingMode: "environment" } };
-
-        navigator.mediaDevices.getUserMedia( constraints )
-        .then(
-          function( stream ) {
-            var video = document.querySelector( 'video' );
-            video.srcObject = stream;
-            video.onloadedmetadata = function( e ) {
-              stream.getVideoTracks()[0].stop();
-            };
-          }
-        )
-      };
-
-    </script>
-  </head>
-  <body>
-    <div><video id="myVideo" autoplay="1" ></video></div> 
-    <div><button type="button" onclick="videoStart()">撮影</button>　
-    <button type="button" onclick="videoStop()">停止</button></div>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <title>RearCamera</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+  <link rel="stylesheet" href="test.css" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+<body>
+  <video id="video" autoplay playsinline></video>
+  <script src="test.js"></script>
+</body>
 </html>
