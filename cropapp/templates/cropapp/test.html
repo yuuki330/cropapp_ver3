@@ -1,0 +1,46 @@
+<!Doctype html>
+<html>
+  <head>
+    <title>Camera Test</title>
+    <script type="text/javascript">
+
+
+      function videoStart(){
+        var constraints = { audio: false, video: { facingMode: "environment" } };
+
+        navigator.mediaDevices.getUserMedia( constraints )
+        .then(
+          function( stream ) {
+            var video = document.querySelector( 'video' );
+            video.srcObject = stream;
+            video.onloadedmetadata = function( e ) {
+              video.play();
+            };
+          }
+        )
+      };
+
+
+      function videoStop(){
+        var constraints = { audio: false, video: { facingMode: "environment" } };
+
+        navigator.mediaDevices.getUserMedia( constraints )
+        .then(
+          function( stream ) {
+            var video = document.querySelector( 'video' );
+            video.srcObject = stream;
+            video.onloadedmetadata = function( e ) {
+              stream.getVideoTracks()[0].stop();
+            };
+          }
+        )
+      };
+
+    </script>
+  </head>
+  <body>
+    <div><video id="myVideo" autoplay="1" ></video></div> 
+    <div><button type="button" onclick="videoStart()">撮影</button>　
+    <button type="button" onclick="videoStop()">停止</button></div>
+  </body>
+</html>
