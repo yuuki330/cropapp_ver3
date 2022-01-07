@@ -17,17 +17,18 @@ class WebcamView(TemplateView):
 
 class HomeView(TemplateView):
     template_name = "cropapp/home.html"
-    def main(request):
-        url = 'https://weather.yahoo.co.jp/weather/jp/3.html?day=1' #気象庁のHP
-        res = requests.get(url)
-        res.encoding = res.apparent_encoding
-        soup = BeautifulSoup(res.text, "html.parser")
-        weathers = soup.find_all(class_='weather')
-        date_list = weather_list = []
-        for i  in weathers:
-            weather = re.findall('alt="(.*?)" src', str(i))
-            weather_list = weather_list + weather
-        context = {
-            'tokyo_today_w':weather_list[4],
-        }
-        return render(request, 'main.html', context)
+
+def main(request):
+    url = 'https://weather.yahoo.co.jp/weather/jp/3.html?day=1' #気象庁のHP
+    res = requests.get(url)
+    res.encoding = res.apparent_encoding
+    soup = BeautifulSoup(res.text, "html.parser")
+    weathers = soup.find_all(class_='weather')
+    date_list = weather_list = []
+    for i  in weathers:
+        weather = re.findall('alt="(.*?)" src', str(i))
+        weather_list = weather_list + weather
+    context = {
+        'tokyo_today_w':weather_list[4],
+    }
+    return render(request, 'main.html', context)
