@@ -4,7 +4,11 @@ let canvasStream = null;
 
 streamButton.addEventListener("click", () => {
   navigator.mediaDevices
-    .getUserMedia({video: true})
+    .getUserMedia({video: {
+        facingMode: {
+          exact: "environment"
+        }
+      }})
     .then(stream => {
       video.srcObject = stream;
       drawCanvasFromVideo()
@@ -21,7 +25,7 @@ function drawCanvasFromVideo()  {
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     }
   }, 10000/60);
-  canvasStream = canvas.captureStream(60);
+  canvasStream = canvas.captureStream(30);
   const videoCanvas = document.getElementById("player-canvas");
   videoCanvas.srcObject = canvasStream;
 }
