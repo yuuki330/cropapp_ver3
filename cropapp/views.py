@@ -19,20 +19,16 @@ class HomeView(TemplateView):
     template_name = "cropapp/home.html"
 
 def main(request):
-    url = 'https://www.jma.go.jp/jp/yoho/329.html' #気象庁のHP
+    url = 'https://weather.yahoo.co.jp/weather/jp/3.html?day=1' #気象庁のHP
     res = requests.get(url)
     res.encoding = res.apparent_encoding
     soup = BeautifulSoup(res.text, "html.parser")
     weathers = soup.find_all(class_='weather')
     date_list = weather_list = []
     for i  in weathers:
-        j = str(i).replace('\n','')
-        date = re.findall('<th class="weather">(.*?)<br/>', str(j))
-        date_list = date_list + date
-        weather = re.findall('alt="(.*?)" src', str(j))
+        weather = re.findall('alt="(.*?)" src', str(i))
         weather_list = weather_list + weather
     context = {
-        'seibu_today':date_list[0], 'seibu_tomorrow':date_list[1],
-        'seibu_today_w':weather_list[0], 'seibu_tomorrow_w':weather_list[1],
-        }
+        'tokyo_today_w':weather_list[4],
+    }
     return render(request, 'main.html', context)
