@@ -19,9 +19,9 @@ class HomeView(TemplateView):
     template_name = "cropapp/home.html"
 
 def main(request):
-    context = {
-        'tokyo_today_w':'晴れ'
-    }
+    # context = {
+    #     'tokyo_today_w':'晴れ'
+    # }
     url = 'https://weather.yahoo.co.jp/weather/jp/3.html?day=1' #気象庁のHP
     res = requests.get(url)
     res.encoding = res.apparent_encoding
@@ -34,4 +34,4 @@ def main(request):
     context = {
         'tokyo_today_w':weather_list[4],
     }
-    return render(request, 'main.html', context)
+    return render(request, 'home.html', context)
