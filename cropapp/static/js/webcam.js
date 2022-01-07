@@ -20,8 +20,8 @@ function drawCanvasFromVideo()  {
     if (canvas && ctx){
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     }
-  }, 10000/30);
-  canvasStream = canvas.captureStream(30);
+  }, 10000/60);
+  canvasStream = canvas.captureStream(60);
   const videoCanvas = document.getElementById("player-canvas");
   videoCanvas.srcObject = canvasStream;
 }
