@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Canvas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
+  <link rel="stylesheet" href="{% static 'css/webcam.css' %}" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+</head>
+<body>
+    <button id="stream">get stream</button> <br />
+    <br/>
+
+    <h3>Webカメラ</h3><br>
+    <video id="player" controls autoplay width="640px" height="360px"></video><br>
+    <h3>canvas</h3><br/>
+    <canvas id="canvas" width="640px" height="360px"></canvas><br>
+    <h3>canvasから取得したStream</h3><br/>
+    <video id="player-canvas" controls autoplay width="640px" height="360px"></video><br>
+    <br />
+
+    <video id="video" autoplay playsinline></video>
+    <script src="{% static 'js/webcam.js' %}"></script>
+</body>
+</html>
