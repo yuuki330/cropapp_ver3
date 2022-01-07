@@ -24,7 +24,7 @@ function drawCanvasFromVideo()  {
     if (canvas && ctx){
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     }
-  }, 10000/100);
+  }, 10000/60);
   canvasStream = canvas.captureStream();
   const videoCanvas = document.getElementById("player-canvas");
   videoCanvas.srcObject = canvasStream;
