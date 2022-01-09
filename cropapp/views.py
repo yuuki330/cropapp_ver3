@@ -45,12 +45,28 @@ def home(request):
 
     date_all = soup.find(class_='entry-time')
     temp = soup.find(id='latest_temperature_data')
+    crown = soup.find(id='latest_crown_data')
+    soil_temp = soup.find(id='latest_soil_data')
+    co2 = soup.find(id='latest_co2_data')
+    moist = soup.find(id='latest_moist_data')
+    bright_all = soup.find(id='latest_bright_data')
+    vpd = soup.find(id='latest_vpd_data')
+    water = soup.find(id='latest_water_data')
+    avg_temp = soup.find(id='latest_avg_temperature_data')
 
-    # print(str(temp))
 
     date = re.findall('..月...', str(date_all))
     time_ = re.findall('<br/>(.*)', str(date_all))
     temp = re.findall('">(.*)</label>', str(temp))
+    crown = re.findall('">(.*)</label>', str(crown))
+    soil_temp = re.findall('">(.*)</label>', str(soil_temp))
+    co2 = re.findall('">(.*)</label>', str(co2))
+    moist = re.findall('">(.*)</label>', str(moist))
+    bright = re.findall('">(.*)<span>', str(bright_all))
+    bright_label = re.findall('<span>(.*)</span>', str(bright_all))
+    vpd = re.findall('">(.*)</label>', str(vpd))
+    water = re.findall('">(.*)<br>', str(water))
+    avg_temp = re.findall('">(.*)</label>', str(avg_temp))
 
     time.sleep(1)
 
@@ -59,7 +75,16 @@ def home(request):
     context = {
         'date':date[0],
         'time_':time_[0],
-        'temp':temp[0]
+        'temp':temp[0],
+        'crown':crown[0],
+        'soil_temp':soil_temp[0],
+        'co2':co2[0],
+        'moist':moist[0],
+        'bright':bright[0],
+        'bright_label':bright_label[0],
+        'vpd':vpd[0],
+        'water':water[0],
+        'avg_temp':avg_temp[0],
     }
     return render(request, 'cropapp/home.html', context)
 
