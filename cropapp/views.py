@@ -39,7 +39,7 @@ def home(request):
     login_btn = browser.find_element_by_class_name("button01")
     login_btn.click()
 
-    time.sleep(1)
+    time.sleep(.1)
 
     soup = BeautifulSoup(browser.page_source, "html.parser")
 
@@ -52,7 +52,7 @@ def home(request):
     time_ = re.findall('<br/>(.*)', str(date_all))
     temp = re.findall('">(.*)</label>', str(temp))
 
-    time.sleep(1)
+    time.sleep(.1)
 
     browser.close()
 
