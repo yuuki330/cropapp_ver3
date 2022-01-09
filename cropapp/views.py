@@ -1,5 +1,9 @@
 from django.views.generic import TemplateView
 from django.shortcuts import render
+from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+from webdriver_manager.chrome import ChromeDriverManager
+import time
 import requests, re
 from bs4 import BeautifulSoup
 
@@ -19,17 +23,43 @@ class HomeView(TemplateView):
     template_name = "cropapp/home.html"
 
 def home(request):
-    url = 'https://weather.yahoo.co.jp/weather/jp/3.html?day=1' #気象庁のHP
-    res = requests.get(url)
-    res.encoding = res.apparent_encoding
-    soup = BeautifulSoup(res.text, "html.parser")
-    weathers = soup.find_all(class_='forecast')
-    weather_list = temp_high_list = temp_low_list = []
-    for i  in weathers:
-        weather = re.findall('alt="(.*?)" src', str(i))
-        weather_list = weather_list + weather
+    browser = webdriver.Chrome(ChromeDriverManager().install())
+    url = 'https://farmo.tech/pc/login.php'
+    browser.get(url)
+
+    time.sleep(1)
+
+    USER = "katsuyu107@gmail.com"
+    PASS = "Yuuki1079810"
+
+    login_email = browser.find_element_by_name("login_email")
+    login_email.send_keys(USER)
+    login_pass = browser.find_element_by_name("login_password")
+    login_pass.send_keys(PASS)
+    login_btn = browser.find_element_by_class_name("button01")
+    login_btn.click()
+
+    time.sleep(1)
+
+    soup = BeautifulSoup(browser.page_source, "html.parser")
+
+    date_all = soup.find(class_='entry-time')
+    temp = soup.find(id='latest_temperature_data')
+
+    print(str(temp))
+
+    date = re.findall('..月...', str(date_all))
+    time_ = re.findall('<br/>(.*)', str(date_all))
+    temp = re.findall('">(.*)</label>', str(temp))
+
+    time.sleep(1)
+
+    browser.close()
+
     context = {
-        'tokyo_today_w':weather_list[4],
+        'date':date,
+        'time_':time_,
+        'temp':temp
     }
     return render(request, 'cropapp/home.html', context)
 
