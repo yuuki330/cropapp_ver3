@@ -63,3 +63,6 @@ def home(request):
     }
     return render(request, 'cropapp/home.html', context)
 
+def webcam(request):
+
+    return render(request, 'cropapp/webcam.html', {})
