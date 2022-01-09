@@ -1,8 +1,4 @@
 /*
- * ブロック開閉処理
- * 2015/12/21 ボタン画像の非表示処理を行わない
- */
-/*
  * Return the classList property of e, if it has one.
  * Otherwise, return an object that simulates the DOMTokenList API for e.
  * The returned object has contains(), add(), remove(), toggle() and toString()
