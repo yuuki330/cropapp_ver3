@@ -46,7 +46,7 @@ def home(request):
     date_all = soup.find(class_='entry-time')
     temp = soup.find(id='latest_temperature_data')
 
-    print(str(temp))
+    # print(str(temp))
 
     date = re.findall('..月...', str(date_all))
     time_ = re.findall('<br/>(.*)', str(date_all))
@@ -57,9 +57,9 @@ def home(request):
     browser.close()
 
     context = {
-        'date':date,
-        'time_':time_,
-        'temp':temp
+        'date':date[0],
+        'time_':time_[0],
+        'temp':temp[0]
     }
     return render(request, 'cropapp/home.html', context)
 
