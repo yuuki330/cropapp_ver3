@@ -14,7 +14,7 @@ class AboutView(TemplateView):
     template_name = "cropapp/about.html"
 
 class TestView(TemplateView):
-    template_name = "cropapp/test.html"
+    template_name = "cropapp/cake.html"
 
 class WebcamView(TemplateView):
     template_name = "cropapp/webcam.html"
