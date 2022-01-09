@@ -49,7 +49,7 @@ def home(request):
     # print(str(temp))
 
     date = re.findall('..月...', str(date_all))
-    time_ = re.findall('<br/>(.*)', str(date_all))
+    time_ = re.findall('<br/>(.*):', str(date_all))
     temp = re.findall('">(.*)</label>', str(temp))
 
     time.sleep(1)
