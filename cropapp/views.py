@@ -65,7 +65,7 @@ def home(request):
     bright = re.findall('">(.*)<span>', str(bright_all))
     bright_label = re.findall('<span>(.*)</span>', str(bright_all))
     vpd = re.findall('">(.*)</label>', str(vpd))
-    water = re.findall('">(.*)<br>', str(water))
+    water = re.findall('>(.*)<br', str(water))
     avg_temp = re.findall('">(.*)</label>', str(avg_temp))
 
     time.sleep(1)
