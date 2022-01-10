@@ -21,6 +21,10 @@
 //   }
 
 // On Streaming
+
+const canvas = document.getElementById("canvas");
+const ctx = canvas.getContext("2d");
+
 const startStreamingVideo = () => {
   const video = document.getElementById("video");
   if( navigator.mediaDevices.getUserMedia ){
@@ -35,3 +39,11 @@ const startStreamingVideo = () => {
   }
 }
 startStreamingVideo();
+
+function draw() {
+  canvas.width  = window.innerWidth;
+  canvas.height = window.innerHeight;
+  ctx.drawImage(video, 0, 0);
+
+  requestAnimationFrame(draw);
+}
