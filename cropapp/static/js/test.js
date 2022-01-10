@@ -22,9 +22,13 @@
 
 // On Streaming
 const startStreamingVideo = () => {
-  const video = document.querySelector( "#video" );
+  const video = document.getElementById("video");
   if( navigator.mediaDevices.getUserMedia ){
-    navigator.mediaDevices.getUserMedia( { video: true } )
+    navigator.mediaDevices.getUserMedia( { video: {
+      facingMode: {
+        exact: "environment"
+      }
+    } } )
     .then( ( stream ) => {
         video.srcObject = stream;
     } );
