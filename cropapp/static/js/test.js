@@ -69,4 +69,4 @@ function draw() {
 }
 
 setup();
-// draw();
+draw();
