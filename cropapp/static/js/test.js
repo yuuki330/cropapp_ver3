@@ -64,12 +64,12 @@ navigator.mediaDevices.getUserMedia( { video: {
 // }
 
 function draw() {
-  video = createCapture(video);
-  video.size(width, height);
+  video_image = createCapture(video);
+  video_image.size(width, height);
   // video.hide();
   canvas.width  = window.innerWidth;
   canvas.height = window.innerHeight;
-  ctx.drawImage(video, 0, 0);
+  ctx.drawImage(video_image, 0, 0);
 
   requestAnimationFrame(draw);
 }
