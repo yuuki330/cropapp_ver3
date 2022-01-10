@@ -28,6 +28,7 @@ var w = $('.contents').width();
 var h = $('.contents').height();
 $('#canvas').attr('width', w);
 $('#canvas').attr('height', h);
+
 // const startStreamingVideo = () => {
 //   const video = document.getElementById("video");
 //   if( navigator.mediaDevices.getUserMedia ){

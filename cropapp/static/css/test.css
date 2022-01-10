@@ -1,10 +1,4 @@
-body {
-  margin: 0;
-  background: #000;
-}
-
-#video {
-  display: block;
+.contents{
   width: 100%;
   height: 100%;
 }
