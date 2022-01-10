@@ -40,8 +40,10 @@ const ctx = canvas.getContext("2d");
 // }
 // startStreamingVideo();
 
-const video = document.getElementById("video");
-if( navigator.mediaDevices.getUserMedia ){
+function setup(){
+  createCanvas(640, 480);
+  const video = document.getElementById("video");
+  if( navigator.mediaDevices.getUserMedia ){
   navigator.mediaDevices.getUserMedia( { video: {
     facingMode: {
       exact: "environment"
@@ -50,13 +52,7 @@ if( navigator.mediaDevices.getUserMedia ){
   .then( ( stream ) => {
       video.srcObject = stream;
   } );
-}
-
-video.hide();
-
-function setup(){
-  createCanvas(640, 480);
-
+  }
   // ビデオのキャプチャ
   video = createCapture(video);
   video.size(width, height);
@@ -72,5 +68,5 @@ function draw() {
   requestAnimationFrame(draw);
 }
 
-// setup();
+setup();
 // draw();
