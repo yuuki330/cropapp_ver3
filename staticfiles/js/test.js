@@ -24,10 +24,6 @@
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
-var w = $('.contents').width();
-var h = $('.contents').height();
-$('#canvas').attr('width', w);
-$('#canvas').attr('height', h);
 
 // const startStreamingVideo = () => {
 //   const video = document.getElementById("video");
