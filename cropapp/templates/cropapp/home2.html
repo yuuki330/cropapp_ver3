@@ -1,0 +1,61 @@
+<head>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body>
+  <h1>青森トマト</h1>
+  <br/>
+  <h3>日付・時刻</h3>
+  <div>{{ date }}:{{ time_ }}
+  </div>
+  <br/>
+  <h3>気温</h3>
+  <div>
+    {{ temp }}
+  </div>
+  <br/>
+  <h3>クラウン</h3>
+  <div>
+    {{ crown }}
+  </div>
+  </div>
+  <br/>
+  <h3>地中温度</h3>
+  <div>
+    {{ soil_temp }}
+  </div>
+  </div>
+  <br/>
+  <h3>CO2濃度</h3>
+  <div>
+    {{ co2 }}
+  </div>
+  <br/>
+  <h3>湿度</h3>
+  <div>
+    {{ moist }}
+  </div>
+  </div>
+  <br/>
+  <h3>日射量</h3>
+  <div>
+    {{ bright }}{{ bright_label }}
+  </div>
+  <br/>
+  <h3>飽差</h3>
+  <div>
+    {{ vpd }}
+  </div>
+  <br/>
+  <h3>土壌水分</h3>
+  <div>
+    {{ water }}
+  </div>
+  <br/>
+  <h3>気温(24h平均)</h3>
+  <div>
+    {{ avg_temp }}
+  </div>
+  <br/>
+  <li><a href="{% url 'webcam' %}">カメラ</a></li>
+</body>

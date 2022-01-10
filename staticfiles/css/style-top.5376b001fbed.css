@@ -49,22 +49,22 @@ a {text-decoration: none;color: #666;transition: 0.5s;}
 }
 /*土台画像*/
 .slide0 {
-	background: url("../images/0.549617f8b4e9.jpg") no-repeat center center / cover;	/*土台画像（空）の読み込み*/
+	background: url("../images/0.3c5cb61e61d5.jpg") no-repeat center center / cover;	/*土台画像（空）の読み込み*/
 	position: relative;
 }
 /*１枚目*/
 .slide1 {
-	background: url("../images/1.5b5fa21e9b84.jpg") no-repeat center bottom/cover;	/*１枚目画像（子供たち）の読み込み*/
+	background: url("../images/1.9d4766eb7221.jpg") no-repeat center bottom/cover;	/*１枚目画像（子供たち）の読み込み*/
 	animation-name: slide1;		/*keyframes.cssで使う@keyframesの指定*/
 }
 /*２枚目*/
 .slide2 {
-	background: url("../images/2.3bfa67fa6e92.jpg") no-repeat center center/cover;	/*２枚目画像（サッカー）の読み込み*/
+	background: url("../images/2.1347265a2f01.jpg") no-repeat center center/cover;	/*２枚目画像（サッカー）の読み込み*/
 	animation-name: slide2;		/*keyframes.cssで使う@keyframesの指定*/
 }
 /*３枚目*/
 .slide3 {
-	background: url("../images/3.5521910c44fc.jpg") no-repeat center top/cover;	/*３枚目画像（スイミング）の読み込み*/
+	background: url("../images/3.7389c16014a8.jpg") no-repeat center top/cover;	/*３枚目画像（スイミング）の読み込み*/
 	animation-name: slide3;		/*keyframes.cssで使う@keyframesの指定*/
 }
 
@@ -181,7 +181,16 @@ header #logo img {
 	background: url("../images/menu4.e590a6ff5bc1.png") no-repeat center center / contain;	/*メニュー背景画像の読み込み*/
 	animation-delay: 3s;	/*１個ずつメニューをずらしてスイングさせる為の指定*/
 }
-
+/*5つ目メニューへの追加設定*/
+#menubar li:nth-of-type(5) {
+	animation-delay: 4.8s;	/*出現するタイミング（秒後）*/
+	right: 50%;	/*右からの配置場所指定*/
+	top: -50%;	/*上からの配置場所指定*/
+}
+#menubar li:nth-of-type(5) a {
+	background: url("../images/menu4.e590a6ff5bc1.png") no-repeat center center / contain;	/*メニュー背景画像の読み込み*/
+	animation-delay: 3s;	/*１個ずつメニューをずらしてスイングさせる為の指定*/
+}
 /*マウスオン時*/
 #menubar li a:hover {
 	width: 260px;	/*マウスオン時にちょっとだけ大きくする。通常サイズは上の「#menubar li a」で指定しています。*/
