@@ -65,9 +65,9 @@ function setup(){
 function draw() {
   canvas.width  = window.innerWidth;
   canvas.height = window.innerHeight;
-  ctx.drawImage(video, 0, 0);
+  ctx.drawImage(video, 0, 0, width, height);
 
   requestAnimationFrame(draw);
 }
 
-// draw();
+draw();
