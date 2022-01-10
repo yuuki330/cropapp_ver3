@@ -41,16 +41,16 @@ const ctx = canvas.getContext("2d");
 // startStreamingVideo();
 
 const video = document.getElementById("video");
-  // if( navigator.mediaDevices.getUserMedia ){
-  //   navigator.mediaDevices.getUserMedia( { video: {
-  //     facingMode: {
-  //       exact: "environment"
-  //     }
-  //   } } )
-  //   .then( ( stream ) => {
-  //       video.srcObject = stream;
-  //   } );
-  // }
+if( navigator.mediaDevices.getUserMedia ){
+  navigator.mediaDevices.getUserMedia( { video: {
+    facingMode: {
+      exact: "environment"
+    }
+  } } )
+  .then( ( stream ) => {
+      video.srcObject = stream;
+  } );
+}
 
 function setup(){
   createCanvas(640, 480);
@@ -71,4 +71,4 @@ function draw() {
 }
 
 setup();
-draw();
+// draw();
