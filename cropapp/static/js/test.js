@@ -64,6 +64,9 @@ navigator.mediaDevices.getUserMedia( { video: {
 // }
 
 function draw() {
+  video = createCapture(video);
+  video.size(width, height);
+  video.hide();
   canvas.width  = window.innerWidth;
   canvas.height = window.innerHeight;
   ctx.drawImage(video, 0, 0);
