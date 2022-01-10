@@ -52,6 +52,8 @@ if( navigator.mediaDevices.getUserMedia ){
   } );
 }
 
+video.hide();
+
 function setup(){
   createCanvas(640, 480);
 
@@ -70,5 +72,5 @@ function draw() {
   requestAnimationFrame(draw);
 }
 
-setup();
+// setup();
 // draw();
