@@ -1,75 +1,60 @@
-// const medias = {
-//     audio: false,
-//     video: {
-//       facingMode: {
-//         exact: "environment"
-//       }
-//     }
-//   };
-//   const video = document.getElementById("video");
-//   const promise = navigator.mediaDevices.getUserMedia(medias);
-  
-//   promise.then(successCallback)
-//          .catch(errorCallback);
-  
-//   function successCallback(stream) {
-//     video.srcObject = stream;
-//   }
-  
-//   function errorCallback(err) {
-//     alert(err);
-//   }
+// Copyright (c) 2018 ml5
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
 
-// On Streaming
+/* ===
+ml5 Example
+Real time Object Detection using YOLO and p5.js
+=== */
 
-const canvas = document.getElementById("canvas");
-const ctx = canvas.getContext("2d");
+// let video;
+// let yolo;
+// let status;
+// let objects = [];
 
-// const startStreamingVideo = () => {
-//   const video = document.getElementById("video");
-//   if( navigator.mediaDevices.getUserMedia ){
-//     navigator.mediaDevices.getUserMedia( { video: {
-//       facingMode: {
-//         exact: "environment"
-//       }
-//     } } )
-//     .then( ( stream ) => {
-//         video.srcObject = stream;
-//     } );
-//   }
-// }
-// startStreamingVideo();
-
-const video = document.getElementById("video");
+const video_ = document.getElementById("video")
 if( navigator.mediaDevices.getUserMedia ){
-navigator.mediaDevices.getUserMedia( { video: {
-  facingMode: {
-    exact: "environment"
-  }
-} } )
-.then( ( stream ) => {
-    video.srcObject = stream;
-    requestAnimationFrame(draw);
-} );
+  navigator.mediaDevices.getUserMedia( { video: true } )
+  .then( ( stream ) => {
+      video_.srcObject = stream;
+  } );
 }
 
-// function setup(){
-//   createCanvas(640, 480);
+// function setup() {
+//   createCanvas(320, 240);
+//   video = createCapture(video_);
+//   video.size(320, 240);
 
-//   // ビデオのキャプチャ
-//   video = createCapture(video);
-//   video.size(width, height);
+//   // Create a YOLO method
+//   yolo = ml5.YOLO(video, startDetecting);
+
+//   // Hide the original video
 //   video.hide();
-
+//   status = select('#status');
 // }
 
-function draw() {
-  video_image = createCapture(video);
-  video_image.size(width, height);
-  // video.hide();
-  canvas.width  = window.innerWidth;
-  canvas.height = window.innerHeight;
-  ctx.drawImage(video_image, 0, 0);
+// function draw() {
+//   image(video, 0, 0, width, height);
+//   for (let i = 0; i < objects.length; i++) {
+//     noStroke();
+//     fill(0, 255, 0);
+//     text(objects[i].label, objects[i].x * width, objects[i].y * height - 5);
+//     noFill();
+//     strokeWeight(4);
+//     stroke(0, 255, 0);
+//     rect(objects[i].x * width, objects[i].y * height, objects[i].w * width, objects[i].h * height);
+//   }
+// }
 
-  requestAnimationFrame(draw);
-}
+// function startDetecting() {
+//   status.html('Model loaded!');
+//   detect();
+// }
+
+// function detect() {
+//   yolo.detect(function(err, results) {
+//     objects = results;
+//     detect();
+//   });
+// }
