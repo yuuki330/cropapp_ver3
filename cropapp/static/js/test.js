@@ -20,7 +20,7 @@ Real time Object Detection using YOLO and p5.js
 
 let video;
 let yolo;
-let status;
+let status_;
 let objects = [];
 
 function setup() {
@@ -33,7 +33,7 @@ function setup() {
 
   // Hide the original video
   video.hide();
-  status = select('#status');
+  status_ = select('#status');
 }
 
 function draw() {
@@ -50,7 +50,7 @@ function draw() {
 }
 
 function startDetecting() {
-  status.html('Model loaded!');
+  status_.html('Model loaded!');
   detect();
 }
 
