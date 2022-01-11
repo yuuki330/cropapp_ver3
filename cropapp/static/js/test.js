@@ -24,18 +24,18 @@ if( navigator.mediaDevices.getUserMedia ){
   } );
 }
 
-// function setup() {
-//   createCanvas(320, 240);
-//   video = createCapture(player);
-//   video.size(320, 240);
+function setup() {
+  createCanvas(320, 240);
+  video = createCapture(player);
+  video.size(320, 240);
 
-//   // Create a YOLO method
-//   yolo = ml5.YOLO(video, startDetecting);
+  // Create a YOLO method
+  yolo = ml5.YOLO(video, startDetecting);
 
-//   // Hide the original video
-//   video.hide();
-//   status = select('#status');
-// }
+  // Hide the original video
+  video.hide();
+  status = select('#status');
+}
 
 // function draw() {
 //   image(video, 0, 0, width, height);
