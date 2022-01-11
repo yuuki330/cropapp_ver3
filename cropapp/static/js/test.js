@@ -8,25 +8,24 @@ ml5 Example
 Real time Object Detection using YOLO and p5.js
 === */
 
+// Copyright (c) 2018 ml5
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+/* ===
+ml5 Example
+Real time Object Detection using YOLO and p5.js
+=== */
+
 let video;
 let yolo;
 let status;
 let objects = [];
 
-const player = document.getElementById("video")
-if( navigator.mediaDevices.getUserMedia ){
-  navigator.mediaDevices.getUserMedia( { video: true, audio:false } )
-  .then( ( stream ) => {
-      player.srcObject = stream;
-      setup();
-      // draw();
-
-  } );
-}
-
 function setup() {
   createCanvas(320, 240);
-  video = createCapture(player);
+  video = createCapture(VIDEO);
   video.size(320, 240);
 
   // Create a YOLO method
@@ -37,27 +36,27 @@ function setup() {
   status = select('#status');
 }
 
-// function draw() {
-//   image(video, 0, 0, width, height);
-//   for (let i = 0; i < objects.length; i++) {
-//     noStroke();
-//     fill(0, 255, 0);
-//     text(objects[i].label, objects[i].x * width, objects[i].y * height - 5);
-//     noFill();
-//     strokeWeight(4);
-//     stroke(0, 255, 0);
-//     rect(objects[i].x * width, objects[i].y * height, objects[i].w * width, objects[i].h * height);
-//   }
-// }
+function draw() {
+  image(video, 0, 0, width, height);
+  for (let i = 0; i < objects.length; i++) {
+    noStroke();
+    fill(0, 255, 0);
+    text(objects[i].label, objects[i].x * width, objects[i].y * height - 5);
+    noFill();
+    strokeWeight(4);
+    stroke(0, 255, 0);
+    rect(objects[i].x * width, objects[i].y * height, objects[i].w * width, objects[i].h * height);
+  }
+}
 
-// function startDetecting() {
-//   status.html('Model loaded!');
-//   detect();
-// }
+function startDetecting() {
+  status.html('Model loaded!');
+  detect();
+}
 
-// function detect() {
-//   yolo.detect(function(err, results) {
-//     objects = results;
-//     detect();
-//   });
-// }
+function detect() {
+  yolo.detect(function(err, results) {
+    objects = results;
+    detect();
+  });
+}
