@@ -130,7 +130,8 @@
 // }
 
 
-const video = document.getElementById("input_video"),
+// const video = document.getElementById("input_video"),
+let video = document.getElementById("input_video"),
 // constraints = {
 //   audio: false,
 //   video: {
