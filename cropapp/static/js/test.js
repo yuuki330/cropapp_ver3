@@ -50,7 +50,7 @@ function setup() {
 createCanvas(windowWidth, windowHeight);
 var video = document.getElementById('video');
 var constraints = {
-      audio: false,
+      // audio: false,
       video: {
           // スマホのバックカメラを使用
           facingMode: 'environment'
@@ -64,8 +64,8 @@ var constraints = {
       .catch((err) => {
           window.alert(err.name + ': ' + err.message);
       });
-video = createCapture(video);
-video.size(width, height);
+// video = createCapture(video);
+// video.size(width, height);
 // video.hide();
 
 faceapi = ml5.faceApi(video, detectionOptions, onModelReady);
