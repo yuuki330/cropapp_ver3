@@ -92,5 +92,3 @@ function draw() {
   drawVertices(rightEye);
   endShape(CLOSE);
 }
-
-setup();
