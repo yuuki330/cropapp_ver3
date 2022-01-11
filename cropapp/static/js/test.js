@@ -1,5 +1,5 @@
 let faceapi;
-let video;
+// let video;
 let box;
 let parts;
 
