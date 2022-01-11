@@ -137,7 +137,7 @@ navigator.mediaDevices
 let videoImage;
 
 function setup() {
-  createCanvas(Width, Height);
+  createCanvas(width, height);
   videoImage = createGraphics(windowWidth, windowHeight);
 }
 
