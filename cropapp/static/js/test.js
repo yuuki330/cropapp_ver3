@@ -64,16 +64,16 @@ var constraints = {
       .catch((err) => {
           window.alert(err.name + ': ' + err.message);
       });
-// video = createCapture(video);
-// video.size(width, height);
-// video.hide();
+video_ = createCapture(video);
+video_.size(width, height);
+// video_.hide();
 
-faceapi = ml5.faceApi(video, detectionOptions, onModelReady);
+faceapi = ml5.faceApi(video_, detectionOptions, onModelReady);
 }
 
 function draw() {
   background(0);
-  image(video, 0, 0, width, height);
+  image(video_, 0, 0, width, height);
 
   if (isEmpty(box) || isEmpty(parts)) {
     return;
