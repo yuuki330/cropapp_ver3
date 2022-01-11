@@ -46,15 +46,19 @@ const drawVertices = (vertices) => {
   });
 };
 
+// const video = document.getElementById("input_video"),
+//   constraints = {
+//     audio: false,
+//     video: {
+//       facingMode: {
+//         exact: "environment"
+//       }
+//     }
+//   };
 const video = document.getElementById("input_video"),
   constraints = {
     audio: false,
-    // video: {
-    //   facingMode: {
-    //     exact: "environment"
-    //   }
-    // }
-    video: true
+    video: true,
   };
 video.style.display = "none";
 
