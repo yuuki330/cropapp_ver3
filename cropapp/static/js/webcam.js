@@ -11,7 +11,9 @@ navigator.mediaDevices
     }})
   .then(stream => {
     video.srcObject = stream;
-    drawCanvasFromVideo()
+    while(1){
+      drawCanvasFromVideo()
+    }
   })
   .catch(e => alert("error" + e.message));
 
