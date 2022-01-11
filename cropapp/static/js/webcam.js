@@ -11,9 +11,7 @@ navigator.mediaDevices
     }})
   .then(stream => {
     video.srcObject = stream;
-    while(1){
-      drawCanvasFromVideo()
-    }
+    drawCanvasFromVideo();
   })
   .catch(e => alert("error" + e.message));
 
@@ -21,8 +19,6 @@ navigator.mediaDevices
 function drawCanvasFromVideo()  {
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext('2d');
-  canvas.width = window.innerWidth
-  canvas.height = window.innerHeight
   setInterval(() => {
     if (canvas && ctx){
       ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
