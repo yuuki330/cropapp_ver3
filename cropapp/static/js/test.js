@@ -163,12 +163,12 @@ let videoImage;
 function setup() {
   createCanvas(500, 400);
   // videoImage = createGraphics(width, height);
-  video = createCapture(VIDEO);
+  // video = createCapture(VIDEO);
 }
 
 function draw() {
   background(0);
 
   // videoImage.drawingContext.drawImage(video, 0, 0);
-  // image(video, 0, 0);
+  image(video, 0, 0);
 }
