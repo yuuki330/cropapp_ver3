@@ -20,8 +20,10 @@ function drawCanvasFromVideo()  {
   const canvas = document.getElementById("canvas");
   const ctx = canvas.getContext('2d');
   setInterval(() => {
+    var canvas_width = video.videoWidth ;
+		var canvas_height = video.videoHeight ;
     if (canvas && ctx){
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(video, 0, 0, canvas_width, canvas_height);
     }
   }, 10000/60);
   canvasStream = canvas.captureStream();
