@@ -5,58 +5,46 @@
 
 /* ===
 ml5 Example
-Real time Object Detection using YOLO and p5.js
+Webcam Image Classification using a pre-trianed customized model and p5.js
+This example uses p5 preload function to create the classifier
 === */
 
-// Copyright (c) 2018 ml5
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
-
-/* ===
-ml5 Example
-Real time Object Detection using YOLO and p5.js
-=== */
-
+const checkpoint = 'https://storage.googleapis.com/tm-pro-a6966.appspot.com/eyeo-test-yining/model.json';
+let classifier;
 let video;
-let yolo;
-let status_;
-let objects = [];
+let resultsP;
+
+function preload() {
+  // Create a camera input
+  video = createCapture(VIDEO);
+  // Initialize the Image Classifier method with a pre-trained customized model and the video as the second argument
+  classifier = ml5.imageClassifier(checkpoint);
+}
 
 function setup() {
-  createCanvas(320, 240);
-  video = createCapture(VIDEO);
-  video.size(320, 240);
-
-  // Create a YOLO method
-  yolo = ml5.YOLO(video, startDetecting);
-
-  // Hide the original video
-  video.hide();
-  status_ = select('#status');
+  noCanvas();
+  // ml5 also supports using callback pattern to create the classifier
+  // classifier = ml5.imageClassifier(checkpoint, video, modelReady);
+  // If you would like to load the model from local files
+  // classifier = ml5.imageClassifier('model/image-model.json', video, modelReady);
+  resultsP = createP('Loading model and video...');
+  classifyVideo();
 }
 
-function draw() {
-  image(video, 0, 0, width, height);
-  for (let i = 0; i < objects.length; i++) {
-    noStroke();
-    fill(0, 255, 0);
-    text(objects[i].label, objects[i].x * width, objects[i].y * height - 5);
-    noFill();
-    strokeWeight(4);
-    stroke(0, 255, 0);
-    rect(objects[i].x * width, objects[i].y * height, objects[i].w * width, objects[i].h * height);
-  }
+// Get a prediction for the current video frame
+function classifyVideo() {
+  classifier.classify(video, gotResult);
 }
 
-function startDetecting() {
-  status_.html('Model loaded!');
-  detect();
-}
+// If you use callback pattern to create the classifier, you can use the following callback function
+// function modelReady() {
+//   console.log('Model Ready');
+//   classifyVideo();
+// }
 
-function detect() {
-  yolo.detect(function(err, results) {
-    objects = results;
-    detect();
-  });
+// When we get a result
+function gotResult(err, results) {
+  // The results are in an array ordered by confidence.
+  resultsP.html('Label: ' + results[0].label + ' ' + nf(results[0].confidence, 0, 2));
+  classifyVideo();
 }
