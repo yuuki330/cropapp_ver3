@@ -15,7 +15,7 @@ let objects = [];
 
 const player = document.getElementById("video")
 if( navigator.mediaDevices.getUserMedia ){
-  navigator.mediaDevices.getUserMedia( { video: true } )
+  navigator.mediaDevices.getUserMedia( { video: true, audio:false } )
   .then( ( stream ) => {
       player.srcObject = stream;
       // setup();
@@ -24,40 +24,40 @@ if( navigator.mediaDevices.getUserMedia ){
   } );
 }
 
-function setup() {
-  createCanvas(320, 240);
-  video = createCapture(player);
-  video.size(320, 240);
+// function setup() {
+//   createCanvas(320, 240);
+//   video = createCapture(player);
+//   video.size(320, 240);
 
-  // Create a YOLO method
-  yolo = ml5.YOLO(video, startDetecting);
+//   // Create a YOLO method
+//   yolo = ml5.YOLO(video, startDetecting);
 
-  // Hide the original video
-  video.hide();
-  status = select('#status');
-}
+//   // Hide the original video
+//   video.hide();
+//   status = select('#status');
+// }
 
-function draw() {
-  image(video, 0, 0, width, height);
-  for (let i = 0; i < objects.length; i++) {
-    noStroke();
-    fill(0, 255, 0);
-    text(objects[i].label, objects[i].x * width, objects[i].y * height - 5);
-    noFill();
-    strokeWeight(4);
-    stroke(0, 255, 0);
-    rect(objects[i].x * width, objects[i].y * height, objects[i].w * width, objects[i].h * height);
-  }
-}
+// function draw() {
+//   image(video, 0, 0, width, height);
+//   for (let i = 0; i < objects.length; i++) {
+//     noStroke();
+//     fill(0, 255, 0);
+//     text(objects[i].label, objects[i].x * width, objects[i].y * height - 5);
+//     noFill();
+//     strokeWeight(4);
+//     stroke(0, 255, 0);
+//     rect(objects[i].x * width, objects[i].y * height, objects[i].w * width, objects[i].h * height);
+//   }
+// }
 
-function startDetecting() {
-  status.html('Model loaded!');
-  detect();
-}
+// function startDetecting() {
+//   status.html('Model loaded!');
+//   detect();
+// }
 
-function detect() {
-  yolo.detect(function(err, results) {
-    objects = results;
-    detect();
-  });
-}
+// function detect() {
+//   yolo.detect(function(err, results) {
+//     objects = results;
+//     detect();
+//   });
+// }
