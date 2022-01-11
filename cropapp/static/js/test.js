@@ -18,7 +18,7 @@ if( navigator.mediaDevices.getUserMedia ){
   navigator.mediaDevices.getUserMedia( { video: true, audio:false } )
   .then( ( stream ) => {
       player.srcObject = stream;
-      // setup();
+      setup();
       // draw();
 
   } );
