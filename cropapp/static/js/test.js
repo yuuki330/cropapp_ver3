@@ -162,7 +162,7 @@ let videoImage;
 function setup() {
   createCanvas(500, 400);
   // videoImage = createGraphics(width, height);
-  videoImage = createCapture(video);
+  video = createCapture(VIDEO);
 }
 
 function draw() {
