@@ -134,16 +134,16 @@ navigator.mediaDevices
     console.log(err.name + ": " + err.message);
   });
 
-let videoImage;
+// let videoImage;
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  videoImage = createGraphics(windowWidth, windowHeight);
-}
+// function setup() {
+//   createCanvas(windowWidth, windowHeight);
+//   videoImage = createGraphics(windowWidth, windowHeight);
+// }
 
-function draw() {
-  background(0);
+// function draw() {
+//   background(0);
 
-  videoImage.drawingContext.drawImage(video, 0, 0);
-  image(videoImage, 0, 0);
-}
+//   videoImage.drawingContext.drawImage(video, 0, 0);
+//   image(videoImage, 0, 0);
+// }
