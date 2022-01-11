@@ -13,20 +13,20 @@ let yolo;
 let status;
 let objects = [];
 
-const video_ = document.getElementById("video")
+const player = document.getElementById("video")
 if( navigator.mediaDevices.getUserMedia ){
   navigator.mediaDevices.getUserMedia( { video: true } )
   .then( ( stream ) => {
-      video_.srcObject = stream;
+      player.srcObject = stream;
       setup();
       draw();
-      
+
   } );
 }
 
 function setup() {
   createCanvas(320, 240);
-  video = createCapture(video_);
+  video = createCapture(player);
   video.size(320, 240);
 
   // Create a YOLO method
