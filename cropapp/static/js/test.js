@@ -1,50 +1,94 @@
-// Copyright (c) 2018 ml5
-//
-// This software is released under the MIT License.
-// https://opensource.org/licenses/MIT
-
-/* ===
-ml5 Example
-Webcam Image Classification using a pre-trianed customized model and p5.js
-This example uses p5 preload function to create the classifier
-=== */
-
-const checkpoint = 'https://storage.googleapis.com/tm-pro-a6966.appspot.com/eyeo-test-yining/model.json';
-let classifier;
+let faceapi;
 let video;
-let resultsP;
+let box;
+let parts;
 
-function preload() {
-  // Create a camera input
-  video = createCapture(VIDEO);
-  // Initialize the Image Classifier method with a pre-trained customized model and the video as the second argument
-  classifier = ml5.imageClassifier(checkpoint);
+const isEmpty = (o) => o == undefined;
+
+const detectionOptions = {
+  withLandmarks: true,
+  withDescriptors: false,
+};
+
+function gotResult(err, result) {
+  if (err) {
+    box = null;
+    parts = null;
+    faceapi.detectSingle(gotResult);
+    return;
+  }
+
+  if (!result || result.length === 0) {
+    box = null;
+    parts = null;
+    return;
+  }
+
+  const { x, y, height, width } = result.detection.box;
+  box = {
+    x,
+    y,
+    width,
+    height,
+  };
+  parts = result.parts;
+  faceapi.detectSingle(gotResult);
 }
+
+const onModelReady = () => {
+  console.log("model ready");
+  faceapi.detectSingle(gotResult);
+};
+
+const drawVertices = (vertices) => {
+  vertices.forEach((t) => {
+    curveVertex(t._x, t._y);
+  });
+};
 
 function setup() {
-  noCanvas();
-  // ml5 also supports using callback pattern to create the classifier
-  // classifier = ml5.imageClassifier(checkpoint, video, modelReady);
-  // If you would like to load the model from local files
-  // classifier = ml5.imageClassifier('model/image-model.json', video, modelReady);
-  resultsP = createP('Loading model and video...');
-  classifyVideo();
+  createCanvas(windowWidth, windowHeight);
+  video = createCapture(VIDEO);
+  video.size(width, height);
+  video.hide();
+
+  faceapi = ml5.faceApi(video, detectionOptions, onModelReady);
 }
 
-// Get a prediction for the current video frame
-function classifyVideo() {
-  classifier.classify(video, gotResult);
-}
+function draw() {
+  background(0);
+  image(video, 0, 0, width, height);
 
-// If you use callback pattern to create the classifier, you can use the following callback function
-// function modelReady() {
-//   console.log('Model Ready');
-//   classifyVideo();
-// }
+  if (isEmpty(box) || isEmpty(parts)) {
+    return;
+  }
 
-// When we get a result
-function gotResult(err, results) {
-  // The results are in an array ordered by confidence.
-  resultsP.html('Label: ' + results[0].label + ' ' + nf(results[0].confidence, 0, 2));
-  classifyVideo();
+  ellipse(
+    box.x + box.width / 2,
+    box.y + box.height / 2,
+    box.width * 1.2,
+    box.height * 1.2
+  );
+  const { leftEye, rightEye, mouth, nose } = parts;
+
+  strokeWeight(3);
+  stroke(50);
+  strokeCap(ROUND);
+  strokeJoin(ROUND);
+
+  beginShape();
+  drawVertices(leftEye);
+  endShape(CLOSE);
+
+  beginShape();
+  drawVertices(nose);
+  endShape(CLOSE);
+
+  beginShape();
+  drawVertices(mouth);
+  endShape(CLOSE);
+
+  beginShape();
+  drawVertices(rightEye);
+  endShape(CLOSE);
 }
