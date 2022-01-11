@@ -142,7 +142,7 @@ function setup() {
 }
 
 function draw() {
-  background(220);
+  background(0);
 
   videoImage.drawingContext.drawImage(video, 0, 0);
   image(videoImage, 0, 0);
