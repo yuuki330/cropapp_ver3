@@ -60,15 +60,18 @@ var constraints = {
   navigator.mediaDevices.getUserMedia(constraints)
       .then((stream) => {
           video.srcObject = stream;
+          video_ = createCapture(video);
+          video_.size(width, height);
+          faceapi = ml5.faceApi(video_, detectionOptions, onModelReady);
       })
       .catch((err) => {
           window.alert(err.name + ': ' + err.message);
       });
-video_ = createCapture(video);
-video_.size(width, height);
+// video_ = createCapture(video);
+// video_.size(width, height);
 // video_.hide();
 
-faceapi = ml5.faceApi(video_, detectionOptions, onModelReady);
+// faceapi = ml5.faceApi(video_, detectionOptions, onModelReady);
 }
 
 function draw() {
