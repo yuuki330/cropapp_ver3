@@ -131,14 +131,18 @@
 
 
 const video = document.getElementById("input_video"),
-  constraints = {
-    audio: false,
-    video: {
-      facingMode: {
-        exact: "environment"
-      }
-    }
-  };
+// constraints = {
+//   audio: false,
+//   video: {
+//     facingMode: {
+//       exact: "environment"
+//     }
+//   }
+// };
+constraints = {
+  audio: false,
+  video: true,
+};
 video.style.display = "none";
 
 navigator.mediaDevices
