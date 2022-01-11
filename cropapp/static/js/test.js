@@ -46,37 +46,40 @@ const drawVertices = (vertices) => {
   });
 };
 
+const video = document.getElementById("video"),
+  constraints = {
+    video: true,
+  };
+video.style.display = "none";
+
+navigator.mediaDevices
+  .getUserMedia(constraints)
+  .then(function (stream) {
+    video.srcObject = stream;
+    video.onloadedmetadata = function (e) {
+      video.play();
+    };
+  })
+  .catch(function (err) {
+    console.log(err.name + ": " + err.message);
+  });
+
+let videoImage;
+
 function setup() {
 createCanvas(windowWidth, windowHeight);
-var video = document.getElementById('video');
-var constraints = {
-      // audio: false,
-      video: {
-          // スマホのバックカメラを使用
-          facingMode: 'environment'
-      }
-  };
-  //  カメラの映像を取得
-  navigator.mediaDevices.getUserMedia(constraints)
-      .then((stream) => {
-          video.srcObject = stream;
-          video_ = createCapture(video);
-          video_.size(width, height);
-          faceapi = ml5.faceApi(video_, detectionOptions, onModelReady);
-      })
-      .catch((err) => {
-          window.alert(err.name + ': ' + err.message);
-      });
-// video_ = createCapture(video);
-// video_.size(width, height);
-// video_.hide();
-
-// faceapi = ml5.faceApi(video_, detectionOptions, onModelReady);
+// video = createCapture(video);
+// video.size(width, height);
+// video.hide();
+videoImage = createGraphics(width, height);
+faceapi = ml5.faceApi(videoImage, detectionOptions, onModelReady);
+// faceapi = ml5.faceApi(video, detectionOptions, onModelReady);
 }
 
 function draw() {
   background(0);
-  image(video_, 0, 0, width, height);
+  videoImage.drawingContext.drawImage(video, 0, 0);
+  image(videoImage, 0, 0, width, height);
 
   if (isEmpty(box) || isEmpty(parts)) {
     return;
