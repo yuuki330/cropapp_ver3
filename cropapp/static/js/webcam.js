@@ -21,10 +21,12 @@ function drawCanvasFromVideo()  {
   const ctx = canvas.getContext('2d');
   setInterval(() => {
     if (canvas && ctx){
+      $( '#canvas' ).get( 0 ).width = $( window ).width();
+      $( '#canvas' ).get( 0 ).height = $( window ).height();
         ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
     }
   }, 10000/60);
-  canvasStream = canvas.captureStream();
-  const videoCanvas = document.getElementById("player-canvas");
-  videoCanvas.srcObject = canvasStream;
+  // canvasStream = canvas.captureStream();
+  // const videoCanvas = document.getElementById("player-canvas");
+  // videoCanvas.srcObject = canvasStream;
 }
