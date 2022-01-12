@@ -145,7 +145,7 @@ function captureWebcam(rect) {
 
 function preprocessImage(image){
   const channels = 1;
-  let tensor = tf.fromPixels(image, channels).resizeNearestNeighbor([64,64]).toFloat();
+  let tensor = tf.browser.fromPixels(image, channels).resizeNearestNeighbor([64,64]).toFloat();
   let offset = tf.scalar(255);
   return tensor.div(offset).expandDims();
 };
