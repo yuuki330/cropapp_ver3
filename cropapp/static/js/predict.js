@@ -25,7 +25,7 @@ async function loadModel(){
   console.log("model loading..");
 
   $("#console").html(`<li>model loading...</li>`);
-  model = await tf.loadLayersModel(`../emotion_XCEPTION/model.json`);
+  model = await tf.loadLayersModel(`https://raw.githubusercontent.com/PonDad/manatee/master/2_emotion_recognition-master/nodejs/static/emotion_XCEPTION/model.json`);
 
   console.log("model loaded.");
   $("#console").html(`<li>XCEPTION model loaded.</li>`);
