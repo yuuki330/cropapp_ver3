@@ -262,8 +262,8 @@ This example uses a callback pattern to create the classifier
 //   }
 // }
 
-import React from "react";
-import ReactDOM from "react-dom";
+// import React from "react";
+// import ReactDOM from "react-dom";
 import * as tf from '@tensorflow/tfjs';
 import {loadGraphModel} from '@tensorflow/tfjs-converter';
 import "../css/test.css";
