@@ -129,46 +129,78 @@
 //   endShape(CLOSE);
 // }
 
+/*ここから*/
 
-// const video = document.getElementById("input_video"),
-let video = document.getElementById("input_video"),
-constraints = {
-  audio: false,
-  video: {
-    facingMode: {
-      exact: "environment"
-    }
-  }
-};
+// // const video = document.getElementById("input_video"),
+// let video = document.getElementById("input_video"),
 // constraints = {
 //   audio: false,
-//   video: true,
+//   video: {
+//     facingMode: {
+//       exact: "environment"
+//     }
+//   }
 // };
-video.style.display = "none";
+// // constraints = {
+// //   audio: false,
+// //   video: true,
+// // };
+// video.style.display = "none";
 
-navigator.mediaDevices
-  .getUserMedia(constraints)
-  .then(function (stream) {
-    video.srcObject = stream;
-    video.onloadedmetadata = function (e) {
-      video.play();
-    };
-  })
-  .catch(function (err) {
-    console.log(err.name + ": " + err.message);
-  });
+// navigator.mediaDevices
+//   .getUserMedia(constraints)
+//   .then(function (stream) {
+//     video.srcObject = stream;
+//     video.onloadedmetadata = function (e) {
+//       video.play();
+//     };
+//   })
+//   .catch(function (err) {
+//     console.log(err.name + ": " + err.message);
+//   });
 
-let videoImage;
+// let videoImage;
+
+// function setup() {
+//   createCanvas(500, 400);
+//   // videoImage = createGraphics(width, height);
+//   // video = createCapture(VIDEO);
+// }
+
+// function draw() {
+//   background(0);
+
+//   // videoImage.drawingContext.drawImage(video, 0, 0);
+//   image(video, 0, 0);
+// }
+
+/*モバイルネット*/
+let classifier;
+let video;
+let resultsP;
 
 function setup() {
-  createCanvas(500, 400);
-  // videoImage = createGraphics(width, height);
-  // video = createCapture(VIDEO);
+  noCanvas();
+  // Create a camera input
+  video = createCapture(VIDEO);
+  // Initialize the Image Classifier method with MobileNet and the video as the second argument
+  classifier = ml5.imageClassifier('MobileNet', video, modelReady);
+  resultsP = createP('Loading model and video...');
 }
 
-function draw() {
-  background(0);
+function modelReady() {
+  console.log('Model Ready');
+  classifyVideo();
+}
 
-  // videoImage.drawingContext.drawImage(video, 0, 0);
-  image(video, 0, 0);
+// Get a prediction for the current video frame
+function classifyVideo() {
+  classifier.classify(gotResult);
+}
+
+// When we get a result
+function gotResult(err, results) {
+  // The results are in an array ordered by confidence.
+  resultsP.html(`${results[0].label  } ${nf(results[0].confidence, 0, 2)}`);
+  classifyVideo();
 }
