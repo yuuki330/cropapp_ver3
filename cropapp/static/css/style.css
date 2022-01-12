@@ -18,7 +18,6 @@ body {
 	font-family: "ヒラギノ丸ゴ Pro", "Hiragino Maru Gothic Pro","ヒラギノ角ゴ Pro", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, Osaka, "ＭＳ Ｐゴシック", "MS PGothic", sans-serif;	/*フォント種類*/
 	font-size: 16px;	/*文字サイズ*/
 	line-height: 2;		/*行間*/
-	background: #f0f4fa url(../images/bg.jpg) no-repeat center top / 100%;	/*背景色、背景画像の読み込み*/
 }
 h1,h2,h3,h4,h5,p,ul,ol,li,dl,dt,dd,form,figure,form,input,textarea {margin: 0px;padding: 0px;font-size: 100%;font-weight: normal;}
 ul {list-style-type: none;}
@@ -28,7 +27,6 @@ video {max-width: 100%;}
 iframe {width: 100%;}
 
 /*body class="bg2"にした場合の背景画像。about.htmlの上部背景に適用されています。*/
-body.bg2 {background-image: url(../images/bg2.jpg);}
 
 /*リンク（全般）設定
 ---------------------------------------------------------------------------*/
@@ -154,7 +152,6 @@ ul.icon img:hover {
 	margin-bottom: 20px;	/*見出しの下に空けるスペース*/
 	padding: 0 20px 10px;	/*上、左右、下へのタグ内の余白*/
 	font-size: 36px;		/*文字サイズ*/
-	background: url(../images/line1.png) repeat-x left bottom / 300px;	/*下線の画像の読み込み*/
 	text-align: center;	/*テキストをセンタリング*/
 }
 /*メインコンテンツのh3タグ設定*/
@@ -455,14 +452,6 @@ header h2 {
 	width: 50px;	/*幅*/
 	height: 50px;	/*高さ*/
 	border-radius: 50%;
-}
-/*三本バーアイコン*/
-#menubar_hdr.close {
-	background: #4d91f6 url(../images/icon_menu.png) no-repeat center top/50px;
-}
-/*閉じるアイコン*/
-#menubar_hdr.open {
-	background: #4d91f6 url(../images/icon_menu.png) no-repeat center bottom/50px;
 }
 
 /*テーブル
