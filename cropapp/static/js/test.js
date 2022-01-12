@@ -230,7 +230,7 @@ function setup() {
 
 function videoReady() {
   // Models available are 'cocossd', 'yolo'
-  detector = ml5.objectDetector('cocossd', modelReady);
+  detector = ml5.objectDetector('yolo', modelReady);
   // detector = ml5.objectDetector('../best_web_model/model.json', modelReady);
 }
 
