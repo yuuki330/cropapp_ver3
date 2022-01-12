@@ -42,8 +42,8 @@ constraints = {
   audio: false,
   video: {
     facingMode: {
-      // exact: "environment"
-      exact: "user"
+      exact: "environment"
+      // exact: "user"
     }
   }
 };
