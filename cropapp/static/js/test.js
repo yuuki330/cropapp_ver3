@@ -174,33 +174,89 @@
 //   image(video, 0, 0);
 // }
 
-/*モバイルネット*/
-let classifier;
+// /*モバイルネット*/
+// let classifier;
+// let video;
+// let resultsP;
+
+// function setup() {
+//   noCanvas();
+//   // Create a camera input
+//   video = createCapture(VIDEO);
+//   // Initialize the Image Classifier method with MobileNet and the video as the second argument
+//   classifier = ml5.imageClassifier('MobileNet', video, modelReady);
+//   resultsP = createP('Loading model and video...');
+// }
+
+// function modelReady() {
+//   console.log('Model Ready');
+//   classifyVideo();
+// }
+
+// // Get a prediction for the current video frame
+// function classifyVideo() {
+//   classifier.classify(gotResult);
+// }
+
+// // When we get a result
+// function gotResult(err, results) {
+//   // The results are in an array ordered by confidence.
+//   resultsP.html(`${results[0].label  } ${nf(results[0].confidence, 0, 2)}`);
+//   classifyVideo();
+// }
+
+/*COCO*/
+// Copyright (c) 2020 ml5
+//
+// This software is released under the MIT License.
+// https://opensource.org/licenses/MIT
+
+/* ===
+ml5 Example
+Object Detection using COCOSSD
+This example uses a callback pattern to create the classifier
+=== */
+
 let video;
-let resultsP;
+let detector;
+let detections = [];
 
 function setup() {
-  noCanvas();
-  // Create a camera input
-  video = createCapture(VIDEO);
-  // Initialize the Image Classifier method with MobileNet and the video as the second argument
-  classifier = ml5.imageClassifier('MobileNet', video, modelReady);
-  resultsP = createP('Loading model and video...');
+  createCanvas(640, 480);
+  video = createCapture(VIDEO, videoReady);
+  video.size(640, 480);
+  video.hide();
+}
+
+function videoReady() {
+  // Models available are 'cocossd', 'yolo'
+  detector = ml5.objectDetector('cocossd', modelReady);
+}
+
+function gotDetections(error, results) {
+  if (error) {
+    console.error(error);
+  }
+  detections = results;
+  detector.detect(video, gotDetections);
 }
 
 function modelReady() {
-  console.log('Model Ready');
-  classifyVideo();
+  detector.detect(video, gotDetections);
 }
 
-// Get a prediction for the current video frame
-function classifyVideo() {
-  classifier.classify(gotResult);
-}
+function draw() {
+  image(video, 0, 0);
 
-// When we get a result
-function gotResult(err, results) {
-  // The results are in an array ordered by confidence.
-  resultsP.html(`${results[0].label  } ${nf(results[0].confidence, 0, 2)}`);
-  classifyVideo();
+  for (let i = 0; i < detections.length; i += 1) {
+    const object = detections[i];
+    stroke(0, 255, 0);
+    strokeWeight(4);
+    noFill();
+    rect(object.x, object.y, object.width, object.height);
+    noStroke();
+    fill(255);
+    textSize(24);
+    text(object.label, object.x + 10, object.y + 24);
+  }
 }
