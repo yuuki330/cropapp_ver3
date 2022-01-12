@@ -51,9 +51,9 @@ navigator.mediaDevices
   .getUserMedia(constraints)
   .then(function (stream) {
     video.srcObject = stream;
-    video.onloadedmetadata = function (e) {
-      video.play();
-    };
+    // video.onloadedmetadata = function (e) {
+    //   video.play();
+    // };
   })
   .catch(function (err) {
     console.log(err.name + ": " + err.message);
