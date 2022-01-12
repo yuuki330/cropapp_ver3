@@ -34,7 +34,7 @@ async function loadModel(){
 //-----------------------
 // start webcam 
 //-----------------------
-var video = $('#main-stream-video').get(0);
+var video = $('#main-stream-video');
 var tracker = new tracking.LandmarksTracker();
 
 function startWebcam() {
