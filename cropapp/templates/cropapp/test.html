@@ -1,4 +1,5 @@
 {% load static %}
+<!-- camera -->
 <!-- <html>
 
 <head>
@@ -21,7 +22,9 @@
 
 </html> -->
 
-<html>
+
+<!-- coco-ssd -->
+<!-- <html>
 
 <head>
   <meta charset="UTF-8">
@@ -38,4 +41,27 @@
   <script src="{% static 'js/test.js' %}"></script>
 </body>
 
+</html> -->
+
+<!-- tensorflow.js -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>tensorflow</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  <script src="{% static 'js/test.js' %}"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/test.css' %}">
+</head>
+<body>
+  <div id="container">
+    <div id="wrapper">
+      <video id="camera"></video>
+      <canvas id="canvas"></canvas>
+      <canvas id="camera_canvas"></canvas>
+    </div>
+  </div>
+</body>
 </html>

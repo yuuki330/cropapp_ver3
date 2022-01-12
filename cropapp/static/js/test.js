@@ -217,47 +217,118 @@ Object Detection using COCOSSD
 This example uses a callback pattern to create the classifier
 === */
 
-let video;
-let detector;
-let detections = [];
+// let video;
+// let detector;
+// let detections = [];
 
-function setup() {
-  createCanvas(640, 480);
-  video = createCapture(VIDEO, videoReady);
-  video.size(640, 480);
-  video.hide();
-}
+// function setup() {
+//   createCanvas(640, 480);
+//   video = createCapture(VIDEO, videoReady);
+//   video.size(640, 480);
+//   video.hide();
+// }
 
-function videoReady() {
-  // Models available are 'cocossd', 'yolo'
-  // detector = ml5.objectDetector('yolo', modelReady);
-  detector = ml5.objectDetector('../best_web_model/model.json', modelReady);
-}
+// function videoReady() {
+//   // Models available are 'cocossd', 'yolo'
+//   // detector = ml5.objectDetector('yolo', modelReady);
+//   detector = ml5.objectDetector('../best_web_model/model.json', modelReady);
+// }
 
-function gotDetections(error, results) {
-  if (error) {
-    console.error(error);
+// function gotDetections(error, results) {
+//   if (error) {
+//     console.error(error);
+//   }
+//   detections = results;
+//   detector.detect(video, gotDetections);
+// }
+
+// function modelReady() {
+//   detector.detect(video, gotDetections);
+// }
+
+// function draw() {
+//   image(video, 0, 0);
+
+//   for (let i = 0; i < detections.length; i += 1) {
+//     const object = detections[i];
+//     stroke(0, 255, 0);
+//     strokeWeight(4);
+//     noFill();
+//     rect(object.x, object.y, object.width, object.height);
+//     noStroke();
+//     fill(255);
+//     textSize(24);
+//     text(object.label, object.x + 10, object.y + 24);
+//   }
+// }
+
+window.onload = () => {
+  var container = document.getElementById("container");
+  var video  = document.getElementById("camera");
+  video.style.maxWidth = container.clientWidth + "px";
+  video.style.maxHeight = container.clientHeight + "px";
+  var canvas, camera_canvas = null;
+  var context, camera_context = null;
+
+  const constraints = {
+      audio: false,
+      video: { facingMode: { exact: "environment" }
+      }
+  };
+
+  navigator.mediaDevices.getUserMedia(constraints)
+  .then( (stream) => {
+      video.srcObject = stream;
+      video.onloadedmetadata = (e) => {
+      video.play();
+      // canvas
+      canvas = document.getElementById("canvas");
+      canvas.style.width = video.clientWidth + "px";
+      canvas.style.height = video.clientHeight + "px";
+      context = canvas.getContext("2d");
+      camera_canvas = document.getElementById("camera_canvas");
+      camera_canvas.style.width = video.clientWidth + "px";
+      camera_canvas.style.height = video.clientHeight + "px";
+      camera_context = camera_canvas.getContext("2d");
+      };
+  })
+  .catch( (err) => {
+      console.log(err.name + ": " + err.message);
+  });
+
+  cocoSsd.load().then(model => {
+      setInterval(function(){detect(model, video, canvas, context)}, 250);
+  });
+  
+  const detect = (model, video, canvas, context) => {
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      camera_context.clearRect(0, 0, camera_canvas.width, camera_canvas.height);
+      // video.pause();
+      camera_context.drawImage(video, 0, 0, camera_canvas.width, camera_canvas.height);
+      model.detect(camera_canvas).then(res => {
+          // video.play();
+          if(res.length == 0) return;
+          for (var i = 0; i < res.length; i++) {
+              var score = parseInt(res[i]["score"] * 100 ,10);
+              drawRect(context, res[i].bbox[0], res[i].bbox[1], res[i].bbox[2], res[i].bbox[3], score)
+              drawName(context, res[i]["class"], res[i].bbox[0], res[i].bbox[1], score);
+          }
+      });
   }
-  detections = results;
-  detector.detect(video, gotDetections);
+};
+function drawRect(ctx, x, y, w, h, score) {
+  ctx.beginPath();
+  ctx.rect(parseInt(x, 10), parseInt(y, 10), parseInt(w, 10), parseInt(h, 10));
+  ctx.lineWidth = 7.5;
+  ctx.strokeStyle =  score < 75 ? "rgb(255, 255, 0)" : "rgb(50, 240, 60)";
+  ctx.stroke();
+  ctx.closePath();
 }
 
-function modelReady() {
-  detector.detect(video, gotDetections);
-}
-
-function draw() {
-  image(video, 0, 0);
-
-  for (let i = 0; i < detections.length; i += 1) {
-    const object = detections[i];
-    stroke(0, 255, 0);
-    strokeWeight(4);
-    noFill();
-    rect(object.x, object.y, object.width, object.height);
-    noStroke();
-    fill(255);
-    textSize(24);
-    text(object.label, object.x + 10, object.y + 24);
-  }
+function drawName(ctx, text, x, y, score) {
+  ctx.beginPath();
+  ctx.fillText(text + " : " + score + "%", parseInt(x, 10), parseInt(y, 10));
+  ctx.fillStyle = "red";
+  ctx.font = "10px serif";
+  ctx.closePath();
 }
