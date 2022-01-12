@@ -38,6 +38,27 @@ async function loadModel(){
 var video = document.getElementById("main-stream-video")
 var tracker = new tracking.LandmarksTracker();
 
+constraints = {
+  audio: false,
+  video: {
+    facingMode: {
+      // exact: "environment"
+      exact: "user"
+    }
+  }
+};
+navigator.mediaDevices
+  .getUserMedia(constraints)
+  .then(function (stream) {
+    video.srcObject = stream;
+    video.onloadedmetadata = function (e) {
+      video.play();
+    };
+  })
+  .catch(function (err) {
+    console.log(err.name + ": " + err.message);
+  });
+
 function startWebcam() {
   tracker.setInitialScale(4);
   tracker.setStepSize(2);
