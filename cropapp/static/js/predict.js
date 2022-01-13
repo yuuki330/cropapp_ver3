@@ -21,8 +21,9 @@ async function loadModel() {
 	$("#console").html(`<li>model loading...</li>`);
 	model=await tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/model.json`);
 	console.log("model loaded.");
-  MODEL_HEIGHT  = model.inputs[0].shape[2];
-  MODEL_WIDTH  = model.inputs[0].shape[3];
+  console.log(model.inputs[0])
+  MODEL_HEIGHT  = model.inputs[0].shape[1];
+  MODEL_WIDTH  = model.inputs[0].shape[2];
 	$("#console").html(`<li>tomato_color trained model loaded.</li>`);
   console.log(MODEL_HEIGHT, MODEL_WIDTH);
 };
@@ -159,6 +160,7 @@ async function predict(){
             list.push(ary);
         }
      }
+     console.log(list)
   })
 };
 
