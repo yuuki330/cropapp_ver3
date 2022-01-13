@@ -71,10 +71,10 @@ $("#predict-button").click(function(){
 
 async function predict(){
 	let tensor = captureWebcam();
-  console.log(tensor)
+  // console.log(tensor)
   const zeros = tf.zeros([1, 640, 640, 3]);
 	// let prediction = await model.predict(tensor).data();
-  let prediction = await model.executeAsync(zeros)
+  let prediction = await model.executeAsync(zeros).data()
   console.log(prediction)
 	let results = Array.from(prediction)
 				.map(function(p,i){
