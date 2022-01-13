@@ -180,8 +180,8 @@ async function predict(){
 function captureWebcam() {
 	var canvas    = document.createElement("canvas");
 	var context   = canvas.getContext('2d');
-	canvas.width  = video.width;
-	canvas.height = video.height;
+	// canvas.width  = video.width;
+	// canvas.height = video.height;
 
 	// context.drawImage(video, 0, 0, video.width, video.height);
   context.drawImage(image_val, 0, 0, image_val.width, image_val.height);
