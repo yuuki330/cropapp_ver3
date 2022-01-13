@@ -19,7 +19,7 @@ let model;
 async function loadModel() {
 	console.log("model loading..");
 	$("#console").html(`<li>model loading...</li>`);
-	model=await tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/model.json`);
+	model=await tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/tfjs/model.json`);
 	console.log("model loaded.");
   console.log(model.inputs[0])
   MODEL_HEIGHT  = model.inputs[0].shape[1];
