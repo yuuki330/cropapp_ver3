@@ -17,7 +17,7 @@ let model;
 async function loadModel() {
 	console.log("model loading..");
 	$("#console").html(`<li>model loading...</li>`);
-	model=await tf.loadLayersModel(`https://raw.githubusercontent.com/yuuki330/emotion-detected/master/staticfiles/best_web_model/model.json?token=GHSAT0AAAAAABP4B2KVXLETPL5SSHOD6KTMYO7OIAA`);
+	model=await tf.loadLayersModel(`https://raw.githubusercontent.com/yuuki330/emotion-detected/master/staticfiles/best_web_model/model.json`);
 	console.log("model loaded.");
 	$("#console").html(`<li>VGG16 pre trained model loaded.</li>`);
 };
@@ -39,8 +39,13 @@ function startWebcam() {
 						 navigator.msGetUserMedia;
 
 	navigator.getMedia({
-		video: true,
-		audio: false
+		video: {
+      facingMode: {
+        // exact: "environment"
+        exact: "user"
+      }
+    }
+		// audio: false
 	}, function(stream) {
 		localStream = stream;
 		video.srcObject = stream;
