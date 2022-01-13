@@ -137,8 +137,8 @@ async function predict(){
     // console.log("boxes" + output[0].dataSync());
     // console.log("scores" + output[1].arraySync());
     // console.log("classes" + output[2].dataSync());
-    const o0 = output[4].arraySync()[0];
-    console.log(o0[0]);
+    const o0 = output[4].arraySync()[0][0];
+    console.log(o0[0][0][4]*o0[0][0][5]);
 
     const OBJECT_TH = 0.1;
     const IOU_TH = 0.5;
