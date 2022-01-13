@@ -1,5 +1,7 @@
 // const CLASSES = {0:'zero', 1:'one', 2:'two', 3:'three', 4:'four',5:'five', 6:'six', 7:'seven', 8:'eight', 9:'nine'}
 const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'}
+var MODEL_HEIGHT = 1;
+var MODEL_WIDTH = 1;
 //-----------------------
 // start button event
 //-----------------------
@@ -19,7 +21,10 @@ async function loadModel() {
 	$("#console").html(`<li>model loading...</li>`);
 	model=await tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/model.json`);
 	console.log("model loaded.");
+  MODEL_HEIGHT  = model.inputs[0].shape[2];
+  MODEL_WIDTH  = model.inputs[0].shape[3];
 	$("#console").html(`<li>tomato_color trained model loaded.</li>`);
+  console.log(MODEL_HEIGHT, MODEL_WIDTH);
 };
 
 // var image = document.createElement( 'img' );
@@ -78,9 +83,6 @@ async function predict(){
   // console.log(tensor)
   // const zeros = tf.zeros([1, 640, 640, 3]);
 	// let prediction = await model.predict(tensor).data();
-  let prediction = await model.executeAsync(tensor);
-  let o0 = prediction[0].arraySync();
-  console.log(o0);
   // let boxes = prediction[0].dataSync();
   // let scores = prediction[1].arraySync();
   // let classes = prediction[2].dataSync();
@@ -130,6 +132,34 @@ async function predict(){
 	// });
   // // console.log(results)
 
+  var output = model.executeAsync(imageTensor).then(output=>{
+    const o0 = output[0].arraySync();
+
+    const OBJECT_TH = 0.5;
+    const IOU_TH = 0.5;
+    const bairitu_w = image_val.width/640;
+    const bairitu_h = image_val.height/640;
+
+    let a=0;
+    var list = new Array();
+
+    for (let i = 0; i < o0[0].length; i++) {
+        if((o0[0][i][4]*o0[0][i][5])>OBJECT_TH){
+            a = a+1;
+            const dx = o0[0][i][2]*bairitu_w/2;
+            const dy = o0[0][i][2]*bairitu_h/2;
+
+            var ary = new Array();
+            ary.push(o0[0][i][0]*bairitu_w - dx);
+            ary.push(o0[0][i][1]*bairitu_h - dy);
+            ary.push(o0[0][i][2]*bairitu_w);
+            ary.push(o0[0][i][3]*bairitu_h);
+            ary.push(o0[0][i][4]*o0[0][i][5]);
+
+            list.push(ary);
+        }
+     }
+  })
 };
 
 //------------------------------
@@ -158,9 +188,10 @@ function captureWebcam() {
 function preprocessImage(image){
 	// let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([100,100]).toFloat();
   // let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([640,640]).toFloat();	
-	let tensor = tf.browser.fromPixels(image).resizeBilinear([640,640]).toFloat();	
+	let tensor = tf.browser.fromPixels(image, 3).resizeBilinear([MODEL_HEIGHT,MODEL_WIDTH]).toFloat();	
   let offset = tf.scalar(255);
   imageTensor = tensor.div(offset).expandDims(0);
+  imageTensor = imageTensor.transpose([0, 3, 1, 2]);
   return imageTensor;
 }
 
