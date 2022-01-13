@@ -151,9 +151,8 @@ async function predict(){
     var list = new Array();
 
     for (let i = 0; i < o0[0].length; i++) {
-        // console.log(o0[0][i][4].length);
+        console.log(o0[0][i][4].length);
         if((o0[0][i][4]*o0[0][i][5])>OBJECT_TH){
-            // console.log("aaaaaa");
             a = a+1;
             const dx = o0[0][i][2]*bairitu_w/2;
             const dy = o0[0][i][2]*bairitu_h/2;
@@ -168,7 +167,7 @@ async function predict(){
             list.push(ary);
         }
      }
-     console.log(list);
+    //  console.log(list);
   })
 };
 
