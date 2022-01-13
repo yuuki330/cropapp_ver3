@@ -24,7 +24,7 @@ async function loadModel() {
 
 // var image = document.createElement( 'img' );
 // image.src = '../images/1.jpg';
-var image = document.getElementById("val_image");
+var image_val = document.getElementById("val_image");
 
 //-----------------------
 // start webcam 
@@ -111,7 +111,7 @@ function captureWebcam() {
 	canvas.height = video.height;
 
 	// context.drawImage(video, 0, 0, video.width, video.height);
-  context.drawImage(image, 0, 0, image.width, image.height);
+  context.drawImage(image_val, 0, 0, image.width, image.height);
 	tensor_image = preprocessImage(canvas);
 
 	return tensor_image;
@@ -125,8 +125,9 @@ function captureWebcam() {
 function preprocessImage(image){
 	// let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([100,100]).toFloat();
   let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([640,640]).toFloat();	
-  console.log(tensor);
+  tensor.print();
 	let offset = tf.scalar(255);
+  console.log(tensor.div(offset).expandDims());
     return tensor.div(offset).expandDims();
 }
 
