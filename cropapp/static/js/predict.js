@@ -85,6 +85,7 @@ async function predict(){
 
   let detectionObjects = [];
   scores.forEach((score, i) => {
+    console.log(score);
     if(score > 0.4){
       let bbox = [];
       const minY = boxes[i * 4] * image_val.height;
@@ -105,7 +106,7 @@ async function predict(){
     }
   })
 
-  console.log(detectionObjects);
+  // console.log(detectionObjects);
 
 
 	// let results = Array.from(prediction)
