@@ -22,8 +22,9 @@ async function loadModel() {
 	$("#console").html(`<li>tomato_color trained model loaded.</li>`);
 };
 
-var image = document.createElement( 'img' );
-image.src = '../images/1.jpg';
+// var image = document.createElement( 'img' );
+// image.src = '../images/1.jpg';
+var image = document.getElementById("val_image");
 
 //-----------------------
 // start webcam 
