@@ -85,7 +85,6 @@ async function predict(){
 
   let detectionObjects = [];
   scores.forEach((score, i) => {
-    console.log(score);
     if(score > 0.4){
       let bbox = [];
       const minY = boxes[i * 4] * image_val.height;
@@ -158,7 +157,10 @@ function preprocessImage(image){
 	// let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([100,100]).toFloat();
   let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([640,640]).toFloat();	
 	let offset = tf.scalar(255);
-    return tensor.div(offset).expandDims();
+  imageTensor = tensor.div(offset).expandDims()
+  imageTensor = imageTensor.transpose([0, 3, 1, 2]);
+  console.log(imageTensor);
+  return imageTensor;
 }
 
 //-----------------------
