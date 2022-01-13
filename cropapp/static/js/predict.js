@@ -143,7 +143,6 @@ async function predict(){
 
     let a=0;
     var list = new Array();
-    console.log(o0[0].length);
 
     for (let i = 0; i < o0[0].length; i++) {
         if((o0[0][i][4]*o0[0][i][5])>OBJECT_TH){
@@ -162,7 +161,7 @@ async function predict(){
             list.push(ary);
         }
      }
-    //  console.log(list)
+     console.log(list)
   })
 };
 
