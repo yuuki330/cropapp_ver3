@@ -71,7 +71,7 @@ $("#predict-button").click(function(){
 
 async function predict(){
 	let tensor = captureWebcam();
-
+  console.log(tensor)
 	let prediction = await model.predict(tensor).data();
 	let results = Array.from(prediction)
 				.map(function(p,i){
