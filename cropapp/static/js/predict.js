@@ -79,7 +79,7 @@ async function predict(){
   // const zeros = tf.zeros([1, 640, 640, 3]);
 	// let prediction = await model.predict(tensor).data();
   let prediction = await model.executeAsync(tensor);
-  console.log(prediction);
+  // console.log(prediction);
 	let results = Array.from(prediction)
 				.map(function(p,i){
 	return {
@@ -89,6 +89,8 @@ async function predict(){
 	}).sort(function(a,b){
 		return b.probability-a.probability;
 	}).slice(0,5);
+
+  console.log(results);
 
 	$("#console").empty();
 
