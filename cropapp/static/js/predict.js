@@ -109,7 +109,7 @@ function captureWebcam() {
 //-----------------------
 
 function preprocessImage(image){
-	let tensor = tf.fromPixels(image).resizeNearestNeighbor([100,100]).toFloat();	
+	let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([100,100]).toFloat();	
 	let offset = tf.scalar(255);
     return tensor.div(offset).expandDims();
 }
