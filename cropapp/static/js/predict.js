@@ -134,6 +134,9 @@ async function predict(){
   // // console.log(results)
 
   var output = model.executeAsync(imageTensor).then(output=>{
+    console.log("boxes" + output[0].dataSync());
+    console.log("scores" + output[1].arraySync());
+    console.log("classes" + output[2].dataSync());
     const o0 = output[0].arraySync();
 
     const OBJECT_TH = 0.1;
@@ -147,7 +150,7 @@ async function predict(){
     var list = new Array();
 
     for (let i = 0; i < o0[0].length; i++) {
-        console.log(o0[0][i][4].length);
+        // console.log(o0[0][i][4].length);
         if((o0[0][i][4]*o0[0][i][5])>OBJECT_TH){
             // console.log("aaaaaa");
             a = a+1;
