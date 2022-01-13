@@ -81,7 +81,7 @@ async function predict(){
   // var response = await model.predict(tensor);
   // console.log(response);
   let prediction = await model.executeAsync(tensor);
-  console.log(prediction[0].dataSync());
+  console.log(prediction[1].arraySync());
   // console.log(prediction);
 	let results = Array.from(prediction)
 				.map(function(p,i){
