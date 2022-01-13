@@ -79,6 +79,7 @@ async function predict(){
   // const zeros = tf.zeros([1, 640, 640, 3]);
 	// let prediction = await model.predict(tensor).data();
   let prediction = await model.executeAsync(tensor)
+  prediction.print();
 	let results = Array.from(prediction)
 				.map(function(p,i){
 	return {
@@ -125,9 +126,7 @@ function captureWebcam() {
 function preprocessImage(image){
 	// let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([100,100]).toFloat();
   let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([640,640]).toFloat();	
-  // tensor.print();
 	let offset = tf.scalar(255);
-  tensor.div(offset).expandDims().print();
     return tensor.div(offset).expandDims();
 }
 
