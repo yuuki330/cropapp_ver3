@@ -134,9 +134,10 @@ async function predict(){
   // // console.log(results)
 
   var output = model.executeAsync(imageTensor).then(output=>{
-    console.log("boxes" + output[0].dataSync());
-    console.log("scores" + output[1].arraySync());
-    console.log("classes" + output[2].dataSync());
+    // console.log("boxes" + output[0].dataSync());
+    // console.log("scores" + output[1].arraySync());
+    // console.log("classes" + output[2].dataSync());
+    console.log("boxes" + output[0].dataSync().shape);
     const o0 = output[0].arraySync();
 
     const OBJECT_TH = 0.1;
