@@ -73,6 +73,7 @@ async function predict(){
 	let tensor = captureWebcam();
   console.log(tensor)
 	let prediction = await model.predict(tensor).data();
+  console.log(prediction)
 	let results = Array.from(prediction)
 				.map(function(p,i){
 	return {
