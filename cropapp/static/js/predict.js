@@ -136,12 +136,12 @@ async function predict(){
   var output = model.executeAsync(imageTensor).then(output=>{
     const o0 = output[0].arraySync();
 
-    const OBJECT_TH = 0.5;
+    const OBJECT_TH = 0.1;
     const IOU_TH = 0.5;
     const bairitu_w = image_val.width/640;
     const bairitu_h = image_val.height/640;
 
-    console.log(o0);
+    // console.log(o0);
     
     let a=0;
     var list = new Array();
@@ -163,7 +163,7 @@ async function predict(){
             list.push(ary);
         }
      }
-    //  console.log(list);
+     console.log(list);
   })
 };
 
