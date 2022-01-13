@@ -22,8 +22,8 @@ async function loadModel() {
 	model=await tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/tfjs/model.json`);
 	console.log("model loaded.");
   console.log(model.inputs[0])
-  MODEL_HEIGHT  = model.inputs[0].shape[1];
-  MODEL_WIDTH  = model.inputs[0].shape[2];
+  MODEL_HEIGHT  = model.inputs[0].shape[2];
+  MODEL_WIDTH  = model.inputs[0].shape[3];
 	$("#console").html(`<li>tomato_color trained model loaded.</li>`);
   console.log(MODEL_HEIGHT, MODEL_WIDTH);
 };
@@ -195,7 +195,7 @@ function preprocessImage(image){
 	let tensor = tf.browser.fromPixels(image, 3).resizeBilinear([MODEL_HEIGHT,MODEL_WIDTH]).toFloat();	
   let offset = tf.scalar(255);
   imageTensor = tensor.div(offset).expandDims(0);
-  // imageTensor = imageTensor.transpose([0, 3, 1, 2]);
+  imageTensor = imageTensor.transpose([0, 3, 1, 2]);
   return imageTensor;
 }
 
