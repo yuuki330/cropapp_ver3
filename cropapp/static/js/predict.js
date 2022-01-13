@@ -193,7 +193,7 @@ function preprocessImage(image){
 	let tensor = tf.browser.fromPixels(image, 3).resizeBilinear([MODEL_HEIGHT,MODEL_WIDTH]).toFloat();	
   let offset = tf.scalar(255);
   imageTensor = tensor.div(offset).expandDims(0);
-  imageTensor = imageTensor.transpose([0, 3, 1, 2]);
+  // imageTensor = imageTensor.transpose([0, 3, 1, 2]);
   return imageTensor;
 }
 
