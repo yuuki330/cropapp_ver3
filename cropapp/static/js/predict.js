@@ -111,7 +111,7 @@ function captureWebcam() {
 	canvas.height = video.height;
 
 	// context.drawImage(video, 0, 0, video.width, video.height);
-  context.drawImage(image_val, 0, 0, image.width, image.height);
+  context.drawImage(image_val, 0, 0, image_val.width, image_val.height);
 	tensor_image = preprocessImage(canvas);
 
 	return tensor_image;
