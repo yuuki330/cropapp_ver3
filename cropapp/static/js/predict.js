@@ -79,31 +79,33 @@ async function predict(){
   // const zeros = tf.zeros([1, 640, 640, 3]);
 	// let prediction = await model.predict(tensor).data();
   let prediction = await model.executeAsync(tensor);
-  let boxes = prediction[0].dataSync();
-  let scores = prediction[1].arraySync();
-  let classes = prediction[2].dataSync();
+  let o0 = prediction[0].arraySync();
+  console.log(o0);
+  // let boxes = prediction[0].dataSync();
+  // let scores = prediction[1].arraySync();
+  // let classes = prediction[2].dataSync();
 
-  let detectionObjects = [];
-  scores.forEach((score, i) => {
-    if(score > 0.4){
-      let bbox = [];
-      const minY = boxes[i * 4] * image_val.height;
-      const minX = boxes[i * 4 + 1] * image_val.width;
-      const maxY = boxes[i * 4 + 2] * image_val.height;
-      const maxX = boxes[i * 4 + 3] * image_val.width;
-      bbox[0] = minX;
-      bbox[1] = minY;
-      bbox[2] = maxX - minX;
-      bbox[3] = maxY - minY;
+  // let detectionObjects = [];
+  // scores.forEach((score, i) => {
+  //   if(score > 0.4){
+  //     let bbox = [];
+  //     const minY = boxes[i * 4] * image_val.height;
+  //     const minX = boxes[i * 4 + 1] * image_val.width;
+  //     const maxY = boxes[i * 4 + 2] * image_val.height;
+  //     const maxX = boxes[i * 4 + 3] * image_val.width;
+  //     bbox[0] = minX;
+  //     bbox[1] = minY;
+  //     bbox[2] = maxX - minX;
+  //     bbox[3] = maxY - minY;
 
-      detectionObjects.push({
-        class: classes[i],
-        label: classesDir[classes[i]].name,
-        score: score.toFixed(4),
-        bbox: bbox
-      })
-    }
-  })
+  //     detectionObjects.push({
+  //       class: classes[i],
+  //       label: classesDir[classes[i]].name,
+  //       score: score.toFixed(4),
+  //       bbox: bbox
+  //     })
+  //   }
+  // })
 
   // console.log(detectionObjects);
 
@@ -159,9 +161,6 @@ function preprocessImage(image){
 	let tensor = tf.browser.fromPixels(image).resizeBilinear([640,640]).toFloat();	
   let offset = tf.scalar(255);
   imageTensor = tensor.div(offset).expandDims(0);
-  console.log(imageTensor);
-  imageTensor = imageTensor.transpose([0, 3, 1, 2]);
-  console.log(imageTensor);
   return imageTensor;
 }
 
