@@ -76,7 +76,7 @@ $("#predict-button").click(function(){
 async function predict(){
 	let tensor = captureWebcam();
   // console.log(tensor)
-  const zeros = tf.zeros([1, 640, 640, 3]);
+  // const zeros = tf.zeros([1, 640, 640, 3]);
 	// let prediction = await model.predict(tensor).data();
   let prediction = await model.executeAsync(tensor)
 	let results = Array.from(prediction)
@@ -95,7 +95,7 @@ async function predict(){
 		$("#console").append(`<li>${p.className} : ${p.probability.toFixed(6)}</li>`);
 		console.log(p.className,p.probability.toFixed(6))
 	});
-  console.log(results)
+  // console.log(results)
 
 };
 
@@ -125,6 +125,7 @@ function captureWebcam() {
 function preprocessImage(image){
 	// let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([100,100]).toFloat();
   let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([640,640]).toFloat();	
+  console.log(tensor);
 	let offset = tf.scalar(255);
     return tensor.div(offset).expandDims();
 }
