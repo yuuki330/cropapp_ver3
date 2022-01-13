@@ -78,10 +78,10 @@ async function predict(){
   // console.log(tensor)
   // const zeros = tf.zeros([1, 640, 640, 3]);
 	// let prediction = await model.predict(tensor).data();
-  // var response = await model.predict(tensor);
-  // console.log(response);
-  let prediction = await model.executeAsync(tensor);
-  console.log(prediction[1].arraySync());
+  var response = await model.predict(tensor);
+  console.log(response);
+  // let prediction = await model.executeAsync(tensor);
+  // console.log(prediction[1].arraySync());
   // console.log(prediction);
 	let results = Array.from(prediction)
 				.map(function(p,i){
