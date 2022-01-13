@@ -1,5 +1,5 @@
-const CLASSES = {0:'zero', 1:'one', 2:'two', 3:'three', 4:'four',5:'five', 6:'six', 7:'seven', 8:'eight', 9:'nine'}
-
+// const CLASSES = {0:'zero', 1:'one', 2:'two', 3:'three', 4:'four',5:'five', 6:'six', 7:'seven', 8:'eight', 9:'nine'}
+const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'}
 //-----------------------
 // start button event
 //-----------------------
@@ -17,7 +17,7 @@ let model;
 async function loadModel() {
 	console.log("model loading..");
 	$("#console").html(`<li>model loading...</li>`);
-	model=await tf.loadLayersModel(`https://raw.githubusercontent.com/PonDad/manatee/master/1_sign_language_digits_classification-master/nodejs/static/sign_language_vgg16/model.json`);
+	model=await tf.loadLayersModel(`https://raw.githubusercontent.com/yuuki330/emotion-detected/master/staticfiles/best_web_model/model.json?token=GHSAT0AAAAAABP4B2KVXLETPL5SSHOD6KTMYO7OIAA`);
 	console.log("model loaded.");
 	$("#console").html(`<li>VGG16 pre trained model loaded.</li>`);
 };
