@@ -78,7 +78,8 @@ async function predict(){
   // console.log(tensor)
   // const zeros = tf.zeros([1, 640, 640, 3]);
 	// let prediction = await model.predict(tensor).data();
-  var response = await model.executeAsync(tensor).catch((err) => { console.error(err); });
+  var response = await model.pewdict(tensor);
+  console.log(response);
   let prediction = await model.executeAsync(tensor);
   // console.log(prediction);
 	let results = Array.from(prediction)
