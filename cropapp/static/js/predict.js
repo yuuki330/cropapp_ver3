@@ -22,6 +22,9 @@ async function loadModel() {
 	$("#console").html(`<li>tomato_color trained model loaded.</li>`);
 };
 
+var image = document.createElement( 'img' );
+image.src = '../images/1.jpg';
+
 //-----------------------
 // start webcam 
 //-----------------------
@@ -74,7 +77,7 @@ async function predict(){
   // console.log(tensor)
   const zeros = tf.zeros([1, 640, 640, 3]);
 	// let prediction = await model.predict(tensor).data();
-  let prediction = await model.executeAsync(zeros).data()
+  let prediction = await model.executeAsync(tensor)
   console.log(prediction)
 	let results = Array.from(prediction)
 				.map(function(p,i){
@@ -106,7 +109,8 @@ function captureWebcam() {
 	canvas.width  = video.width;
 	canvas.height = video.height;
 
-	context.drawImage(video, 0, 0, video.width, video.height);
+	// context.drawImage(video, 0, 0, video.width, video.height);
+  context.drawImage(image, 0, 0, image.width, image.height);
 	tensor_image = preprocessImage(canvas);
 
 	return tensor_image;
