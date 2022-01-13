@@ -79,28 +79,54 @@ async function predict(){
   // const zeros = tf.zeros([1, 640, 640, 3]);
 	// let prediction = await model.predict(tensor).data();
   let prediction = await model.executeAsync(tensor);
-  console.log(prediction[0].shape());
-  console.log(prediction[1].shape());
-  console.log(prediction[2].shape());
-	let results = Array.from(prediction)
-				.map(function(p,i){
-	return {
-		probability: p,
-		className: CLASSES[i]
-	};
-	}).sort(function(a,b){
-		return b.probability-a.probability;
-	}).slice(0,5);
+  let boxes = prediction[0].dataSync();
+  let scores = prediction[1].arraySync();
+  let classes = prediction[2].dataSync();
 
-  // console.log(results);
+  let detectionObjects = [];
+  scores.forEach((score, i) => {
+    if(score > 0.4){
+      let bbox = [];
+      const minY = boxes[i * 4] * image_val.height;
+      const minX = boxes[i * 4 + 1] * image_val.width;
+      const maxY = boxes[i * 4 + 2] * image_val.height;
+      const maxX = boxes[i * 4 + 3] * image_val.width;
+      bbox[0] = minX;
+      bbox[1] = minY;
+      bbox[2] = maxX - minX;
+      bbox[3] = maxY - minY;
 
-	$("#console").empty();
+      detectionObjects.push({
+        class: classes[i],
+        label: classesDir[classes[i]].name,
+        score: score.toFixed(4),
+        bbox: bbox
+      })
+    }
+  })
 
-	results.forEach(function(p){
-		$("#console").append(`<li>${p.className} : ${p.probability.toFixed(6)}</li>`);
-		console.log(p.className,p.probability.toFixed(6))
-	});
-  // console.log(results)
+  console.log(detectionObjects);
+
+
+	// let results = Array.from(prediction)
+	// 			.map(function(p,i){
+	// return {
+	// 	probability: p,
+	// 	className: CLASSES[i]
+	// };
+	// }).sort(function(a,b){
+	// 	return b.probability-a.probability;
+	// }).slice(0,5);
+
+  // // console.log(results);
+
+	// $("#console").empty();
+
+	// results.forEach(function(p){
+	// 	$("#console").append(`<li>${p.className} : ${p.probability.toFixed(6)}</li>`);
+	// 	console.log(p.className,p.probability.toFixed(6))
+	// });
+  // // console.log(results)
 
 };
 
