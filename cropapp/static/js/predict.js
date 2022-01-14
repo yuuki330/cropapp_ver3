@@ -134,8 +134,8 @@ async function predict(){
     const o0 = output[3].arraySync();
     const OBJECT_TH = 0.4;
     const IOU_TH = 0.5;
-    const bairitu_w = image_val.width/640;
-    const bairitu_h = image_val.height/640;
+    const bairitu_w = video.width/640;
+    const bairitu_h = video.height/640;
     // console.log(o0[1]);
 
     let a=0;
