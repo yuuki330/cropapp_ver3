@@ -85,7 +85,7 @@ async function predict(){
     const IOU_TH = 0.5;
     const bairitu_w = video.width/640;
     const bairitu_h = video.height/640;
-    console.log(o0);
+    // console.log(o0);
 
     let a=0;
 
@@ -205,6 +205,7 @@ async function predict(){
           y = list1[i][1] - 10;
             ctx.fillText(text.value, x, y);
             ctx.strokeRect(list1[i][0], list1[i][1], list1[i][2], list1[i][3]);
+            console.log("aaaa");
         }
     }
     
@@ -227,6 +228,7 @@ async function predict(){
           y = list2[i][1] - 10;
             ctx.fillText(text.value, x, y);
             ctx.strokeRect(list2[i][0], list2[i][1], list2[i][2], list2[i][3]);
+            console.log("iiii");
         }
     }
 
@@ -249,6 +251,7 @@ async function predict(){
           y = list3[i][1] - 10;
             ctx.fillText(text.value, x, y);
             ctx.strokeRect(list3[i][0], list3[i][1], list3[i][2], list3[i][3]);
+            console.log("uuuu");
         }
     }
 
@@ -271,6 +274,7 @@ async function predict(){
           y = list4[i][1] - 10;
             ctx.fillText(text.value, x, y);
             ctx.strokeRect(list4[i][0], list4[i][1], list4[i][2], list4[i][3]);
+            console.log("eeee");
         }
     }
 
@@ -293,6 +297,7 @@ async function predict(){
           y = list5[i][1] - 10;
             ctx.fillText(text.value, x, y);
             ctx.strokeRect(list5[i][0], list5[i][1], list5[i][2], list5[i][3]);
+            console.log("oooo");
         }
     }
   })
