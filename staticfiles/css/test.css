@@ -79,7 +79,7 @@ background: #555;
 
 #main-stream-video, #main-stream-canvas {
 position: absolute;
-zoom: 1.0;
+zoom: 1.5;
 }
 
 #faces-container{
