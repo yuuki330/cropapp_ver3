@@ -373,13 +373,12 @@ function bbox_iou(box1, box2){
 //------------------------------
 
 function captureWebcam() {
-	// var canvas    = document.createElement("canvas");
-	// var ctx   = canvas.getContext('2d');
 	canvas.width  = video.width;
 	canvas.height = video.height;
   console.log(video.width);
   console.log(video.height);
-	ctx.drawImage(video, 0, 0, video.width, video.height);
+	// ctx.drawImage(video, 0, 0, video.width, video.height);
+  ctx.drawImage(video, 0, 0, 640, 640);
   // context.drawImage(image_val, 0, 0, image_val.width, image_val.height);
 	tensor_image = preprocessImage(canvas);
 
