@@ -81,6 +81,7 @@ $("#predict-button").click(function(){
 
 async function predict(){
 	let tensor = captureWebcam();
+  console.log(tensor);
 	// let prediction = await model.predict(tensor).data();
 
   // let detectionObjects = [];
@@ -128,7 +129,7 @@ async function predict(){
 	// });
   // // console.log(results)
 
-  var output = model.executeAsync(imageTensor).then(output=>{
+  var output = model.executeAsync(tensor).then(output=>{
     const o0 = output[0].arraySync()[0][0];
     // console.log(o0[0][0][4]*o0[0][0][5]);
 
@@ -143,12 +144,11 @@ async function predict(){
     var list = new Array();
 
     for (let i = 0; i < o0[0].length; i++) {
-        console.log(o0[0].length);
         if((o0[0][i][4]*o0[0][i][5])>OBJECT_TH){
             a = a+1;
             const dx = o0[0][i][2]*bairitu_w/2;
             const dy = o0[0][i][2]*bairitu_h/2;
-
+            console.log(dx);
             var ary = new Array();
             ary.push(o0[0][i][0]*bairitu_w - dx);
             ary.push(o0[0][i][1]*bairitu_h - dy);
@@ -159,7 +159,6 @@ async function predict(){
             list.push(ary);
         }
      }
-     console.log(list[0].length);
      list.sort(function(a,b){return(a[4] - b[4]);});
 
      for (let i = 0; i < list.length; i++) {
