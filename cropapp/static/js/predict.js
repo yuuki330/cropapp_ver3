@@ -4,7 +4,8 @@ var MODEL_HEIGHT = 1;
 var MODEL_WIDTH = 1;
 
 var image_val = document.getElementById("val_image");
-var canvas    = document.createElement("canvas");
+// var canvas    = document.createElement("canvas");
+var canvas    = document.createElement("main-stream-canvas");
 var context   = canvas.getContext('2d');
 //-----------------------
 // start button event
@@ -148,7 +149,6 @@ async function predict(){
             a = a+1;
             const dx = o0[0][i][2]*bairitu_w/2;
             const dy = o0[0][i][2]*bairitu_h/2;
-            console.log(dx);
             var ary = new Array();
             ary.push(o0[0][i][0]*bairitu_w - dx);
             ary.push(o0[0][i][1]*bairitu_h - dy);
