@@ -181,9 +181,9 @@ async function predict(){
               break;
           }
       }
-      ctx.fillStyle;
+      context.fillStyle;
       if(aa==0) {
-          ctx.strokeRect(list[i][0], list[i][1], list[i][2], list[i][3]);
+          context.strokeRect(list[i][0], list[i][1], list[i][2], list[i][3]);
       }
     }
   })
