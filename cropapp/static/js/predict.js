@@ -48,8 +48,8 @@ function startWebcam() {
 	navigator.getMedia({
 		video: {
       facingMode: {
-        // exact: "environment"
-        exact: "user"
+        exact: "environment"
+        // exact: "user"
       }
     }
     // video:true
