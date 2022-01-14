@@ -30,22 +30,39 @@ async function loadModel() {
 // start webcam 
 //-----------------------
 
-var video;
+// var video;
+var video = document.createElement("video");
+const resolution = { w: 1080, h: 720 };
 var canvas = document.getElementById("main-stream-canvas");
 var ctx = canvas.getContext('2d');
 
 function startWebcam() {
 	console.log("video streaming start.");
 	$("#console").html(`<li>video streaming start.</li>`);
-	video = $('#main-stream-video').get(0);
-	vendorUrl = window.URL || window.webkitURL;
 
-	navigator.getMedia = navigator.getUserMedia ||
-						 navigator.webkitGetUserMedia ||
-						 navigator.mozGetUserMedia ||
-						 navigator.msGetUserMedia;
+  media = navigator.mediaDevices.getUserMedia({
+    audio: false,
+    video: {
+    facingMode:{
+      exact: "environment"
+    },
+      width: { ideal: resolution.w },
+      height: { ideal: resolution.h }
+    }
+  }).then(function(stream) {
+    video.srcObject = stream;
+  });
 
-	// navigator.getMedia({
+	// video = $('#main-stream-video').get(0);
+	// vendorUrl = window.URL || window.webkitURL;
+
+	// navigator.getMedia = navigator.getUserMedia ||
+	// 					 navigator.webkitGetUserMedia ||
+	// 					 navigator.mozGetUserMedia ||
+	// 					 navigator.msGetUserMedia;
+
+  // navigator.mediaDevices
+  // .getUserMedia({
 	// 	video: {
   //     facingMode: {
   //       exact: "environment"
@@ -61,24 +78,6 @@ function startWebcam() {
 	// }, function(error) {
 	// 	alert("Something wrong with webcam!");
 	// });
-
-  navigator.mediaDevices
-  .getUserMedia({
-		video: {
-      facingMode: {
-        exact: "environment"
-        // exact: "user"
-      }
-    }
-    // video:true
-		// audio: false
-	}, function(stream) {
-		localStream = stream;
-		video.srcObject = stream;
-		video.play();
-	}, function(error) {
-		alert("Something wrong with webcam!");
-	});
 }
 
 //-----------------------
