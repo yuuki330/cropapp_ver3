@@ -38,6 +38,9 @@ async function loadModel() {
 //-----------------------
 
 var video;
+var canvas    = document.createElement("canvas");
+var ctx   = canvas.getContext('2d');
+
 function startWebcam() {
 	console.log("video streaming start.");
 	$("#console").html(`<li>video streaming start.</li>`);
@@ -370,8 +373,8 @@ function bbox_iou(box1, box2){
 //------------------------------
 
 function captureWebcam() {
-	var canvas    = document.createElement("canvas");
-	var ctx   = canvas.getContext('2d');
+	// var canvas    = document.createElement("canvas");
+	// var ctx   = canvas.getContext('2d');
 	canvas.width  = video.width;
 	canvas.height = video.height;
 
