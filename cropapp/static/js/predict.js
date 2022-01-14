@@ -69,7 +69,7 @@ function startWebcam() {
 
 $("#predict-button").click(function(){
 	// setInterval(predict, 1000/10);
-  setInterval(predict, 100);
+  setInterval(predict, 500);
 });
 
 //-----------------------
@@ -205,7 +205,7 @@ async function predict(){
           y = list1[i][1] - 10;
             ctx.fillText(text.value, x, y);
             ctx.strokeRect(list1[i][0], list1[i][1], list1[i][2], list1[i][3]);
-            console.log("aaaa");
+            console.log("1");
         }
     }
     
@@ -228,7 +228,7 @@ async function predict(){
           y = list2[i][1] - 10;
             ctx.fillText(text.value, x, y);
             ctx.strokeRect(list2[i][0], list2[i][1], list2[i][2], list2[i][3]);
-            console.log("iiii");
+            console.log("2");
         }
     }
 
@@ -251,7 +251,7 @@ async function predict(){
           y = list3[i][1] - 10;
             ctx.fillText(text.value, x, y);
             ctx.strokeRect(list3[i][0], list3[i][1], list3[i][2], list3[i][3]);
-            console.log("uuuu");
+            console.log("3");
         }
     }
 
@@ -274,7 +274,7 @@ async function predict(){
           y = list4[i][1] - 10;
             ctx.fillText(text.value, x, y);
             ctx.strokeRect(list4[i][0], list4[i][1], list4[i][2], list4[i][3]);
-            console.log("eeee");
+            console.log("4");
         }
     }
 
@@ -297,7 +297,7 @@ async function predict(){
           y = list5[i][1] - 10;
             ctx.fillText(text.value, x, y);
             ctx.strokeRect(list5[i][0], list5[i][1], list5[i][2], list5[i][3]);
-            console.log("oooo");
+            console.log("5");
         }
     }
   })
@@ -326,11 +326,8 @@ function bbox_iou(box1, box2){
 function captureWebcam() {
 	canvas.width  = video.width;
 	canvas.height = video.height;
-  console.log(video.width);
-  console.log(video.height);
-	// ctx.drawImage(video, 0, 0, video.width, video.height);
+
   ctx.drawImage(video, 0, 0, 640, 640);
-  // context.drawImage(image_val, 0, 0, image_val.width, image_val.height);
 	tensor_image = preprocessImage(canvas);
 
 	return tensor_image;
