@@ -3,6 +3,7 @@ const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'
 var MODEL_HEIGHT = 1;
 var MODEL_WIDTH = 1;
 
+var image_val = document.getElementById("val_image");
 var canvas    = document.createElement("canvas");
 var context   = canvas.getContext('2d');
 //-----------------------
@@ -30,10 +31,6 @@ async function loadModel() {
 	$("#console").html(`<li>tomato_color trained model loaded.</li>`);
   console.log(MODEL_HEIGHT, MODEL_WIDTH);
 };
-
-// var image = document.createElement( 'img' );
-// image.src = '../images/1.jpg';
-var image_val = document.getElementById("val_image");
 
 //-----------------------
 // start webcam 
@@ -84,12 +81,7 @@ $("#predict-button").click(function(){
 
 async function predict(){
 	let tensor = captureWebcam();
-  // console.log(tensor)
-  // const zeros = tf.zeros([1, 640, 640, 3]);
 	// let prediction = await model.predict(tensor).data();
-  // let boxes = prediction[0].dataSync();
-  // let scores = prediction[1].arraySync();
-  // let classes = prediction[2].dataSync();
 
   // let detectionObjects = [];
   // scores.forEach((score, i) => {
@@ -167,10 +159,8 @@ async function predict(){
             list.push(ary);
         }
      }
-
+     console.log(list[0].length);
      list.sort(function(a,b){return(a[4] - b[4]);});
-     context.lineWidth = 2;
-     context.strokeStyle = "rgb(255, 255, 255)";
 
      for (let i = 0; i < list.length; i++) {
       let aa = 0;
@@ -181,13 +171,13 @@ async function predict(){
               break;
           }
       }
+      context.lineWidth = 2;
+      context.strokeStyle = "rgb(255, 255, 255)";
       context.fillStyle;
       if(aa==0) {
           context.strokeRect(list[i][0], list[i][1], list[i][2], list[i][3]);
-          console.log(list[i][1]);
       }
     }
-    console.log("end");
   })
 };
 
