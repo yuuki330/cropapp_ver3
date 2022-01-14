@@ -38,8 +38,8 @@ async function loadModel() {
 //-----------------------
 
 var video;
-var canvas    = document.createElement("canvas");
-var ctx   = canvas.getContext('2d');
+var canvas = document.createElement("canvas");
+var ctx = canvas.getContext('2d');
 
 function startWebcam() {
 	console.log("video streaming start.");
