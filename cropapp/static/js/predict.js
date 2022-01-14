@@ -3,17 +3,17 @@ const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'
 var MODEL_HEIGHT = 1;
 var MODEL_WIDTH = 1;
 
-var image_val = document.getElementById("val_image");
+// var image_val = document.getElementById("val_image");
 // var canvas    = document.createElement("canvas");
-var canvas    = document.createElement("main-stream-canvas");
-var context   = canvas.getContext('2d');
+// var ctx    = document.createElement("main-stream-canvas");
+// var context   = canvas.getContext('2d');
 //-----------------------
 // start button event
 //-----------------------
 
 $("#start-button").click(function(){
 	loadModel() ;
-	// startWebcam();
+	startWebcam();
 });
 
 //-----------------------
@@ -82,7 +82,7 @@ $("#predict-button").click(function(){
 
 async function predict(){
 	let tensor = captureWebcam();
-  console.log(tensor);
+  // console.log(tensor);
 	// let prediction = await model.predict(tensor).data();
 
   // let detectionObjects = [];
@@ -130,25 +130,28 @@ async function predict(){
 	// });
   // // console.log(results)
 
-  var output = model.executeAsync(tensor).then(output=>{
-    const o0 = output[0].arraySync()[0][0];
-    // console.log(o0[0][0][4]*o0[0][0][5]);
-
-    const OBJECT_TH = 0.1;
+  var output = model.executeAsync(imageTensor).then(output=> {
+    const o0 = output[3].arraySync();
+    const OBJECT_TH = 0.4;
     const IOU_TH = 0.5;
     const bairitu_w = image_val.width/640;
     const bairitu_h = image_val.height/640;
+    // console.log(o0[1]);
 
-    // console.log(o0.length);
-    
     let a=0;
-    var list = new Array();
+
+    var list1 = new Array();
+    var list2 = new Array();
+    var list3 = new Array();
+    var list4 = new Array();
+    var list5 = new Array();
 
     for (let i = 0; i < o0[0].length; i++) {
         if((o0[0][i][4]*o0[0][i][5])>OBJECT_TH){
             a = a+1;
             const dx = o0[0][i][2]*bairitu_w/2;
             const dy = o0[0][i][2]*bairitu_h/2;
+
             var ary = new Array();
             ary.push(o0[0][i][0]*bairitu_w - dx);
             ary.push(o0[0][i][1]*bairitu_h - dy);
@@ -156,26 +159,192 @@ async function predict(){
             ary.push(o0[0][i][3]*bairitu_h);
             ary.push(o0[0][i][4]*o0[0][i][5]);
 
-            list.push(ary);
+            list1.push(ary);
         }
-     }
-     list.sort(function(a,b){return(a[4] - b[4]);});
+        else if((o0[0][i][4]*o0[0][i][6])>OBJECT_TH){
+            a = a+1;
+            const dx = o0[0][i][2]*bairitu_w/2;
+            const dy = o0[0][i][2]*bairitu_h/2;
 
-     for (let i = 0; i < list.length; i++) {
-      let aa = 0;
-      for(let j = i+1; j< list.length; j++) {
-          var iou = bbox_iou(list[i], list[j]);
-          if(iou > IOU_TH) {
-              aa = 1;
-              break;
-          }
-      }
-      context.lineWidth = 2;
-      context.strokeStyle = "rgb(255, 255, 255)";
-      context.fillStyle;
-      if(aa==0) {
-          context.strokeRect(list[i][0], list[i][1], list[i][2], list[i][3]);
-      }
+            var ary = new Array();
+            ary.push(o0[0][i][0]*bairitu_w - dx);
+            ary.push(o0[0][i][1]*bairitu_h - dy);
+            ary.push(o0[0][i][2]*bairitu_w);
+            ary.push(o0[0][i][3]*bairitu_h);
+            ary.push(o0[0][i][4]*o0[0][i][6]);
+
+            list2.push(ary);
+        }
+        else if((o0[0][i][4]*o0[0][i][7])>OBJECT_TH){
+            a = a+1;
+            const dx = o0[0][i][2]*bairitu_w/2;
+            const dy = o0[0][i][2]*bairitu_h/2;
+
+            var ary = new Array();
+            ary.push(o0[0][i][0]*bairitu_w - dx);
+            ary.push(o0[0][i][1]*bairitu_h - dy);
+            ary.push(o0[0][i][2]*bairitu_w);
+            ary.push(o0[0][i][3]*bairitu_h);
+            ary.push(o0[0][i][4]*o0[0][i][7]);
+
+            list3.push(ary);
+        }
+        else if((o0[0][i][4]*o0[0][i][8])>OBJECT_TH){
+            a = a+1;
+            const dx = o0[0][i][2]*bairitu_w/2;
+            const dy = o0[0][i][2]*bairitu_h/2;
+
+            var ary = new Array();
+            ary.push(o0[0][i][0]*bairitu_w - dx);
+            ary.push(o0[0][i][1]*bairitu_h - dy);
+            ary.push(o0[0][i][2]*bairitu_w);
+            ary.push(o0[0][i][3]*bairitu_h);
+            ary.push(o0[0][i][4]*o0[0][i][8]);
+
+            list4.push(ary);
+        }
+        else if((o0[0][i][4]*o0[0][i][9])>OBJECT_TH){
+            a = a+1;
+            const dx = o0[0][i][2]*bairitu_w/2;
+            const dy = o0[0][i][2]*bairitu_h/2;
+
+            var ary = new Array();
+            ary.push(o0[0][i][0]*bairitu_w - dx);
+            ary.push(o0[0][i][1]*bairitu_h - dy);
+            ary.push(o0[0][i][2]*bairitu_w);
+            ary.push(o0[0][i][3]*bairitu_h);
+            ary.push(o0[0][i][4]*o0[0][i][9]);
+
+            list5.push(ary);
+        }
+        else{
+
+        }
+    }
+
+    // list.sort(function(a,b){return(a[4] - b[4]);});
+    list1.sort(function(a,b){return(a[4] - b[4]);});
+    list2.sort(function(a,b){return(a[4] - b[4]);});
+    list3.sort(function(a,b){return(a[4] - b[4]);});
+    list4.sort(function(a,b){return(a[4] - b[4]);});
+    list5.sort(function(a,b){return(a[4] - b[4]);});
+    // console.log(list);
+    
+    var text = document.createElement('p');
+    ctx.font = '32px serif';
+    var x;
+    var y;
+
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "rgb(255, 0, 0)";
+    ctx.textBaseline = 'center';
+    ctx.textAlign = 'center';
+    text.value = "Level_1"
+
+    for (let i = 0; i < list1.length; i++) {
+        let aa = 0;
+        for(let j = i+1; j< list1.length; j++) {
+            var iou = bbox_iou(list1[i], list1[j]);
+            if(iou > IOU_TH) {
+                aa = 1;
+                break;
+            }
+        }
+        ctx.fillStyle = "black";
+        if(aa==0) {
+            x = list1[i][0] + 50;
+          y = list1[i][1] - 10;
+            ctx.fillText(text.value, x, y);
+            ctx.strokeRect(list1[i][0], list1[i][1], list1[i][2], list1[i][3]);
+        }
+    }
+    
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "rgb(255, 102, 153)";
+    text.value = "Level_2"
+
+    for (let i = 0; i < list2.length; i++) {
+        let aa = 0;
+        for(let j = i+1; j< list2.length; j++) {
+            var iou = bbox_iou(list2[i], list2[j]);
+            if(iou > IOU_TH) {
+                aa = 1;
+                break;
+            }
+        }
+        ctx.fillStyle = "black";
+        if(aa==0) {
+            x = list2[i][0] + 50;
+          y = list2[i][1] - 10;
+            ctx.fillText(text.value, x, y);
+            ctx.strokeRect(list2[i][0], list2[i][1], list2[i][2], list2[i][3]);
+        }
+    }
+
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "rgb(255, 51, 0)";
+    text.value = "Level_3"
+
+    for (let i = 0; i < list3.length; i++) {
+        let aa = 0;
+        for(let j = i+1; j< list3.length; j++) {
+            var iou = bbox_iou(list3[i], list3[j]);
+            if(iou > IOU_TH) {
+                aa = 1;
+                break;
+            }
+        }
+        ctx.fillStyle = "black";
+        if(aa==0) {
+            x = list3[i][0] + 50;
+          y = list3[i][1] - 10;
+            ctx.fillText(text.value, x, y);
+            ctx.strokeRect(list3[i][0], list3[i][1], list3[i][2], list3[i][3]);
+        }
+    }
+
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "rgb(153, 255, 0)";
+    text.value = "Level_4"
+
+    for (let i = 0; i < list4.length; i++) {
+        let aa = 0;
+        for(let j = i+1; j< list4.length; j++) {
+            var iou = bbox_iou(list4[i], list4[j]);
+            if(iou > IOU_TH) {
+                aa = 1;
+                break;
+            }
+        }
+        ctx.fillStyle = "black";
+        if(aa==0) {
+            x = list4[i][0] + 50;
+          y = list4[i][1] - 10;
+            ctx.fillText(text.value, x, y);
+            ctx.strokeRect(list4[i][0], list4[i][1], list4[i][2], list4[i][3]);
+        }
+    }
+
+    ctx.lineWidth = 5;
+    ctx.strokeStyle = "rgb(0, 0, 255)";
+    text.value = "Level_5"
+
+    for (let i = 0; i < list5.length; i++) {
+        let aa = 0;
+        for(let j = i+1; j< list5.length; j++) {
+            var iou = bbox_iou(list5[i], list5[j]);
+            if(iou > IOU_TH) {
+                aa = 1;
+                break;
+            }
+        }
+        ctx.fillStyle = "black";
+        if(aa==0) {
+            x = list5[i][0] + 50;
+          y = list5[i][1] - 10;
+            ctx.fillText(text.value, x, y);
+            ctx.strokeRect(list5[i][0], list5[i][1], list5[i][2], list5[i][3]);
+        }
     }
   })
 };
@@ -201,13 +370,13 @@ function bbox_iou(box1, box2){
 //------------------------------
 
 function captureWebcam() {
-	// var canvas    = document.createElement("canvas");
-	// var context   = canvas.getContext('2d');
-	// canvas.width  = video.width;
-	// canvas.height = video.height;
+	var canvas    = document.createElement("canvas");
+	var ctx   = canvas.getContext('2d');
+	canvas.width  = video.width;
+	canvas.height = video.height;
 
-	// context.drawImage(video, 0, 0, video.width, video.height);
-  context.drawImage(image_val, 0, 0, image_val.width, image_val.height);
+	ctx.drawImage(video, 0, 0, video.width, video.height);
+  // context.drawImage(image_val, 0, 0, image_val.width, image_val.height);
 	tensor_image = preprocessImage(canvas);
 
 	return tensor_image;
