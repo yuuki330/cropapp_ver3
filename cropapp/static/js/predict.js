@@ -24,7 +24,6 @@ async function loadModel() {
   MODEL_HEIGHT  = model.inputs[0].shape[2];
   MODEL_WIDTH  = model.inputs[0].shape[3];
 	$("#console").html(`<li>tomato_color trained model loaded.</li>`);
-  console.log(MODEL_HEIGHT, MODEL_WIDTH);
 };
 
 //-----------------------
@@ -85,7 +84,7 @@ async function predict(){
     const IOU_TH = 0.5;
     const bairitu_w = video.width/640;
     const bairitu_h = video.height/640;
-    console.log(o0[1]);
+    console.log(o0);
 
     let a=0;
 
