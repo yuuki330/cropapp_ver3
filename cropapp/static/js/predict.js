@@ -167,7 +167,9 @@ async function predict(){
             list.push(ary);
         }
      }
-    //  console.log(list);
+
+     list.sort(function(a,b){return(a[4] - b[4]);});
+     console.log(list[4]);
   })
 };
 
