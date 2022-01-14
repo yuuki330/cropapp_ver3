@@ -31,7 +31,7 @@ async function loadModel() {
 //-----------------------
 
 var video;
-var canvas = document.createElement("canvas");
+var canvas = document.getElementById("main-stream-canvas");
 var ctx = canvas.getContext('2d');
 
 function startWebcam() {
