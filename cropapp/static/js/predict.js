@@ -2,6 +2,9 @@
 const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'}
 var MODEL_HEIGHT = 1;
 var MODEL_WIDTH = 1;
+
+var canvas    = document.createElement("canvas");
+var context   = canvas.getContext('2d');
 //-----------------------
 // start button event
 //-----------------------
@@ -134,9 +137,6 @@ async function predict(){
   // // console.log(results)
 
   var output = model.executeAsync(imageTensor).then(output=>{
-    // console.log("boxes" + output[0].dataSync());
-    // console.log("scores" + output[1].arraySync());
-    // console.log("classes" + output[2].dataSync());
     const o0 = output[0].arraySync()[0][0];
     // console.log(o0[0][0][4]*o0[0][0][5]);
 
@@ -171,8 +171,6 @@ async function predict(){
      list.sort(function(a,b){return(a[4] - b[4]);});
      context.lineWidth = 2;
      context.strokeStyle = "rgb(255, 255, 255)";
-
-     console.log(list.length);
 
      for (let i = 0; i < list.length; i++) {
       let aa = 0;
@@ -212,8 +210,8 @@ function bbox_iou(box1, box2){
 //------------------------------
 
 function captureWebcam() {
-	var canvas    = document.createElement("canvas");
-	var context   = canvas.getContext('2d');
+	// var canvas    = document.createElement("canvas");
+	// var context   = canvas.getContext('2d');
 	// canvas.width  = video.width;
 	// canvas.height = video.height;
 
