@@ -46,13 +46,13 @@ function startWebcam() {
 						 navigator.msGetUserMedia;
 
 	navigator.getMedia({
-		// video: {
-    //   facingMode: {
-    //     // exact: "environment"
-    //     exact: "user"
-    //   }
-    // }
-    video:true
+		video: {
+      facingMode: {
+        // exact: "environment"
+        exact: "user"
+      }
+    }
+    // video:true
 		// audio: false
 	}, function(stream) {
 		localStream = stream;
