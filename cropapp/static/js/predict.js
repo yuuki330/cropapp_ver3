@@ -377,7 +377,8 @@ function captureWebcam() {
 	// var ctx   = canvas.getContext('2d');
 	canvas.width  = video.width;
 	canvas.height = video.height;
-
+  console.log(video.width);
+  console.log(video.height);
 	ctx.drawImage(video, 0, 0, video.width, video.height);
   // context.drawImage(image_val, 0, 0, image_val.width, image_val.height);
 	tensor_image = preprocessImage(canvas);
