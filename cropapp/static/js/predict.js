@@ -169,9 +169,42 @@ async function predict(){
      }
 
      list.sort(function(a,b){return(a[4] - b[4]);});
-     console.log(list[4]);
+     context.lineWidth = 2;
+     context.strokeStyle = "rgb(255, 255, 255)";
+
+     console.log(list.length);
+
+     for (let i = 0; i < list.length; i++) {
+      let aa = 0;
+      for(let j = i+1; j< list.length; j++) {
+          var iou = bbox_iou(list[i], list[j]);
+          if(iou > IOU_TH) {
+              aa = 1;
+              break;
+          }
+      }
+      ctx.fillStyle;
+      if(aa==0) {
+          ctx.strokeRect(list[i][0], list[i][1], list[i][2], list[i][3]);
+      }
+    }
   })
 };
+
+function bbox_iou(box1, box2){
+  xs1 = Math.max(box1[0], box2[0]);
+  ys1 = Math.max(box1[1], box2[1]);
+  xs2 = Math.min(box1[0] + box1[2], box2[0] + box2[2]);
+  ys2 = Math.min(box1[1] + box1[3], box2[1] + box2[3]);
+
+  intersections  = Math.max(ys2 - ys1, 0) * Math.max(xs2 - xs1, 0);
+
+  unions = (box1[2] * box1[3]) + (box2[2] * box2[3]) - intersections;
+
+  ious = intersections / unions;
+
+  return ious;
+}
 
 //------------------------------
 // capture streaming video 
