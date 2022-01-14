@@ -1,12 +1,7 @@
-// const CLASSES = {0:'zero', 1:'one', 2:'two', 3:'three', 4:'four',5:'five', 6:'six', 7:'seven', 8:'eight', 9:'nine'}
 const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'}
 var MODEL_HEIGHT = 1;
 var MODEL_WIDTH = 1;
 
-// var image_val = document.getElementById("val_image");
-// var canvas    = document.createElement("canvas");
-// var ctx    = document.createElement("main-stream-canvas");
-// var context   = canvas.getContext('2d');
 //-----------------------
 // start button event
 //-----------------------
@@ -26,7 +21,6 @@ async function loadModel() {
 	$("#console").html(`<li>model loading...</li>`);
 	model=await tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/tfjs/model.json`);
 	console.log("model loaded.");
-  console.log(model.inputs[0])
   MODEL_HEIGHT  = model.inputs[0].shape[2];
   MODEL_WIDTH  = model.inputs[0].shape[3];
 	$("#console").html(`<li>tomato_color trained model loaded.</li>`);
@@ -85,61 +79,13 @@ $("#predict-button").click(function(){
 
 async function predict(){
 	let tensor = captureWebcam();
-  // console.log(tensor);
-	// let prediction = await model.predict(tensor).data();
-
-  // let detectionObjects = [];
-  // scores.forEach((score, i) => {
-  //   if(score > 0.4){
-  //     let bbox = [];
-  //     const minY = boxes[i * 4] * image_val.height;
-  //     const minX = boxes[i * 4 + 1] * image_val.width;
-  //     const maxY = boxes[i * 4 + 2] * image_val.height;
-  //     const maxX = boxes[i * 4 + 3] * image_val.width;
-  //     bbox[0] = minX;
-  //     bbox[1] = minY;
-  //     bbox[2] = maxX - minX;
-  //     bbox[3] = maxY - minY;
-
-  //     detectionObjects.push({
-  //       class: classes[i],
-  //       label: classesDir[classes[i]].name,
-  //       score: score.toFixed(4),
-  //       bbox: bbox
-  //     })
-  //   }
-  // })
-
-  // console.log(detectionObjects);
-
-
-	// let results = Array.from(prediction)
-	// 			.map(function(p,i){
-	// return {
-	// 	probability: p,
-	// 	className: CLASSES[i]
-	// };
-	// }).sort(function(a,b){
-	// 	return b.probability-a.probability;
-	// }).slice(0,5);
-
-  // // console.log(results);
-
-	// $("#console").empty();
-
-	// results.forEach(function(p){
-	// 	$("#console").append(`<li>${p.className} : ${p.probability.toFixed(6)}</li>`);
-	// 	console.log(p.className,p.probability.toFixed(6))
-	// });
-  // // console.log(results)
-
   var output = model.executeAsync(imageTensor).then(output=> {
     const o0 = output[3].arraySync();
     const OBJECT_TH = 0.4;
     const IOU_TH = 0.5;
     const bairitu_w = video.width/640;
     const bairitu_h = video.height/640;
-    // console.log(o0[1]);
+    console.log(o0[1]);
 
     let a=0;
 
