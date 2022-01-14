@@ -184,8 +184,10 @@ async function predict(){
       context.fillStyle;
       if(aa==0) {
           context.strokeRect(list[i][0], list[i][1], list[i][2], list[i][3]);
+          console.log(list[i][1]);
       }
     }
+    console.log("end");
   })
 };
 
