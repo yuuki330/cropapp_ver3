@@ -45,7 +45,25 @@ function startWebcam() {
 						 navigator.mozGetUserMedia ||
 						 navigator.msGetUserMedia;
 
-	navigator.getMedia({
+	// navigator.getMedia({
+	// 	video: {
+  //     facingMode: {
+  //       exact: "environment"
+  //       // exact: "user"
+  //     }
+  //   }
+  //   // video:true
+	// 	// audio: false
+	// }, function(stream) {
+	// 	localStream = stream;
+	// 	video.srcObject = stream;
+	// 	video.play();
+	// }, function(error) {
+	// 	alert("Something wrong with webcam!");
+	// });
+
+  navigator.mediaDevices
+  .getUserMedia({
 		video: {
       facingMode: {
         exact: "environment"
@@ -68,8 +86,7 @@ function startWebcam() {
 //-----------------------
 
 $("#predict-button").click(function(){
-	// setInterval(predict, 1000/10);
-  setInterval(predict, 200);
+	setInterval(predict, 1000/10);
 });
 
 //-----------------------
