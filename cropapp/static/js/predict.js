@@ -36,6 +36,7 @@ var video = document.getElementById("main-stream-video");
 const resolution = { w: 1080, h: 720 };
 var canvas = document.getElementById("main-stream-canvas");
 var ctx = canvas.getContext('2d');
+var deviceid;
 
 // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
 navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
@@ -44,9 +45,8 @@ navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
       return elem.kind == 'videoinput';
   });
   console.log(videoSroucesArray[0]["deviceId"]);
+  deviceid = videoSroucesArray[0]["deviceId"];
 });
-
-var deviceid = videoSroucesArray[0]["deviceId"];
 
 function startWebcam() {
 	console.log("video streaming start.");
