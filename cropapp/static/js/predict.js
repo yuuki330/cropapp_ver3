@@ -37,6 +37,15 @@ const resolution = { w: 1080, h: 720 };
 var canvas = document.getElementById("main-stream-canvas");
 var ctx = canvas.getContext('2d');
 
+// 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
+navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
+  // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
+  var videoSroucesArray = sourcesInfo.filter(function(elem) {
+      return elem.kind == 'videoinput';
+  });
+  console.log(videoSroucesArray);
+});
+
 function startWebcam() {
 	console.log("video streaming start.");
 	$("#console").html(`<li>video streaming start.</li>`);
@@ -86,8 +95,8 @@ function startWebcam() {
 //-----------------------
 
 $("#predict-button").click(function(){
-	// setInterval(predict, 1000/10);
-  setInterval(predict, 500);
+	setInterval(predict, 1000/10);
+  // setInterval(predict, 500);
 });
 
 //-----------------------
