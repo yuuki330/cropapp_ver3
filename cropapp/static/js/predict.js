@@ -46,6 +46,8 @@ navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
   console.log(videoSroucesArray[0]["deviceId"]);
 });
 
+var deviceid = videoSroucesArray[0]["deviceId"];
+
 function startWebcam() {
 	console.log("video streaming start.");
 	$("#console").html(`<li>video streaming start.</li>`);
@@ -66,7 +68,7 @@ function startWebcam() {
   media = navigator.mediaDevices.getUserMedia({
     audio: false,
     video: {
-    deviceId:videoSroucesArray[0]["deviceId"],
+    deviceId: deviceid,
       width: { ideal: resolution.w },
       height: { ideal: resolution.h }
     }
