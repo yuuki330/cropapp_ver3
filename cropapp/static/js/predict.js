@@ -43,7 +43,7 @@ navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
   var videoSroucesArray = sourcesInfo.filter(function(elem) {
       return elem.kind == 'videoinput';
   });
-  console.log(videoSroucesArray[0]);
+  console.log(videoSroucesArray[0][0]);
 });
 
 function startWebcam() {
