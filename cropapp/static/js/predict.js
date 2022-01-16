@@ -50,44 +50,29 @@ function startWebcam() {
 	console.log("video streaming start.");
 	$("#console").html(`<li>video streaming start.</li>`);
 
+  // media = navigator.mediaDevices.getUserMedia({
+  //   audio: false,
+  //   video: {
+  //   facingMode:{
+  //     exact: "environment"
+  //   },
+  //     width: { ideal: resolution.w },
+  //     height: { ideal: resolution.h }
+  //   }
+  // }).then(function(stream) {
+  //   video.srcObject = stream;
+  // });
+  
   media = navigator.mediaDevices.getUserMedia({
     audio: false,
     video: {
-    facingMode:{
-      exact: "environment"
-    },
+    deviceId:videoSroucesArray[0]["deviceId"],
       width: { ideal: resolution.w },
       height: { ideal: resolution.h }
     }
   }).then(function(stream) {
     video.srcObject = stream;
   });
-
-	// video = $('#main-stream-video').get(0);
-	// vendorUrl = window.URL || window.webkitURL;
-
-	// navigator.getMedia = navigator.getUserMedia ||
-	// 					 navigator.webkitGetUserMedia ||
-	// 					 navigator.mozGetUserMedia ||
-	// 					 navigator.msGetUserMedia;
-
-  // navigator.mediaDevices
-  // .getUserMedia({
-	// 	video: {
-  //     facingMode: {
-  //       exact: "environment"
-  //       // exact: "user"
-  //     }
-  //   }
-  //   // video:true
-	// 	// audio: false
-	// }, function(stream) {
-	// 	localStream = stream;
-	// 	video.srcObject = stream;
-	// 	video.play();
-	// }, function(error) {
-	// 	alert("Something wrong with webcam!");
-	// });
 }
 
 //-----------------------
