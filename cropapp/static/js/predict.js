@@ -45,8 +45,8 @@ navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
       return elem.kind == 'videoinput';
   });
   $("#console").html(`<li> videoSroucesArray[3]["deviceId"] </li>`);
-  console.log(videoSroucesArray[-1]["deviceId"]);
-  deviceid = videoSroucesArray[-1]["deviceId"];
+  console.log(videoSroucesArray[1]["deviceId"]);
+  deviceid = videoSroucesArray[1]["deviceId"];
 });
 
 function startWebcam() {
