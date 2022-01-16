@@ -44,8 +44,8 @@ navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
   var videoSroucesArray = sourcesInfo.filter(function(elem) {
       return elem.kind == 'videoinput';
   });
-  console.log(videoSroucesArray[2]["deviceId"]);
-  deviceid = videoSroucesArray[2]["deviceId"];
+  console.log(videoSroucesArray[3]["deviceId"]);
+  deviceid = videoSroucesArray[3]["deviceId"];
 });
 
 function startWebcam() {
