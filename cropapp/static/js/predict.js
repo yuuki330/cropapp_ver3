@@ -83,7 +83,7 @@ function startWebcam() {
 
 $("#predict-button").click(function(){
 	// setInterval(predict, 1000/10);
-  setInterval(predict, 200);
+  setInterval(predict, 300);
 });
 
 //-----------------------
