@@ -75,7 +75,8 @@ margin-top: 20px;
 /* height: 360px; */
 height: 640px;
 /* position: relative; */
-position: center;
+margin-left: auto;
+margin-right: auto;
 /* position: absolute; */
 background: #555;
 }
