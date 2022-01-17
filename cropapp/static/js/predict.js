@@ -38,6 +38,11 @@ var canvas = document.getElementById("main-stream-canvas");
 var ctx = canvas.getContext('2d');
 var deviceid;
 
+var sw = window.parent.screen.width;
+var sh = window.parent.screen.height;
+var x = Math.floor( 640 * sw / sh );
+$('#video-container').css( { width: x } );
+
 // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
 navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
   // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
