@@ -15,7 +15,8 @@ font-size: 80%;
 }
 
 .container-b{
-margin: 20px 0;
+/* margin: 20px 0; */
+margin: 0 auto;
 }
 
 .btn-group{
