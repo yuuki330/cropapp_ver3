@@ -218,7 +218,7 @@ async function predict(){
                 break;
             }
         }
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "rgb(0, 255, 255)";
         if(aa==0) {
             x = list1[i][0] + 50;
           y = list1[i][1] - 10;
@@ -241,7 +241,7 @@ async function predict(){
                 break;
             }
         }
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "rgb(0, 255, 255)";
         if(aa==0) {
             x = list2[i][0] + 50;
           y = list2[i][1] - 10;
@@ -264,7 +264,7 @@ async function predict(){
                 break;
             }
         }
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "rgb(0, 255, 255)";
         if(aa==0) {
             x = list3[i][0] + 50;
           y = list3[i][1] - 10;
@@ -287,7 +287,7 @@ async function predict(){
                 break;
             }
         }
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "rgb(0, 255, 255)";
         if(aa==0) {
             x = list4[i][0] + 50;
           y = list4[i][1] - 10;
@@ -310,7 +310,7 @@ async function predict(){
                 break;
             }
         }
-        ctx.fillStyle = "black";
+        ctx.fillStyle = "rgb(0, 255, 255)";
         if(aa==0) {
             x = list5[i][0] + 50;
           y = list5[i][1] - 10;
