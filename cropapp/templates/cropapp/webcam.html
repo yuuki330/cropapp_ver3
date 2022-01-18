@@ -1,29 +1,119 @@
 {% load static %}
+<!-- camera -->
+<!-- <html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Webcam Image Classification using a pre-trianed customized model and p5.js</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+</head>
+
+<body>
+  <h1>Webcam Image Classification using a pre-trianed customized model and p5.js</h1>
+  <p>If you cover your webcam, this model will classify it as "1", otherwise will classify anything else else "0" </p>
+  <video id="input_video" controls autoplay playsinline width=100% height=100%></video>
+  <script src="{% static 'js/test.js' %}"></script>
+
+</body>
+
+</html> -->
+
+
+<!-- coco-ssd -->
+<!-- <html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Webcam Image Classification using MobileNet and p5.js</title>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
+
+  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
+</head>
+
+<body>
+  <h1>Webcam Image Classification using MobileNet and p5.js</h1>
+  <script src="{% static 'js/test.js' %}"></script>
+</body>
+
+</html> -->
+
+<!-- tensorflow.js -->
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>tensorflow</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/test.css' %}">
+</head>
+<body>
+  <script src="{% static 'js/test.js' %}"></script>
+</body>
+</html> -->
+
+<!-- fase-emotion -->
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8" />
-  <title>Canvas</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, shrink-to-fit=no" />
-  <link rel="stylesheet" href="{% static 'css/webcam.css' %}" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta charset="UTF-8">
+	<title>What is the tomato color Level?</title>
+	<link href="{% static 'img/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<link href="{% static 'css/test.css' %}" rel="stylesheet">
+	<link href="{% static 'emotion_XCEPTION/model.json' %}" rel="text">
 </head>
 <body>
-    <!-- <button id="stream">get stream</button> <br /> -->
-    <br/>
+	<article id="article">
+		<h1 class="text-center" id="title">tomato color model<br><small>with TensorFlow.js</small></h1>
 
-    <li><a href="{% url 'home' %}">ホーム</a></li>
+		<div class="container-b">
+			<div class="video-container" id="video-container">
+        <video width="640" height="640" id="main-stream-video" loop preload autoplay playsinline></video>
+				<canvas width="320" height="240" id="main-stream-canvas"></canvas>
+			</div>
+		</div>
 
-    <br/>
-    <h3>Webカメラ</h3><br>
-    <video id="player" controls autoplay playsinline width=100% height=100%></video><br>
-    <h3>canvas</h3><br/>
-    <canvas playsinline id="canvas" width="320px" height="480px"></canvas><br>
-    <!-- <h3>canvasから取得したStream</h3><br/>
-    <video id="player-canvas" controls autoplay width=100% height=100%></video><br>
-    <br /> -->
+		<div class="container-b">
+			<div class="btn-toolbar">
+				<div class="btn-group">
+					<button class="btn btn-outline-dark" id="start-button">🚀 Start</button>
+				</div>
+				<div class="btn-group">
+					<button class="btn btn-outline-dark" id="predict-button">🤔 Predict</button>
+				</div>
+				<div class="btn-group">
+					<button class="btn btn-outline-dark" id="clear-button">✨ Clear</button>
+				</div>
+			</div>
+		</div>
 
-    <video id="video" autoplay playsinline></video>
-    <script src="{% static 'js/webcam.js' %}"></script>
+		<div class="container-b">
+			<div id="faces-container">
+				<canvas height="100" id="faceCanvas" width="100"></canvas>
+			</div>
+		</div>
+
+		<div class="container-b">
+			<div class="output">
+				<ul class="list-unstyled" id="console">
+					<li>hello.please load model.</li>
+				</ul>
+			</div>
+		</div>
+	</article>
+	<footer class="text-center">
+		<small>&#169; 2018 Studio Identical Twins All Rights Reserved.</small>
+	</footer>
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs/dist/tf.min.js"></script>
+  <script src="{% static 'js/predict.js' %}"></script>
 </body>
 </html>
