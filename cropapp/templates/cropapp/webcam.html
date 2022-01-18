@@ -67,19 +67,15 @@
 	<title>What is the tomato color Level?</title>
 	<link href="{% static 'img/favicon.ico' %}" rel="shortcut icon" type="image/x-icon">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link href="{% static 'css/test.css' %}" rel="stylesheet">
+	<link href="{% static 'css/webcam.css' %}" rel="stylesheet">
 	<link href="{% static 'emotion_XCEPTION/model.json' %}" rel="text">
 </head>
 <body>
 	<article id="article">
 		<h1 class="text-center" id="title">tomato color model<br><small>with TensorFlow.js</small></h1>
 
-		<div class="container-b">
-			<div class="video-container" id="video-container">
-        <video width="640" height="640" id="main-stream-video" loop preload autoplay playsinline></video>
-				<canvas width="320" height="240" id="main-stream-canvas"></canvas>
-			</div>
-		</div>
+    <video width="640" height="640" id="main-stream-video" loop preload autoplay playsinline></video>
+		<canvas width="320" height="240" id="main-stream-canvas"></canvas>
 
 		<div class="container-b">
 			<div class="btn-toolbar">
