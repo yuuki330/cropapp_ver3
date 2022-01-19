@@ -6,8 +6,8 @@ var container = document.getElementsByClassName("btn-group")[0];
 var clientRect = container.getBoundingClientRect();
 var x = clientRect.left ;
 var y = clientRect.top ;
-console.log("${x}px");
-console.log("${y}px");
+console.log('${x}px');
+console.log('${y}px');
 container.style.left = "${x}px";
 container.style.top = "${y}px";
 
