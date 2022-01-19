@@ -6,8 +6,6 @@ var container = document.getElementsByClassName("container-b")[0];
 var clientRect = container.getBoundingClientRect();
 var x = clientRect.left ;
 var y = clientRect.top ;
-console.log(x);
-console.log(y);
 container.style.left = "100px";
 container.style.top = "100px";
 
