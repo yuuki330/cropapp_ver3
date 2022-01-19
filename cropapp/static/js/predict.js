@@ -2,14 +2,14 @@ const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'
 var MODEL_HEIGHT = 1;
 var MODEL_WIDTH = 1;
 
-var container = document.getElementsByClassName("btn-group")[0];
-var clientRect = container.getBoundingClientRect();
-var x = window.pageXOffset + clientRect.left;
-var y = window.pageYOffset + clientRect.top;
-console.log(`${x}px`);
-console.log(`${y}px`);
-container.style.left = "100px";
-container.style.top = "100px";
+var btn1 = document.getElementsByClassName("btn-group")[0];
+var clientRect1 = btn1.getBoundingClientRect();
+var x1 = window.pageXOffset + clientRect1.left;
+var y1 = window.pageYOffset + clientRect1.top;
+console.log(`${x1}px`);
+console.log(`${y1}px`);
+container.style.left = `${x1}px`;
+container.style.top = `${y1}px`;
 
 //-----------------------
 // start button event
