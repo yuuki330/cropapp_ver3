@@ -98,8 +98,8 @@ function startWebcam() {
 $("#predict-button").click(function(){
 	// setInterval(predict, 1000/10);
   video.style.display = 'none';
-  // container.style.left = `${x}px`;
-  // container.style.top = `${y}px`;
+  container.style.left = `${x}px`;
+  container.style.top = `${y}px`;
   console.log(clientRect1.left);
   console.log(clientRect1.top);
   setInterval(predict, 400);
