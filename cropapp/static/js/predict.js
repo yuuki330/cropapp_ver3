@@ -6,10 +6,10 @@ var container = document.getElementsByClassName("btn-group")[0];
 var clientRect = container.getBoundingClientRect();
 var x = clientRect.left ;
 var y = clientRect.top ;
-console.log('${x}px');
-console.log('${y}px');
-container.style.left = "${x}px";
-container.style.top = "${y}px";
+console.log(`${x}px`);
+console.log(`${y}px`);
+container.style.left = `${x}px`;
+container.style.top = `${y}px`;
 
 //-----------------------
 // start button event
@@ -98,10 +98,10 @@ function startWebcam() {
 $("#predict-button").click(function(){
 	// setInterval(predict, 1000/10);
   video.style.display = 'none';
+  container.style.left = `${x}px`;
+  container.style.top = `${y}px`;
   console.log(clientRect.left);
   console.log(clientRect.top);
-  container.style.left = x;
-  container.style.top = y;
   setInterval(predict, 400);
 });
 
