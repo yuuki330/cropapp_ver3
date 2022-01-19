@@ -8,8 +8,8 @@ var x = clientRect.left ;
 var y = clientRect.top ;
 console.log(x);
 console.log(y);
-container.style.left = "100px";
-container.style.top = "100px";
+container.style.left = x;
+container.style.top = y;
 
 //-----------------------
 // start button event
@@ -98,6 +98,8 @@ function startWebcam() {
 $("#predict-button").click(function(){
 	// setInterval(predict, 1000/10);
   video.style.display = 'none';
+  console.log(clientRect.left);
+  console.log(clientRect.top);
   container.style.left = x;
   container.style.top = y;
   setInterval(predict, 400);
