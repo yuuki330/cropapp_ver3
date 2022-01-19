@@ -8,8 +8,8 @@ var x = clientRect.left ;
 var y = clientRect.top ;
 console.log(x);
 console.log(y);
-container.style.left = x;
-container.style.top = y;
+container.style.left = 100;
+container.style.top = 100;
 
 //-----------------------
 // start button event
