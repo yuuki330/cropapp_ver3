@@ -1,65 +1,4 @@
 {% load static %}
-<!-- camera -->
-<!-- <html>
-
-<head>
-  <meta charset="UTF-8">
-  <title>Webcam Image Classification using a pre-trianed customized model and p5.js</title>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.8.0/addons/p5.dom.min.js"></script>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
-</head>
-
-<body>
-  <h1>Webcam Image Classification using a pre-trianed customized model and p5.js</h1>
-  <p>If you cover your webcam, this model will classify it as "1", otherwise will classify anything else else "0" </p>
-  <video id="input_video" controls autoplay playsinline width=100% height=100%></video>
-  <script src="{% static 'js/test.js' %}"></script>
-
-</body>
-
-</html> -->
-
-
-<!-- coco-ssd -->
-<!-- <html>
-
-<head>
-  <meta charset="UTF-8">
-  <title>Webcam Image Classification using MobileNet and p5.js</title>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
-
-  <script src="https://unpkg.com/ml5@latest/dist/ml5.min.js"></script>
-</head>
-
-<body>
-  <h1>Webcam Image Classification using MobileNet and p5.js</h1>
-  <script src="{% static 'js/test.js' %}"></script>
-</body>
-
-</html> -->
-
-<!-- tensorflow.js -->
-<!-- <!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>tensorflow</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"> </script>
-  <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/coco-ssd"></script>
-  <link rel="stylesheet" type="text/css" href="{% static 'css/test.css' %}">
-</head>
-<body>
-  <script src="{% static 'js/test.js' %}"></script>
-</body>
-</html> -->
-
-<!-- fase-emotion -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -74,8 +13,13 @@
 	<article id="article">
 		<h1 class="text-center" id="title">tomato color model<br><small>with TensorFlow.js</small></h1>
 
-    <video width="640" height="640" id="main-stream-video" loop preload autoplay playsinline></video>
-		<canvas width="320" height="240" id="main-stream-canvas"></canvas>
+    <div class="l1">
+      <video width="640" height="640" id="main-stream-video" loop preload autoplay playsinline></video>
+    </div>
+    <div class="l2">
+      <canvas width="640" height="640" id="main-stream-canvas"></canvas>
+      <!-- <canvas width="320" height="240" id="main-stream-canvas"></canvas> -->
+    </div>
 
 		<div class="container-b">
 			<div class="btn-toolbar">
