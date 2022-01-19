@@ -88,18 +88,23 @@ function startWebcam() {
 
 $("#predict-button").click(function(){
 	// setInterval(predict, 1000/10);
-  var btn1 = document.getElementsByClassName("container-b")[0];
-  var clientRect1 = btn1.getBoundingClientRect();
-  var x1 = window.pageXOffset + clientRect1.left;
-  var y1 = window.pageYOffset + clientRect1.top;
-  console.log(`${x1}px`);
-  console.log(`${y1}px`);
-  btn1.style.position = "absolute";
-  btn1.style.left = `${x1}px`;
-  btn1.style.top = `${y1}px`;
-  video.style.display = 'none';
-  console.log(clientRect1.left);
-  console.log(clientRect1.top);
+  // var btn1 = document.getElementsByClassName("container-b")[0];
+  // var clientRect1 = btn1.getBoundingClientRect();
+  // var x1 = window.pageXOffset + clientRect1.left;
+  // var y1 = window.pageYOffset + clientRect1.top;
+  // console.log(`${x1}px`);
+  // console.log(`${y1}px`);
+  // btn1.style.position = "absolute";
+  // btn1.style.left = `${x1}px`;
+  // btn1.style.top = `${y1}px`;
+  var clientRect = video.getBoundingClientRect();
+  var x = window.pageXOffset + clientRect1.left;
+  var y = window.pageYOffset + clientRect1.top;
+  // video.style.display = 'none';
+  canvas.style.left = `${x}px`;
+  canvas.style.top = `${y}px`;
+  console.log(clientRect.left);
+  console.log(clientRect.top);
   setInterval(predict, 400);
 });
 
