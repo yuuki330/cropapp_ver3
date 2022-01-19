@@ -88,7 +88,7 @@ function startWebcam() {
 
 $("#predict-button").click(function(){
 	// setInterval(predict, 1000/10);
-  var btn1 = document.getElementsByClassName("btn-group")[0];
+  var btn1 = document.getElementsByClassName("container-b")[0];
   var clientRect1 = btn1.getBoundingClientRect();
   var x1 = window.pageXOffset + clientRect1.left;
   var y1 = window.pageYOffset + clientRect1.top;
