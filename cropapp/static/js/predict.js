@@ -2,7 +2,7 @@ const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'
 var MODEL_HEIGHT = 1;
 var MODEL_WIDTH = 1;
 
-var btn1 = document.getElementsByClassName("btn-group")[0];
+var btn1 = document.getElementsByClassName("container-b")[0];
 var clientRect1 = btn1.getBoundingClientRect();
 var x1 = window.pageXOffset + clientRect1.left;
 var y1 = window.pageYOffset + clientRect1.top;
