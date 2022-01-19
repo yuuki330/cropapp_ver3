@@ -8,8 +8,8 @@ var x1 = window.pageXOffset + clientRect1.left;
 var y1 = window.pageYOffset + clientRect1.top;
 console.log(`${x1}px`);
 console.log(`${y1}px`);
-container.style.left = `${x1}px`;
-container.style.top = `${y1}px`;
+btn1.style.left = `${x1}px`;
+btn1.style.top = `${y1}px`;
 
 //-----------------------
 // start button event
@@ -100,8 +100,8 @@ $("#predict-button").click(function(){
   video.style.display = 'none';
   // container.style.left = `${x}px`;
   // container.style.top = `${y}px`;
-  console.log(clientRect.left);
-  console.log(clientRect.top);
+  console.log(clientRect1.left);
+  console.log(clientRect1.top);
   setInterval(predict, 400);
 });
 
