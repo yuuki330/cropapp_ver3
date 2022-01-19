@@ -6,10 +6,10 @@ var container = document.getElementsByClassName("btn-group")[0];
 var clientRect = container.getBoundingClientRect();
 var x = clientRect.left ;
 var y = clientRect.top ;
-console.log(x);
-console.log(y);
-container.style.left = 100;
-container.style.top = 100;
+console.log("${x}px");
+console.log("${y}px");
+container.style.left = "${x}px";
+container.style.top = "${y}px";
 
 //-----------------------
 // start button event
