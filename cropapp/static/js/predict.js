@@ -2,14 +2,14 @@ const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'
 var MODEL_HEIGHT = 1;
 var MODEL_WIDTH = 1;
 
-var container = document.getElementsByClassName("container-b")[0];
+var container = document.getElementsByClassName("btn-toolbar")[0];
 var clientRect = container.getBoundingClientRect();
-var x = clientRect.left ;
-var y = clientRect.top ;
+var x = window.pageXOffset + clientRect.left;
+var y = window.pageYOffset + clientRect.top;
 console.log(`${x}px`);
 console.log(`${y}px`);
-container.style.left = `${x}px`;
-container.style.top = `${y}px`;
+container.style.left = "100px";
+container.style.top = "100px";
 
 //-----------------------
 // start button event
