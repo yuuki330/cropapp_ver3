@@ -74,7 +74,7 @@ $("#camera2").click(function(){
   canvas.style.top = `${y}px`;
   console.log(clientRect.left);
   console.log(clientRect.top);
-  setInterval(predict, 1000/60);
+  setInterval(predict, 1000/15);
 });
 
 //-----------------------
