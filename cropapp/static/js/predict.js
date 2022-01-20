@@ -29,7 +29,7 @@ $("#camera1").click(function(){
   deviceid = videoSroucesArray[0]["deviceId"];
 });
 
-	startWebcam();
+	startWebcam1();
 
   // video.style.display = 'none';
   canvas.style.left = `${x}px`;
@@ -58,16 +58,16 @@ $("#camera2").click(function(){
 	loadModel() ;
 
   // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
-  navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
+  // navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
   // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
-    var videoSroucesArray = sourcesInfo.filter(function(elem) {
-      return elem.kind == 'videoinput';
-    });
+    // var videoSroucesArray = sourcesInfo.filter(function(elem) {
+      // return elem.kind == 'videoinput';
+    // });
   // console.log(videoSroucesArray[1]["deviceId"]);
-    deviceid = videoSroucesArray[1]["deviceId"];
-  });
+    // deviceid = videoSroucesArray[1]["deviceId"];
+  // });
 
-	startWebcam();
+	startWebcam2();
 
   // video.style.display = 'none';
   canvas.style.left = `${x}px`;
@@ -105,7 +105,7 @@ async function loadModel() {
 // start webcam 
 //-----------------------
 
-function startWebcam() {
+function startWebcam1() {
 	console.log("video streaming start.");
 	$("#console").html(`<li>video streaming start.</li>`);
   console.log(deviceid);
@@ -121,6 +121,22 @@ function startWebcam() {
     video.srcObject = stream;
   });
 }
+
+function startWebcam2() {
+	console.log("video streaming start.");
+	$("#console").html(`<li>video streaming start.</li>`);
+  console.log(deviceid);
+
+  media = navigator.mediaDevices.getUserMedia({
+    audio: false,
+    video: {
+      facingMode: "environment"
+    }
+  }).then(function(stream) {
+    video.srcObject = stream;
+  });
+}
+
 
 
 //-----------------------
