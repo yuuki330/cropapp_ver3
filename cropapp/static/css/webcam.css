@@ -18,7 +18,7 @@ html,body{
    position: relative;
    /* margin: 20px 0; */
    margin: 0 auto;
-   top: 400px;
+   top: 700px;
    }
    
    .btn-group{
@@ -64,7 +64,6 @@ html,body{
    #faceCanvas{
    /* margin: 0 20px 0 0; */
    margin: 0 auto;
-   top: 500px;
    background-color:#555;
    }
    
