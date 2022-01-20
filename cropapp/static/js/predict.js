@@ -38,7 +38,7 @@ $("#camera1").click(function(){
   // console.log(clientRect.top);
 
   // setInterval(predict, 1000/30);
-  setInterval(predict, 400);
+  setInterval(predict, 500);
 });
 
 //-----------------------
@@ -55,7 +55,7 @@ $("#camera2").click(function(){
   // console.log(clientRect.top);
 
   // setInterval(predict, 1000/30);
-  setInterval(predict, 400);
+  setInterval(predict, 500);
 });
 
 //-----------------------
