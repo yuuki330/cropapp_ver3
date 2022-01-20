@@ -2,14 +2,104 @@ const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'
 var MODEL_HEIGHT = 1;
 var MODEL_WIDTH = 1;
 
+var video = document.getElementById("main-stream-video");
+const resolution = { w: 1080, h: 720 };
+var canvas = document.getElementById("main-stream-canvas");
+var ctx = canvas.getContext('2d');
+var deviceid;
+
+var clientRect = video.getBoundingClientRect();
+var x = window.pageXOffset + clientRect.left;
+var y = window.pageYOffset + clientRect.top;
+
+// var sw = window.parent.screen.width;
+// var sh = window.parent.screen.height;
+// var x = Math.floor( 640 * sw / sh );
+// $('#video-container').css( { width: x } );
+
+// 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
+// navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
+  // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
+  // var videoSroucesArray = sourcesInfo.filter(function(elem) {
+      // return elem.kind == 'videoinput';
+  // });
+  // console.log(videoSroucesArray[0]["deviceId"]);
+  // deviceid = videoSroucesArray[0]["deviceId"];
+// });
+
 //-----------------------
 // start button event
 //-----------------------
 
 $("#start-button").click(function(){
 	loadModel() ;
-	startWebcam();
+
+  // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
+  navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
+  // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
+  var videoSroucesArray = sourcesInfo.filter(function(elem) {
+      return elem.kind == 'videoinput';
+  });
+  // console.log(videoSroucesArray[0]["deviceId"]);
+  deviceid = videoSroucesArray[0]["deviceId"];
 });
+
+	startWebcam();
+
+  video.style.display = 'none';
+  canvas.style.left = `${x}px`;
+  canvas.style.top = `${y}px`;
+  console.log(clientRect.left);
+  console.log(clientRect.top);
+  setInterval(predict, 400);
+});
+
+//-----------------------
+// predict button event
+//-----------------------
+
+$("#predict-button").click(function(){
+	// setInterval(predict, 1000/10);
+  // var btn1 = document.getElementsByClassName("container-b")[0];
+  // var clientRect1 = btn1.getBoundingClientRect();
+  // var x1 = window.pageXOffset + clientRect1.left;
+  // var y1 = window.pageYOffset + clientRect1.top;
+  // console.log(`${x1}px`);
+  // console.log(`${y1}px`);
+  // btn1.style.position = "absolute";
+  // btn1.style.left = `${x1}px`;
+  // btn1.style.top = `${y1}px`;
+
+	loadModel() ;
+
+  // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
+  navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
+  // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
+    var videoSroucesArray = sourcesInfo.filter(function(elem) {
+      return elem.kind == 'videoinput';
+    });
+  // console.log(videoSroucesArray[1]["deviceId"]);
+    deviceid = videoSroucesArray[1]["deviceId"];
+  });
+
+	startWebcam();
+
+  video.style.display = 'none';
+  canvas.style.left = `${x}px`;
+  canvas.style.top = `${y}px`;
+  console.log(clientRect.left);
+  console.log(clientRect.top);
+  setInterval(predict, 400);
+});
+
+//-----------------------
+// clear button event
+//-----------------------
+
+$("#clear-button").click(function clear() {
+	location.reload();
+});
+
 
 //-----------------------
 // load model
@@ -30,29 +120,6 @@ async function loadModel() {
 // start webcam 
 //-----------------------
 
-// var video;
-// var video = document.createElement("video");
-var video = document.getElementById("main-stream-video");
-const resolution = { w: 1080, h: 720 };
-var canvas = document.getElementById("main-stream-canvas");
-var ctx = canvas.getContext('2d');
-var deviceid;
-
-var sw = window.parent.screen.width;
-var sh = window.parent.screen.height;
-var x = Math.floor( 640 * sw / sh );
-$('#video-container').css( { width: x } );
-
-// 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
-navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
-  // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
-  var videoSroucesArray = sourcesInfo.filter(function(elem) {
-      return elem.kind == 'videoinput';
-  });
-  console.log(videoSroucesArray[0]["deviceId"]);
-  deviceid = videoSroucesArray[0]["deviceId"];
-});
-
 function startWebcam() {
 	console.log("video streaming start.");
 	$("#console").html(`<li>video streaming start.</li>`);
@@ -69,31 +136,6 @@ function startWebcam() {
   });
 }
 
-//-----------------------
-// predict button event
-//-----------------------
-
-$("#predict-button").click(function(){
-	// setInterval(predict, 1000/10);
-  // var btn1 = document.getElementsByClassName("container-b")[0];
-  // var clientRect1 = btn1.getBoundingClientRect();
-  // var x1 = window.pageXOffset + clientRect1.left;
-  // var y1 = window.pageYOffset + clientRect1.top;
-  // console.log(`${x1}px`);
-  // console.log(`${y1}px`);
-  // btn1.style.position = "absolute";
-  // btn1.style.left = `${x1}px`;
-  // btn1.style.top = `${y1}px`;
-  var clientRect = video.getBoundingClientRect();
-  var x = window.pageXOffset + clientRect.left;
-  var y = window.pageYOffset + clientRect.top;
-  video.style.display = 'none';
-  canvas.style.left = `${x}px`;
-  canvas.style.top = `${y}px`;
-  console.log(clientRect.left);
-  console.log(clientRect.top);
-  setInterval(predict, 400);
-});
 
 //-----------------------
 // TensorFlow.js method
@@ -370,11 +412,3 @@ function preprocessImage(image){
   imageTensor = imageTensor.transpose([0, 3, 1, 2]);
   return imageTensor;
 }
-
-//-----------------------
-// clear button event
-//-----------------------
-
-$("#clear-button").click(function clear() {
-	location.reload();
-});
