@@ -13,14 +13,9 @@ html,body{
    #title small{
    font-size: 80%;
    }
-   
-   .feature{
-    position: relative;
-    top: 540px;
-    }
 
    .container-b{
-   position: absolute;
+   position: relative;
    /* margin: 20px 0; */
    margin: 0 auto;
    }

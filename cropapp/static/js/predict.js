@@ -46,7 +46,7 @@ $("#start-button").click(function(){
 
 	startWebcam();
 
-  video.style.display = 'none';
+  // video.style.display = 'none';
   canvas.style.left = `${x}px`;
   canvas.style.top = `${y}px`;
   console.log(clientRect.left);
@@ -84,7 +84,7 @@ $("#predict-button").click(function(){
 
 	startWebcam();
 
-  video.style.display = 'none';
+  // video.style.display = 'none';
   canvas.style.left = `${x}px`;
   canvas.style.top = `${y}px`;
   console.log(clientRect.left);
