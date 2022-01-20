@@ -1,6 +1,6 @@
 // const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'}
-// var MODEL_HEIGHT = 1;
-// var MODEL_WIDTH = 1;
+var MODEL_HEIGHT = 1;
+var MODEL_WIDTH = 1;
 
 var video = document.getElementById("main-stream-video");
 // const resolution = { w: 1080, h: 720 };
@@ -31,7 +31,7 @@ loadModel() ;
 $("#camera1").click(function(){
 	startWebcam1();
 
-  video.style.display = 'none';
+  // video.style.display = 'none';
   canvas.style.left = `${x}px`;
   canvas.style.top = `${y}px`;
   // console.log(clientRect.left);
@@ -48,7 +48,7 @@ $("#camera1").click(function(){
 $("#camera2").click(function(){
 	startWebcam2();
 
-  video.style.display = 'none';
+  // video.style.display = 'none';
   canvas.style.left = `${x}px`;
   canvas.style.top = `${y}px`;
   // console.log(clientRect.left);
@@ -77,8 +77,8 @@ async function loadModel() {
 	$("#console").html(`<li>model loading...</li>`);
 	model=await tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/tfjs/model.json`);
 	console.log("model loaded.");
-  // MODEL_HEIGHT  = model.inputs[0].shape[2];
-  // MODEL_WIDTH  = model.inputs[0].shape[3];
+  MODEL_HEIGHT  = model.inputs[0].shape[2];
+  MODEL_WIDTH  = model.inputs[0].shape[3];
 	$("#console").html(`<li>tomato_color trained model loaded.</li>`);
 };
 
