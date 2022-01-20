@@ -15,12 +15,12 @@ html,body{
    }
    
    .feature{
-    position: absolute;
+    position: relative;
     top: 540px;
     }
 
    .container-b{
-   position: relative;
+   position: absolute;
    /* margin: 20px 0; */
    margin: 0 auto;
    }
