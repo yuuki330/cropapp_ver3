@@ -36,7 +36,7 @@ $("#camera1").click(function(){
   canvas.style.top = `${y}px`;
   console.log(clientRect.left);
   console.log(clientRect.top);
-  setInterval(predict, 400);
+  setInterval(predict, 1000/60);
 });
 
 //-----------------------
@@ -74,7 +74,7 @@ $("#camera2").click(function(){
   canvas.style.top = `${y}px`;
   console.log(clientRect.left);
   console.log(clientRect.top);
-  setInterval(predict, 400);
+  setInterval(predict, 1000/60);
 });
 
 //-----------------------
