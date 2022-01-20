@@ -31,7 +31,7 @@ var y = window.pageYOffset + clientRect.top;
 // start button event
 //-----------------------
 
-$("#start-button").click(function(){
+$("#camera1").click(function(){
 	loadModel() ;
 
   // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
@@ -58,7 +58,7 @@ $("#start-button").click(function(){
 // predict button event
 //-----------------------
 
-$("#predict-button").click(function(){
+$("#camera2").click(function(){
 	// setInterval(predict, 1000/10);
   // var btn1 = document.getElementsByClassName("container-b")[0];
   // var clientRect1 = btn1.getBoundingClientRect();
