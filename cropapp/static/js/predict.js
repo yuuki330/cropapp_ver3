@@ -129,6 +129,8 @@ function startWebcam2() {
 
 async function predict(){
 	let tensor = captureWebcam();
+  var out = model.execute(imageTensor);
+  console.log(out);
   var output = model.executeAsync(imageTensor).then(output=> {
     const o0 = output[3].arraySync();
     const OBJECT_TH = 0.4;
