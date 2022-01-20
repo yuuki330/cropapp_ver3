@@ -99,7 +99,7 @@ $("#predict-button").click(function(){
   // btn1.style.top = `${y1}px`;
   var clientRect = video.getBoundingClientRect();
   var x = window.pageXOffset + clientRect.left;
-  var y = window.pageYOffset + clientRect.top + 200;
+  var y = window.pageYOffset + clientRect.top;
   // video.style.display = 'none';
   canvas.style.left = `${x}px`;
   canvas.style.top = `${y}px`;
