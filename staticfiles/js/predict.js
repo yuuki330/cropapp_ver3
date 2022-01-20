@@ -31,7 +31,7 @@ loadModel() ;
 $("#camera1").click(function(){
 	startWebcam1();
 
-  // video.style.display = 'none';
+  video.style.display = 'none';
   canvas.style.left = `${x}px`;
   canvas.style.top = `${y}px`;
   // console.log(clientRect.left);
@@ -48,7 +48,7 @@ $("#camera1").click(function(){
 $("#camera2").click(function(){
 	startWebcam2();
 
-  // video.style.display = 'none';
+  video.style.display = 'none';
   canvas.style.left = `${x}px`;
   canvas.style.top = `${y}px`;
   // console.log(clientRect.left);
