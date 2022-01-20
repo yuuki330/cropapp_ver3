@@ -27,6 +27,10 @@ html,body{
    margin: 0 auto;
    }
    
+   .btn-outline-dark{
+    width: 200px;
+   }
+
    .output{
    background-color:#555;
    color: #f6f6f6;

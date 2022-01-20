@@ -12,15 +12,8 @@ var clientRect = video.getBoundingClientRect();
 var x = window.pageXOffset + clientRect.left;
 var y = window.pageYOffset + clientRect.top;
 
-//-----------------------
-// start button event
-//-----------------------
-
-$("#camera1").click(function(){
-	loadModel() ;
-
-  // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
-  navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
+// 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
+navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
   // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
   var videoSroucesArray = sourcesInfo.filter(function(elem) {
       return elem.kind == 'videoinput';
@@ -29,14 +22,21 @@ $("#camera1").click(function(){
   deviceid = videoSroucesArray[0]["deviceId"];
 });
 
+//-----------------------
+// start button event
+//-----------------------
+
+$("#camera1").click(function(){
+	loadModel() ;
 	startWebcam1();
 
   video.style.display = 'none';
-  canvas.style.left = `${x}px`;
-  canvas.style.top = `${y}px`;
-  console.log(clientRect.left);
-  console.log(clientRect.top);
-  setInterval(predict, 1000/60);
+  // canvas.style.left = `${x}px`;
+  // canvas.style.top = `${y}px`;
+  // console.log(clientRect.left);
+  // console.log(clientRect.top);
+
+  setInterval(predict, 1000/30);
 });
 
 //-----------------------
@@ -44,37 +44,16 @@ $("#camera1").click(function(){
 //-----------------------
 
 $("#camera2").click(function(){
-	// setInterval(predict, 1000/10);
-  // var btn1 = document.getElementsByClassName("container-b")[0];
-  // var clientRect1 = btn1.getBoundingClientRect();
-  // var x1 = window.pageXOffset + clientRect1.left;
-  // var y1 = window.pageYOffset + clientRect1.top;
-  // console.log(`${x1}px`);
-  // console.log(`${y1}px`);
-  // btn1.style.position = "absolute";
-  // btn1.style.left = `${x1}px`;
-  // btn1.style.top = `${y1}px`;
-
 	loadModel() ;
-
-  // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
-  // navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
-  // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
-    // var videoSroucesArray = sourcesInfo.filter(function(elem) {
-      // return elem.kind == 'videoinput';
-    // });
-  // console.log(videoSroucesArray[1]["deviceId"]);
-    // deviceid = videoSroucesArray[1]["deviceId"];
-  // });
-
 	startWebcam2();
 
   video.style.display = 'none';
-  canvas.style.left = `${x}px`;
-  canvas.style.top = `${y}px`;
-  console.log(clientRect.left);
-  console.log(clientRect.top);
-  setInterval(predict, 1000/100);
+  // canvas.style.left = `${x}px`;
+  // canvas.style.top = `${y}px`;
+  // console.log(clientRect.left);
+  // console.log(clientRect.top);
+
+  setInterval(predict, 1000/30);
 });
 
 //-----------------------
@@ -113,9 +92,9 @@ function startWebcam1() {
   media = navigator.mediaDevices.getUserMedia({
     audio: false,
     video: {
-    deviceId: deviceid,
-      // width: { ideal: resolution.w },
-      // height: { ideal: resolution.h }
+      deviceId: deviceid,
+      width: { ideal: resolution.w },
+      height: { ideal: resolution.h }
     }
   }).then(function(stream) {
     video.srcObject = stream;
@@ -130,7 +109,9 @@ function startWebcam2() {
   media = navigator.mediaDevices.getUserMedia({
     audio: false,
     video: {
-      facingMode: "environment"
+      facingMode: "environment",
+      width: { ideal: resolution.w },
+      height: { ideal: resolution.h }
     }
   }).then(function(stream) {
     video.srcObject = stream;
@@ -152,7 +133,6 @@ async function predict(){
     const IOU_TH = 0.5;
     const bairitu_w = video.width/640;
     const bairitu_h = video.height/640;
-    // console.log(o0);
 
     let a=0;
 
@@ -238,13 +218,11 @@ async function predict(){
         }
     }
 
-    // list.sort(function(a,b){return(a[4] - b[4]);});
     list1.sort(function(a,b){return(a[4] - b[4]);});
     list2.sort(function(a,b){return(a[4] - b[4]);});
     list3.sort(function(a,b){return(a[4] - b[4]);});
     list4.sort(function(a,b){return(a[4] - b[4]);});
     list5.sort(function(a,b){return(a[4] - b[4]);});
-    // console.log(list);
     
     var text = document.createElement('p');
     ctx.font = '32px serif';
@@ -406,8 +384,6 @@ function captureWebcam() {
 //-----------------------
 
 function preprocessImage(image){
-	// let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([100,100]).toFloat();
-  // let tensor = tf.browser.fromPixels(image).resizeNearestNeighbor([640,640]).toFloat();	
 	let tensor = tf.browser.fromPixels(image, 3).resizeBilinear([MODEL_HEIGHT,MODEL_WIDTH]).toFloat();	
   let offset = tf.scalar(255);
   imageTensor = tensor.div(offset).expandDims(0);
