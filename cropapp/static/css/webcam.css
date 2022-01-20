@@ -14,6 +14,11 @@ html,body{
    font-size: 80%;
    }
    
+   .feature{
+    position: absolute;
+    top: 540px;
+    }
+
    .container-b{
    position: relative;
    /* margin: 20px 0; */
@@ -23,7 +28,7 @@ html,body{
    .btn-group{
    /* margin-right: 10px; */
    /* text-align:center; */
-   margin: 540 auto;
+   margin: 0 auto;
    }
    
    .output{
