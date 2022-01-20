@@ -56,19 +56,6 @@ navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
 function startWebcam() {
 	console.log("video streaming start.");
 	$("#console").html(`<li>video streaming start.</li>`);
-
-  // media = navigator.mediaDevices.getUserMedia({
-  //   audio: false,
-  //   video: {
-  //   facingMode:{
-  //     exact: "environment"
-  //   },
-  //     width: { ideal: resolution.w },
-  //     height: { ideal: resolution.h }
-  //   }
-  // }).then(function(stream) {
-  //   video.srcObject = stream;
-  // });
   
   media = navigator.mediaDevices.getUserMedia({
     audio: false,
@@ -100,7 +87,7 @@ $("#predict-button").click(function(){
   var clientRect = video.getBoundingClientRect();
   var x = window.pageXOffset + clientRect.left;
   var y = window.pageYOffset + clientRect.top;
-  // video.style.display = 'none';
+  video.style.display = 'none';
   canvas.style.left = `${x}px`;
   canvas.style.top = `${y}px`;
   console.log(clientRect.left);
