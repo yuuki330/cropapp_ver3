@@ -22,12 +22,13 @@ navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
   deviceid = videoSroucesArray[0]["deviceId"];
 });
 
+loadModel() ;
+
 //-----------------------
 // start button event
 //-----------------------
 
 $("#camera1").click(function(){
-	loadModel() ;
 	startWebcam1();
 
   video.style.display = 'none';
@@ -44,7 +45,6 @@ $("#camera1").click(function(){
 //-----------------------
 
 $("#camera2").click(function(){
-	loadModel() ;
 	startWebcam2();
 
   video.style.display = 'none';
