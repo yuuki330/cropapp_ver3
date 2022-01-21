@@ -39,10 +39,10 @@ $("#camera1").click(function(){
   // setInterval(predict, 500);
   setInterval(() => {
     if (canvas && ctx){
-        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+        ctx.drawImage(video, 0, 0, video.width, video.height);
         ctx.scale(1,1);
     }
-  }, 10000/30);
+  }, 10000/60);
 });
 
 
