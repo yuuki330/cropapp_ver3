@@ -38,7 +38,8 @@ $("#camera1").click(function(){
   // console.log(clientRect.top);
 
   // setInterval(predict, 1000/30);
-  setInterval(predict, 500);
+  // setInterval(predict, 500);
+  setInterval(ctx.drawImage(video, 0, 0, 640, 640), 500);
 });
 
 //-----------------------
@@ -53,7 +54,7 @@ $("#camera2").click(function(){
   canvas.style.top = `${y}px`;
 
   // setInterval(predict, 1000/30);
-  setInterval(ctx.drawImage(video, 0, 0, 640, 640), 500);
+  setInterval(predict, 500);
 });
 
 //-----------------------
