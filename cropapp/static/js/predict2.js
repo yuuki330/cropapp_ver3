@@ -42,7 +42,7 @@ async function main() {
     // 1フレームごとに呼び出される処理
     function tick() {
       // カメラの映像をCanvasに描画する
-      offscreenCtx.drawImage(video, 0, 0);
+    //   offscreenCtx.drawImage(video, 0, 0);
       offscreenCtx.drawImage(video, 0, 0, 640, 640);
 
       predict();
