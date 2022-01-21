@@ -50,6 +50,7 @@ async function main() {
       offscreenCtx.putImageData(imageData, 0, 0);
   
       // 表示用Canvasに描画する
+      ctx.strokeRect(video.videoWidth/2, video.videoHeight/2, 640, 640);
       ctx.drawImage(offscreen, 0, 0);
   
       // 次フレームを処理する
