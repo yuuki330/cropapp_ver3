@@ -4,7 +4,11 @@ var MODEL_WIDTH = 1;
 
 var video = document.getElementById("main-stream-video");
 // const resolution = { w: 1080, h: 720 };
-var canvas = document.getElementById("main-stream-canvas");
+// var canvas_hide = document.getElementById("main-stream-canvas");
+// var ctx = canvas.getContext('2d');
+var new_canvas = document.createElement("canvas");
+document.body.appendChild(canvas);
+var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext('2d');
 var deviceid;
 
