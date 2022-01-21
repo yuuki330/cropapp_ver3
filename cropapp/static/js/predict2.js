@@ -17,10 +17,6 @@ async function main() {
     // カメラから映像を取得するためのvideo要素
     const video = document.createElement("video");
     video.setAttribute('playsinline', "");
-    console.log(video.videoWidth);
-    console.log(video.videoHeight);
-    cut_x = (video.videoWidth/2)-100;
-    cut_y = (video.videoHeight/2)-100;
   
     const stream = await navigator.mediaDevices.getUserMedia({
       video: true
@@ -34,6 +30,10 @@ async function main() {
       // Canvasのサイズを映像に合わせる
       canvas.width = offscreen.width = video.videoWidth;
       canvas.height = offscreen.height = video.videoHeight;
+      console.log(video.videoWidth);
+      console.log(video.videoHeight);
+      cut_x = (video.videoWidth/2)-100;
+      cut_y = (video.videoHeight/2)-100;
   
       tick();
     };
