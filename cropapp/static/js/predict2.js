@@ -23,6 +23,7 @@ async function main() {
     });
   
     video.srcObject = stream;
+
     // streamの読み込み完了
     video.onloadedmetadata = () => {
       video.play();
@@ -30,10 +31,10 @@ async function main() {
       // Canvasのサイズを映像に合わせる
       canvas.width = offscreen.width = video.videoWidth;
       canvas.height = offscreen.height = video.videoHeight;
-      cut_x = (video.videoWidth/2)-100;
-      cut_y = (video.videoHeight/2)-100;
-      console.log(video.videoWidth);
-      console.log(video.videoHeight);
+    //   cut_x = (video.videoWidth/2)-100;
+    //   cut_y = (video.videoHeight/2)-100;
+    //   console.log(video.videoWidth);
+    //   console.log(video.videoHeight);
   
       tick();
     };
@@ -43,15 +44,7 @@ async function main() {
       // カメラの映像をCanvasに描画する
       offscreenCtx.drawImage(video, 0, 0);
 
-    //   predict();
-  
-      // イメージデータを取得する（[r,g,b,a,r,g,b,a,...]のように1次元配列で取得できる）
-    //   const imageData = offscreenCtx.getImageData(0, 0, offscreen.width, offscreen.height);
-      // imageData.dataはreadonlyなのでfilterメソッドで直接書き換える
-    //   filter(imageData.data);
-  
-      // オフスクリーンCanvasを更新する
-    //   offscreenCtx.putImageData(imageData, 0, 0);
+      predict();
   
       // 表示用Canvasに描画する
       ctx.drawImage(offscreen, 0, 0);
@@ -63,7 +56,7 @@ async function main() {
 
     async function predict(){
         let tensor = captureWebcam();
-        var out = model.execute(imageTensor);
+        var out = model.execute(tensor);
         const o0 = out[3].arraySync();
         const OBJECT_TH = 0.4; // 物体検出の閾値
         const IOU_TH = 0.5; // ボックスの重なり具合閾値
@@ -300,7 +293,7 @@ async function main() {
     
 
     function captureWebcam() {
-        ctx.drawImage(video, cut_x, cut_y, 200, 200);
+        // ctx.drawImage(video, 0, 0, video.width, video.height);
         tensor_image = preprocessImage(canvas);
     
         return tensor_image;
