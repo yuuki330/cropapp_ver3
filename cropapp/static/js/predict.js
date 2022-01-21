@@ -2,8 +2,6 @@
 var MODEL_HEIGHT = 1;
 var MODEL_WIDTH = 1;
 
-document.addEventListener('DOMContentLoaded');
-
 var video = document.getElementById("main-stream-video");
 // const resolution = { w: 1080, h: 720 };
 // var canvas_hide = document.getElementById("main-stream-canvas");
