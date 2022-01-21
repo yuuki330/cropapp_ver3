@@ -36,13 +36,14 @@ $("#camera1").click(function(){
   canvas.style.top = `${y}px`;
 
   // setInterval(predict, 1000/30);
-  setInterval(predict, 500);
-  // setInterval(() => {
-  //   if (canvas && ctx){
-  //       ctx.drawImage(video, 0, 0, video.width, video.height);
-  //       ctx.scale(1,1);
-  //   }
-  // }, 1000/30);
+  // setInterval(predict, 500);
+  setInterval(() => {
+    if (canvas && ctx){
+        // ctx.drawImage(video, 0, 0, video.width, video.height);
+        ctx.drawImage(video, 0, 0, 640, 640);
+        ctx.scale(1,1);
+    }
+  }, 1000/30);
 });
 
 
