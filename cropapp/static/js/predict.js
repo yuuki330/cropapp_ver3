@@ -39,6 +39,8 @@ $("#camera1").click(function(){
   // video.style.display = 'none';
   canvas.style.left = `${x}px`;
   canvas.style.top = `${y}px`;
+  canvas_main.style.left = `${x}px`;
+  canvas_main.style.top = `${y}px`;
 
   // setInterval(predict, 1000/30);
   // setInterval(predict, 500);
@@ -51,6 +53,7 @@ $("#camera1").click(function(){
   }, 1000/30);
 
   ctx_main.strokeRect(center_x, center_y, 640, 640);
+  // ctx_main.strokeRect(0, 0, 640, 640);
   var canvasStream = canvas.captureStream(30);
   canvas_main.srcObject = canvasStream;
 });
