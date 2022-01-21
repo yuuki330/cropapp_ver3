@@ -39,8 +39,13 @@ $("#camera1").click(function(){
 
   // setInterval(predict, 1000/30);
   // setInterval(predict, 500);
-  setInterval(ctx.drawImage(video, 0, 0, 640, 640), 500);
+  setInterval(draw_canvas(), 1000/30);
 });
+
+function draw_canvas(){
+  ctx.drawImage(video, 0, 0, 640, 640);
+  ctx.fill();
+}
 
 //-----------------------
 // predict button event
