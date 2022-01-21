@@ -17,8 +17,10 @@ async function main() {
     // カメラから映像を取得するためのvideo要素
     const video = document.createElement("video");
     video.setAttribute('playsinline', "");
-    cut_x = (video.videoWidth/2)-160;
-    cut_y = (video.videoHeight/2)-160;
+    console.log(video.videoWidth/2);
+    console.log(video.videoHeight/2);
+    cut_x = (video.videoWidth/2)-100;
+    cut_y = (video.videoHeight/2)-100;
   
     const stream = await navigator.mediaDevices.getUserMedia({
       video: true
@@ -64,4 +66,14 @@ async function main() {
     }
   }
   
+//   function captureWebcam() {
+// 	canvas.width  = video.width;
+// 	canvas.height = video.height;
+
+//   ctx.drawImage(video, 0, 0, 640, 640);
+// 	tensor_image = preprocessImage(canvas);
+
+// 	return tensor_image;
+// }
+
   main();
