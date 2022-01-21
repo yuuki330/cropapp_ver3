@@ -1,5 +1,22 @@
+// 表示用のCanvas
+const canvas = document.getElementById("main-stream-canvas");
+const ctx = canvas.getContext("2d");
+// 画像処理用のオフスクリーンCanvas
+const offscreen = document.createElement("canvas");
+const offscreenCtx = offscreen.getContext("2d");
+// カメラから映像を取得するためのvideo要素
+const video = document.createElement("video");
+video.setAttribute('playsinline', "");
+
+const stream = await navigator.mediaDevices.getUserMedia({
+  video: true
+});
+
+video.srcObject = stream;
+let model;
+
+
 async function main() {
-    let model;
     console.log("model loading..");
 	$("#console").html(`<li>model loading...</li>`);
 	model=await tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/tfjs/model.json`);
@@ -7,22 +24,6 @@ async function main() {
     MODEL_HEIGHT  = model.inputs[0].shape[2];
     MODEL_WIDTH  = model.inputs[0].shape[3];
 	$("#console").html(`<li>tomato_color trained model loaded.</li>`);
-
-    // 表示用のCanvas
-    const canvas = document.getElementById("main-stream-canvas");
-    const ctx = canvas.getContext("2d");
-    // 画像処理用のオフスクリーンCanvas
-    const offscreen = document.createElement("canvas");
-    const offscreenCtx = offscreen.getContext("2d");
-    // カメラから映像を取得するためのvideo要素
-    const video = document.createElement("video");
-    video.setAttribute('playsinline', "");
-  
-    const stream = await navigator.mediaDevices.getUserMedia({
-      video: true
-    });
-  
-    video.srcObject = stream;
 
     // streamの読み込み完了
     video.onloadedmetadata = () => {
@@ -57,7 +58,7 @@ async function main() {
 
     async function predict(){
         let tensor = captureWebcam();
-        var out = model.execute(tensor);
+        var out = model.execute(imagetensor);
         const o0 = out[3].arraySync();
         const OBJECT_TH = 0.4; // 物体検出の閾値
         const IOU_TH = 0.5; // ボックスの重なり具合閾値
