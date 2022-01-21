@@ -52,10 +52,9 @@ $("#camera1").click(function(){
     }
   }, 1000/30);
 
-  ctx_main.strokeRect(center_x, center_y, 640, 640);
-  // ctx_main.strokeRect(0, 0, 640, 640);
   var canvasStream = canvas.captureStream(30);
   canvas_main.srcObject = canvasStream;
+  ctx_main.strokeRect(center_x, center_y, 640, 640);
 });
 
 
