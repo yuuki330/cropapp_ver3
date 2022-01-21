@@ -43,7 +43,7 @@ async function main() {
     function tick() {
       // カメラの映像をCanvasに描画する
       offscreenCtx.drawImage(video, 0, 0);
-
+      
       predict();
   
       // 表示用Canvasに描画する
@@ -294,7 +294,7 @@ async function main() {
 
     function captureWebcam() {
         // ctx.drawImage(video, 0, 0, video.width, video.height);
-        tensor_image = preprocessImage(canvas);
+        tensor_image = preprocessImage(offscreen);
     
         return tensor_image;
     }
