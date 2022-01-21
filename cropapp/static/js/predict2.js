@@ -17,6 +17,8 @@ async function main() {
     // カメラから映像を取得するためのvideo要素
     const video = document.createElement("video");
     video.setAttribute('playsinline', "");
+    cut_x = (video.videoWidth/2)-320;
+    cut_y = (video.videoHeight/2)-320;
   
     const stream = await navigator.mediaDevices.getUserMedia({
       video: true
@@ -51,7 +53,7 @@ async function main() {
   
       // 表示用Canvasに描画する
       ctx.drawImage(offscreen, 0, 0);
-      ctx.strokeRect(video.videoWidth/2, video.videoHeight/2, 640, 640);
+      ctx.strokeRect(cut_x, cut_y, 640, 640);
   
       // 次フレームを処理する
       window.requestAnimationFrame(tick);
