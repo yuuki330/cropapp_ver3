@@ -34,18 +34,16 @@ $("#camera1").click(function(){
   // video.style.display = 'none';
   canvas.style.left = `${x}px`;
   canvas.style.top = `${y}px`;
-  // console.log(clientRect.left);
-  // console.log(clientRect.top);
 
   // setInterval(predict, 1000/30);
   // setInterval(predict, 500);
-  setInterval(draw_canvas(), 1000/30);
+  setInterval(() => {
+    if (canvas && ctx){
+        ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
+    }
+  }, 10000/30);
 });
 
-function draw_canvas(){
-  ctx.drawImage(video, 0, 0, 640, 640);
-  ctx.fill();
-}
 
 //-----------------------
 // predict button event
