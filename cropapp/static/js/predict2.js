@@ -7,6 +7,7 @@ async function main() {
     const offscreenCtx = offscreen.getContext("2d");
     // カメラから映像を取得するためのvideo要素
     const video = document.createElement("video");
+    video.setAttribute('playsinline', "");
   
     const stream = await navigator.mediaDevices.getUserMedia({
       video: true
@@ -28,6 +29,8 @@ async function main() {
     function tick() {
       // カメラの映像をCanvasに描画する
       offscreenCtx.drawImage(video, 0, 0);
+
+      predict();
   
       // イメージデータを取得する（[r,g,b,a,r,g,b,a,...]のように1次元配列で取得できる）
       const imageData = offscreenCtx.getImageData(0, 0, offscreen.width, offscreen.height);
