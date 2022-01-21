@@ -13,8 +13,9 @@ var deviceid;
 var clientRect = video.getBoundingClientRect();
 var x = window.pageXOffset + clientRect.left;
 var y = window.pageYOffset + clientRect.top;
-console.log(x);
-console.log(y);
+
+var center_x = video.width/2;
+var center_y = video.height/2; 
 
 // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
 navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
@@ -48,6 +49,8 @@ $("#camera1").click(function(){
         // ctx.scale(1,1);
     }
   }, 1000/30);
+
+  ctx.strokeRect(center_x, center_y, 640, 640);
   var canvasStream = canvas.captureStream(30);
   canvas_main.srcObject = canvasStream;
 });
