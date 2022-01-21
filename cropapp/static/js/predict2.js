@@ -17,8 +17,8 @@ async function main() {
     // カメラから映像を取得するためのvideo要素
     const video = document.createElement("video");
     video.setAttribute('playsinline', "");
-    cut_x = (video.videoWidth/2)-320;
-    cut_y = (video.videoHeight/2)-320;
+    cut_x = (video.videoWidth/2)-160;
+    cut_y = (video.videoHeight/2)-160;
   
     const stream = await navigator.mediaDevices.getUserMedia({
       video: true
