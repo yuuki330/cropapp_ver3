@@ -43,7 +43,7 @@ async function main() {
     function tick() {
       // カメラの映像をCanvasに描画する
       offscreenCtx.drawImage(video, 0, 0);
-      
+
       predict();
   
       // 表示用Canvasに描画する
@@ -154,14 +154,14 @@ async function main() {
         list5.sort(function(a,b){return(a[4] - b[4]);});
         
         var text = document.createElement('p');
-        ctx.font = '32px serif';
+        offscreenCtx.font = '32px serif';
         var x;
         var y;
 
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = "rgb(255, 0, 0)";
-        ctx.textBaseline = 'center';
-        ctx.textAlign = 'center';
+        offscreenCtx.lineWidth = 5;
+        offscreenCtx.strokeStyle = "rgb(255, 0, 0)";
+        offscreenCtx.textBaseline = 'center';
+        offscreenCtx.textAlign = 'center';
         text.value = "Level_1"
 
         for (let i = 0; i < list1.length; i++) {
@@ -173,18 +173,18 @@ async function main() {
                     break;
                 }
             }
-            ctx.fillStyle = "rgb(0, 255, 255)";
+            offscreenCtx.fillStyle = "rgb(0, 255, 255)";
             if(aa==0) {
                 x = list1[i][0] + 50;
                 y = list1[i][1] - 10;
-                ctx.fillText(text.value, x, y);
-                ctx.strokeRect(list1[i][0], list1[i][1], list1[i][2], list1[i][3]);
+                offscreenCtx.fillText(text.value, x, y);
+                offscreenCtx.strokeRect(list1[i][0], list1[i][1], list1[i][2], list1[i][3]);
                 console.log("1");
             }
         }
         
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = "rgb(255, 102, 153)";
+        offscreenCtx.lineWidth = 5;
+        offscreenCtx.strokeStyle = "rgb(255, 102, 153)";
         text.value = "Level_2"
 
         for (let i = 0; i < list2.length; i++) {
@@ -196,18 +196,18 @@ async function main() {
                     break;
                 }
             }
-            ctx.fillStyle = "rgb(0, 255, 255)";
+            offscreenCtx.fillStyle = "rgb(0, 255, 255)";
             if(aa==0) {
                 x = list2[i][0] + 50;
-            y = list2[i][1] - 10;
-                ctx.fillText(text.value, x, y);
-                ctx.strokeRect(list2[i][0], list2[i][1], list2[i][2], list2[i][3]);
+                y = list2[i][1] - 10;
+                offscreenCtx.fillText(text.value, x, y);
+                offscreenCtx.strokeRect(list2[i][0], list2[i][1], list2[i][2], list2[i][3]);
                 console.log("2");
             }
         }
 
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = "rgb(255, 51, 0)";
+        offscreenCtx.lineWidth = 5;
+        offscreenCtx.strokeStyle = "rgb(255, 51, 0)";
         text.value = "Level_3"
 
         for (let i = 0; i < list3.length; i++) {
@@ -219,18 +219,18 @@ async function main() {
                     break;
                 }
             }
-            ctx.fillStyle = "rgb(0, 255, 255)";
+            offscreenCtx.fillStyle = "rgb(0, 255, 255)";
             if(aa==0) {
                 x = list3[i][0] + 50;
-            y = list3[i][1] - 10;
-                ctx.fillText(text.value, x, y);
-                ctx.strokeRect(list3[i][0], list3[i][1], list3[i][2], list3[i][3]);
+                y = list3[i][1] - 10;
+                offscreenCtx.fillText(text.value, x, y);
+                offscreenCtx.strokeRect(list3[i][0], list3[i][1], list3[i][2], list3[i][3]);
                 console.log("3");
             }
         }
 
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = "rgb(153, 255, 0)";
+        offscreenCtx.lineWidth = 5;
+        offscreenCtx.strokeStyle = "rgb(153, 255, 0)";
         text.value = "Level_4"
 
         for (let i = 0; i < list4.length; i++) {
@@ -242,18 +242,18 @@ async function main() {
                     break;
                 }
             }
-            ctx.fillStyle = "rgb(0, 255, 255)";
+            offscreenCtx.fillStyle = "rgb(0, 255, 255)";
             if(aa==0) {
                 x = list4[i][0] + 50;
-            y = list4[i][1] - 10;
-                ctx.fillText(text.value, x, y);
-                ctx.strokeRect(list4[i][0], list4[i][1], list4[i][2], list4[i][3]);
+                y = list4[i][1] - 10;
+                offscreenCtx.fillText(text.value, x, y);
+                offscreenCtx.strokeRect(list4[i][0], list4[i][1], list4[i][2], list4[i][3]);
                 console.log("4");
             }
         }
 
-        ctx.lineWidth = 5;
-        ctx.strokeStyle = "rgb(0, 0, 255)";
+        offscreenCtx.lineWidth = 5;
+        offscreenCtx.strokeStyle = "rgb(0, 0, 255)";
         text.value = "Level_5"
 
         for (let i = 0; i < list5.length; i++) {
@@ -265,12 +265,12 @@ async function main() {
                     break;
                 }
             }
-            ctx.fillStyle = "rgb(0, 255, 255)";
+            offscreenCtx.fillStyle = "rgb(0, 255, 255)";
             if(aa==0) {
                 x = list5[i][0] + 50;
-            y = list5[i][1] - 10;
-                ctx.fillText(text.value, x, y);
-                ctx.strokeRect(list5[i][0], list5[i][1], list5[i][2], list5[i][3]);
+                y = list5[i][1] - 10;
+                offscreenCtx.fillText(text.value, x, y);
+                offscreenCtx.strokeRect(list5[i][0], list5[i][1], list5[i][2], list5[i][3]);
                 console.log("5");
             }
         }
