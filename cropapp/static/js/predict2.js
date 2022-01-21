@@ -30,10 +30,10 @@ async function main() {
       // Canvasのサイズを映像に合わせる
       canvas.width = offscreen.width = video.videoWidth;
       canvas.height = offscreen.height = video.videoHeight;
+      cut_x = (video.videoWidth/2)-50;
+      cut_y = (video.videoHeight/2)-50;
       console.log(video.videoWidth);
       console.log(video.videoHeight);
-      cut_x = (video.videoWidth/2)-320;
-      cut_y = (video.videoHeight/2)-320;
   
       tick();
     };
@@ -55,7 +55,7 @@ async function main() {
   
       // 表示用Canvasに描画する
       ctx.drawImage(offscreen, 0, 0);
-      ctx.strokeRect(cut_x, cut_y, 640, 640);
+      ctx.strokeRect(cut_x, cut_y, 100, 100);
   
       // 次フレームを処理する
       window.requestAnimationFrame(tick);
