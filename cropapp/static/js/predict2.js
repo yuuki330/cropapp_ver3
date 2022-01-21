@@ -32,8 +32,8 @@ async function main() {
       canvas.height = offscreen.height = video.videoHeight;
       console.log(video.videoWidth);
       console.log(video.videoHeight);
-      cut_x = (video.videoWidth/2)-100;
-      cut_y = (video.videoHeight/2)-100;
+      cut_x = (video.videoWidth/2)-320;
+      cut_y = (video.videoHeight/2)-320;
   
       tick();
     };
