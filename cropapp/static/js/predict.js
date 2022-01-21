@@ -40,10 +40,8 @@ $("#camera1").click(function(){
   setInterval(() => {
     if (canvas && ctx){
         // ctx.drawImage(video, 0, 0, video.width, video.height);
-        canvas.style.width = video.width;
-        canvas.style.height = video.height;
-        ctx.drawImage(video, 0, 0, 640, 640);
-        ctx.scale(1,1);
+        ctx.drawImage(video, 0, 0, window.innerWidth, window.innerHeight);
+        // ctx.scale(1,1);
     }
   }, 1000/30);
 });
