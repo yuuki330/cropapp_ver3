@@ -4,7 +4,7 @@ var MODEL_WIDTH = 1;
 
 var video = document.getElementById("main-stream-video");
 // const resolution = { w: 1080, h: 720 };
-// var canvas_hide = document.getElementById("main-stream-canvas");
+var canvas_main = document.getElementById("main-stream-canvas");
 // var ctx = canvas.getContext('2d');
 var canvas = document.getElementById("hide_canvas");
 var ctx = canvas.getContext('2d');
@@ -13,6 +13,8 @@ var deviceid;
 var clientRect = video.getBoundingClientRect();
 var x = window.pageXOffset + clientRect.left;
 var y = window.pageYOffset + clientRect.top;
+console.log(x);
+console.log(y);
 
 // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
 navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
@@ -46,6 +48,8 @@ $("#camera1").click(function(){
         // ctx.scale(1,1);
     }
   }, 1000/30);
+  var canvasStream = canvas.captureStream(30);
+  canvas_main.srcObject = canvasStream;
 });
 
 
