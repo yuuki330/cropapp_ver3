@@ -6,6 +6,8 @@ var video = document.getElementById("main-stream-video");
 // const resolution = { w: 1080, h: 720 };
 // var canvas_hide = document.getElementById("main-stream-canvas");
 // var ctx = canvas.getContext('2d');
+
+document.addEventListener('DOMContentLoaded');
 var new_canvas = document.createElement("canvas");
 new_canvas.setAttribute('id', 'canvas_1')
 var canvas = document.getElementById("canvas_1");
