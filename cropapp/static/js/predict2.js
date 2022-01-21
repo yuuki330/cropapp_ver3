@@ -1,4 +1,13 @@
 async function main() {
+    let model;
+    console.log("model loading..");
+	$("#console").html(`<li>model loading...</li>`);
+	model=await tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/tfjs/model.json`);
+	console.log("model loaded.");
+    MODEL_HEIGHT  = model.inputs[0].shape[2];
+    MODEL_WIDTH  = model.inputs[0].shape[3];
+	$("#console").html(`<li>tomato_color trained model loaded.</li>`);
+
     // 表示用のCanvas
     const canvas = document.getElementById("main-stream-canvas");
     const ctx = canvas.getContext("2d");
@@ -30,7 +39,7 @@ async function main() {
       // カメラの映像をCanvasに描画する
       offscreenCtx.drawImage(video, 0, 0);
 
-      predict();
+    //   predict();
   
       // イメージデータを取得する（[r,g,b,a,r,g,b,a,...]のように1次元配列で取得できる）
       const imageData = offscreenCtx.getImageData(0, 0, offscreen.width, offscreen.height);
