@@ -5,7 +5,7 @@ var MODEL_WIDTH = 1;
 var video = document.getElementById("main-stream-video");
 // const resolution = { w: 1080, h: 720 };
 var canvas_main = document.getElementById("main-stream-canvas");
-// var ctx = canvas.getContext('2d');
+var ctx_main = canvas_main.getContext('2d');
 var canvas = document.getElementById("hide_canvas");
 var ctx = canvas.getContext('2d');
 var deviceid;
@@ -50,7 +50,7 @@ $("#camera1").click(function(){
     }
   }, 1000/30);
 
-  ctx.strokeRect(center_x, center_y, 640, 640);
+  ctx_main.strokeRect(center_x, center_y, 640, 640);
   var canvasStream = canvas.captureStream(30);
   canvas_main.srcObject = canvasStream;
 });
