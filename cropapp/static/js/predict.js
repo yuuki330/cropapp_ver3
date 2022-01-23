@@ -34,7 +34,7 @@ $("#camera1").click(function(){
   canvas.style.top = `${y}px`;
 
   // setInterval(predict, 1000/30);
-  setInterval(predict, 500);
+  setInterval(captureWebcam, 500);
 });
 
 
@@ -50,7 +50,7 @@ $("#camera2").click(function(){
   canvas.style.top = `${y}px`;
 
   // setInterval(predict, 1000/30);
-  setInterval(captureWebcam, 500);
+  setInterval(predict, 500);
 });
 
 //-----------------------
