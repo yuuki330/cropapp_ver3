@@ -12,6 +12,10 @@ const stream = await navigator.mediaDevices.getUserMedia({
   video: true
 });
 
+const stream = navigator.mediaDevices.getUserMedia({
+    video: true
+  });
+
 video.srcObject = stream;
 let model;
 
