@@ -60,8 +60,11 @@ $("#camera2").click(function(){
 $("#clear-button").click(function clear() {
 	// location.reload();
   predict();
+  await sleep( 2000 );
 });
 
+
+const sleep = waitTime => new Promise( resolve => setTimeout(resolve, waitTime) );
 
 //-----------------------
 // load model
