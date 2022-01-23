@@ -1,9 +1,7 @@
-// const CLASSES = {0:'level_1', 1:'level_2', 2:'level_3', 3:'level_4', 4:'level_5'}
 var MODEL_HEIGHT = 1;
 var MODEL_WIDTH = 1;
 
 var video = document.getElementById("main-stream-video");
-// const resolution = { w: 1080, h: 720 };
 var canvas = document.getElementById("main-stream-canvas");
 var ctx = canvas.getContext('2d');
 var deviceid;
@@ -37,12 +35,6 @@ $("#camera1").click(function(){
 
   // setInterval(predict, 1000/30);
   setInterval(predict, 500);
-  // setInterval(() => {
-  //   if (canvas && ctx){
-  //       ctx.drawImage(video, 0, 0, video.width, video.height);
-  //       ctx.scale(1,1);
-  //   }
-  // }, 1000/30);
 });
 
 
@@ -58,7 +50,7 @@ $("#camera2").click(function(){
   canvas.style.top = `${y}px`;
 
   // setInterval(predict, 1000/30);
-  setInterval(predict, 500);
+  setInterval(captureWebcam, 500);
 });
 
 //-----------------------
@@ -66,7 +58,8 @@ $("#camera2").click(function(){
 //-----------------------
 
 $("#clear-button").click(function clear() {
-	location.reload();
+	// location.reload();
+  predict();
 });
 
 
@@ -98,8 +91,6 @@ function startWebcam1() {
     audio: false,
     video: {
       deviceId: deviceid,
-      // width: { ideal: resolution.w },
-      // height: { ideal: resolution.h }
     }
   }).then(function(stream) {
     video.srcObject = stream;
@@ -115,8 +106,6 @@ function startWebcam2() {
     audio: false,
     video: {
       facingMode: "environment",
-      // width: { ideal: resolution.w },
-      // height: { ideal: resolution.h }
     }
   }).then(function(stream) {
     video.srcObject = stream;
