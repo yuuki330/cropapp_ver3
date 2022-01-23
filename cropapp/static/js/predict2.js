@@ -8,13 +8,13 @@ const offscreenCtx = offscreen.getContext("2d");
 const video = document.createElement("video");
 video.setAttribute('playsinline', "");
 
-const stream = await navigator.mediaDevices.getUserMedia({
-  video: true
-});
+// const stream = await navigator.mediaDevices.getUserMedia({
+//   video: true
+// });
 
 const stream = navigator.mediaDevices.getUserMedia({
     video: true
-  });
+});
 
 video.srcObject = stream;
 let model;
@@ -23,7 +23,8 @@ let model;
 async function main() {
     console.log("model loading..");
 	$("#console").html(`<li>model loading...</li>`);
-	model=await tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/tfjs/model.json`);
+	// model=await tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/tfjs/model.json`);
+    model=tf.loadGraphModel(`https://raw.githubusercontent.com/yuuki330/tomato_model/master/tfjs/model.json`);
 	console.log("model loaded.");
     MODEL_HEIGHT  = model.inputs[0].shape[2];
     MODEL_WIDTH  = model.inputs[0].shape[3];
