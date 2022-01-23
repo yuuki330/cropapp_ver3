@@ -58,7 +58,7 @@ async function main() {
 
     async function predict(){
         let tensor = captureWebcam();
-        var out = model.execute(imagetensor);
+        var out = model.execute(tensor);
         const o0 = out[3].arraySync();
         const OBJECT_TH = 0.4; // 物体検出の閾値
         const IOU_TH = 0.5; // ボックスの重なり具合閾値
