@@ -60,7 +60,6 @@ $("#camera2").click(function(){
 $("#clear-button").click(function clear() {
 	// location.reload();
   predict();
-  await sleep( 2000 );
 });
 
 
@@ -342,6 +341,7 @@ async function predict(){
           console.log("5");
       }
   }
+  await sleep( 2000 );
 }
 
 function bbox_iou(box1, box2){
