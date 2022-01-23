@@ -8,7 +8,7 @@ const offscreenCtx = offscreen.getContext("2d");
 const video = document.createElement("video");
 video.setAttribute('playsinline', "");
 
-const stream = await navigator.mediaDevices.getUserMedia({
+const stream = navigator.mediaDevices.getUserMedia({
   video: true
 });
 
