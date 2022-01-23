@@ -55,7 +55,7 @@ async function main() {
   
       // 表示用Canvasに描画する
       ctx.drawImage(offscreen, 0, 0);
-      ctx.strokeRect(cut_x, cut_y, 200, 200);
+    //   ctx.strokeRect(cut_x, cut_y, 200, 200);
   
       // 次フレームを処理する
       window.requestAnimationFrame(tick);
