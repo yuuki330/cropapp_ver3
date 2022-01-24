@@ -1,11 +1,23 @@
 let net;
 const classifier = knnClassifier.create();
 var webcamElement = document.getElementById('webcam');
+
+// 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
+navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
+  // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
+  var videoSroucesArray = sourcesInfo.filter(function(elem) {
+      return elem.kind == 'videoinput';
+  });
+  // console.log(videoSroucesArray[0]["deviceId"]);
+  deviceid = videoSroucesArray[0]["deviceId"];
+});
+
 var constraints = {
   audio: false,
   video: {
       // スマホのバックカメラを使用
-      facingMode: 'environment'
+      // facingMode: 'environment'
+      deviceId = deviceid,
   }
 };
 //  カメラの映像を取得
@@ -27,7 +39,8 @@ async function app() {
 
   // Create an object from Tensorflow.js data API which could capture image
   // from the web camera as Tensor.
-  const webcam = await tf.data.webcam(webcamElement, facingMode='environment');
+  // const webcam = await tf.data.webcam(webcamElement, facingMode='environment');
+  const webcam = await tf.data.webcam(webcamElement, deviceId=deviceid);
 
   // Reads an image from the webcam and associates it with a specific class
   // index.
