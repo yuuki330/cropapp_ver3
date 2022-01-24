@@ -9,27 +9,18 @@ navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
   var videoSroucesArray = sourcesInfo.filter(function(elem) {
       return elem.kind == 'videoinput';
   });
-  // console.log(videoSroucesArray[0]["deviceId"]);
+  console.log(videoSroucesArray[0]["deviceId"]);
   deviceid = videoSroucesArray[0]["deviceId"];
 });
 
-var constraints = {
+media = navigator.mediaDevices.getUserMedia({
   audio: false,
   video: {
-      // スマホのバックカメラを使用
-      // facingMode: 'environment'
-      deviceId = deviceid,
+    deviceId: deviceid,
   }
-};
-//  カメラの映像を取得
-navigator.mediaDevices.getUserMedia(constraints)
-  .then((stream) => {
-      webcamElement.srcObject = stream;
-      app();
-  })
-  .catch((err) => {
-      window.alert(err.name + ': ' + err.message);
-  });
+}).then(function(stream) {
+  webcamElement.srcObject = stream;
+});
 
 async function app() {
   console.log('Loading mobilenet..');
