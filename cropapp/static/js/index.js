@@ -21,7 +21,6 @@ media = navigator.mediaDevices.getUserMedia({
   }
 }).then(function(stream) {
   webcamElement.srcObject = stream;
-  app();
 });
 
 async function app() {
@@ -126,3 +125,4 @@ async function load() {
  classifier.setClassifierDataset(tensorObj);
 }
 
+app();
