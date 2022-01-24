@@ -1,6 +1,14 @@
 let net;
 const classifier = knnClassifier.create();
 const webcamElement = document.getElementById('webcam');
+media = navigator.mediaDevices.getUserMedia({
+  audio: false,
+  video: {
+    facingMode: "environment",
+  }
+}).then(function(stream) {
+  webcamElement.srcObject = stream;
+});
 // const modelUrl = 'https://tfhub.dev/google/imagenet/mobilenet_v2_140_224/classification/2';
 
 async function app() {
