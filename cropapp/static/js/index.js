@@ -35,7 +35,7 @@ async function app() {
   document.getElementById('class-a').addEventListener('click', () => addExample(0));
   document.getElementById('class-b').addEventListener('click', () => addExample(1));
   document.getElementById('class-c').addEventListener('click', () => addExample(2));
-  document.getElementById('SAVE').addEventListener('click', () => save());
+  document.getElementById('SAVE').addEventListener('click', () => await save());
   // document.getElementById('LOAD').addEventListener('click', () => net.model=tf.loadGraphModel('indexeddb://my-model'));
 
   while (true) {
