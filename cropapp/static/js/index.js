@@ -55,6 +55,7 @@ async function app() {
     }
 
     await tf.nextFrame();
+    await net.save('localstorage://my-model');
   }
 }
 
