@@ -1,10 +1,15 @@
+.console{
+    text-align: center;
+}
+
 #result{
-    margin: 0 auto;
+    /* margin: 0 auto; */
     font-size: 48px;
     color: rgb(0, 255, 255);
 }
 
 #webcam{
+    display: block;
     margin: 0 auto;
 }
 
@@ -12,7 +17,7 @@
     /* display: inline-flex;
     flex-direction: column;
     align-items: start; */
-    display: block;
+    /* display: block; */
     margin: 0 auto;
 }
 
@@ -22,6 +27,7 @@
 
 .btn-outline-dark{
     /* margin: 0 auto; */
+    display: block;
     color: #fff;
     background-color: #eb6100;
     border-radius: 100vh;
