@@ -1,0 +1,13 @@
+.btn-group{
+    margin: 0 auto;
+}
+    
+.btn-outline-dark{
+    color: #fff;
+    background-color: #eb6100;
+    border-radius: 100vh;
+    width: 300px;
+    height: 100px;
+    font-size: 32px;
+}
+    

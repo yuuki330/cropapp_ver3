@@ -1,16 +1,21 @@
 let net;
 const classifier = knnClassifier.create();
-const webcamElement = document.getElementById('webcam');
-navigator.mediaDevices
-  .getUserMedia({video: {
-      facingMode: {
-        exact: "environment"
-      }
-    }})
-  .then(stream => {
-    webcamElement.srcObject = stream;
+var webcamElement = document.getElementById('webcam');
+var constraints = {
+  audio: false,
+  video: {
+      // スマホのバックカメラを使用
+      facingMode: 'environment'
+  }
+};
+//  カメラの映像を取得
+navigator.mediaDevices.getUserMedia(constraints)
+  .then((stream) => {
+      webcamElement.srcObject = stream;
   })
-  .catch(e => alert("error" + e.message));
+  .catch((err) => {
+      window.alert(err.name + ': ' + err.message);
+  });
 
 async function app() {
   console.log('Loading mobilenet..');
