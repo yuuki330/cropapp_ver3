@@ -10,6 +10,7 @@ async function app() {
   net = await mobilenet.load();
   // const model = await tf.loadGraphModel(modelUrl, {fromTFHub: true}
   console.log('Successfully loaded model');
+  console.log(net)
 
   // Create an object from Tensorflow.js data API which could capture image
   // from the web camera as Tensor.
