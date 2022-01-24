@@ -8,12 +8,7 @@ async function app() {
 
   // Load the model.
   net = await mobilenet.load();
-  net1 = net.model;
-  console.log(net1);
-  // const model = await tf.loadGraphModel(modelUrl, {fromTFHub: true}
   console.log('Successfully loaded model');
-  console.log(net);
-  // await net1.save('indexeddb://my-model');
 
   // Create an object from Tensorflow.js data API which could capture image
   // from the web camera as Tensor.
@@ -40,8 +35,8 @@ async function app() {
   document.getElementById('class-a').addEventListener('click', () => addExample(0));
   document.getElementById('class-b').addEventListener('click', () => addExample(1));
   document.getElementById('class-c').addEventListener('click', () => addExample(2));
-  document.getElementById('SAVE').addEventListener('click', () => net1.save('indexeddb://my-model'));
-  document.getElementById('LOAD').addEventListener('click', () => net.model=tf.loadGraphModel('indexeddb://my-model'));
+  document.getElementById('SAVE').addEventListener('click', () => save());
+  // document.getElementById('LOAD').addEventListener('click', () => net.model=tf.loadGraphModel('indexeddb://my-model'));
 
   while (true) {
     if (classifier.getNumClasses() > 0) {
@@ -65,6 +60,23 @@ async function app() {
     await tf.nextFrame();
     // await model.save('localstorage://my-model');
   }
+};
+
+
+//save and load function
+async function save(){
+  let dataset = classifier.getClassifierDataset()
+  console.log(dataset);
+//   var datasetObj = {}
+//   Object.keys(dataset).forEach((key) => {
+//     let data = dataset[key].dataSync();
+//     // use Array.from() so when JSON.stringify() it covert to an array string e.g [0.1,-0.2...] 
+//     // instead of object e.g {0:"0.1", 1:"-0.2"...}
+//     datasetObj[key] = Array.from(data); 
+//   });
+//   let jsonStr = JSON.stringify(datasetObj)
+//   //can be change to other source
+//   localStorage.setItem("myData", jsonStr);
 }
 
 app();
