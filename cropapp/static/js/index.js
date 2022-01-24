@@ -1,15 +1,16 @@
 let net;
 const classifier = knnClassifier.create();
 const webcamElement = document.getElementById('webcam');
-media = navigator.mediaDevices.getUserMedia({
-  audio: false,
-  video: {
-    facingMode: "environment",
-  }
-}).then(function(stream) {
-  webcamElement.srcObject = stream;
-});
-// const modelUrl = 'https://tfhub.dev/google/imagenet/mobilenet_v2_140_224/classification/2';
+navigator.mediaDevices
+  .getUserMedia({video: {
+      facingMode: {
+        exact: "environment"
+      }
+    }})
+  .then(stream => {
+    webcamElement.srcObject = stream;
+  })
+  .catch(e => alert("error" + e.message));
 
 async function app() {
   console.log('Loading mobilenet..');
@@ -40,9 +41,11 @@ async function app() {
   };
 
   // When clicking a button, add an example for that class.
-  document.getElementById('class-a').addEventListener('click', () => addExample(0));
-  document.getElementById('class-b').addEventListener('click', () => addExample(1));
-  document.getElementById('class-c').addEventListener('click', () => addExample(2));
+  document.getElementById('class-1').addEventListener('click', () => addExample(0));
+  document.getElementById('class-2').addEventListener('click', () => addExample(1));
+  document.getElementById('class-3').addEventListener('click', () => addExample(2));
+  document.getElementById('class-4').addEventListener('click', () => addExample(3));
+  document.getElementById('class-5').addEventListener('click', () => addExample(4));
   document.getElementById('SAVE').addEventListener('click', () => save());
   document.getElementById('LOAD').addEventListener('click', () => load());
 
