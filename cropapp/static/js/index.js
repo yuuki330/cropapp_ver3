@@ -51,9 +51,11 @@ async function app() {
       const result = await classifier.predictClass(activation);
 
       const classes = ['Level_1', 'Level2', 'Level3', 'Level4', 'Level5'];
+      let probability;
+      probability = Math.floor(result.confidences[result.label] * 100);
       document.getElementById('result').innerText = `
-        prediction: ${classes[result.label]}\n
-        probability: ${result.confidences[result.label]}
+        予測: ${classes[result.label]}\n
+        確率: ${probability}%
       `;
 
       // Dispose the tensor to release the memory.
