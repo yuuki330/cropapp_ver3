@@ -9,13 +9,19 @@
 }
 
 .btn-group1{
-    display: inline-flex;
+    /* display: inline-flex;
     flex-direction: column;
-    align-items: start;
+    align-items: start; */
+    display: block;
+    margin: 0 auto;
+}
+
+.btn-group2{
+    margin: 0 auto;
 }
 
 .btn-outline-dark{
-    margin: 0 auto;
+    /* margin: 0 auto; */
     color: #fff;
     background-color: #eb6100;
     border-radius: 100vh;
