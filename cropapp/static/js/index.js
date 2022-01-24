@@ -124,4 +124,4 @@ async function load() {
  classifier.setClassifierDataset(tensorObj);
 }
 
-app();
+await app();
