@@ -8,7 +8,7 @@ async function app() {
 
   // Load the model.
   net = await mobilenet.load();
-  net1 = net[0];
+  net1 = net.model;
   console.log(net1);
   // const model = await tf.loadGraphModel(modelUrl, {fromTFHub: true}
   console.log('Successfully loaded model');
