@@ -1,14 +1,14 @@
 let net;
 const classifier = knnClassifier.create();
 const webcamElement = document.getElementById('webcam');
-const modelUrl = 'https://tfhub.dev/google/imagenet/mobilenet_v2_140_224/classification/2';
+// const modelUrl = 'https://tfhub.dev/google/imagenet/mobilenet_v2_140_224/classification/2';
 
 async function app() {
   console.log('Loading mobilenet..');
 
   // Load the model.
-  // net = await mobilenet.load();
-  const model = await tf.loadGraphModel(modelUrl, {fromTFHub: true})
+  net = await mobilenet.load();
+  // const model = await tf.loadGraphModel(modelUrl, {fromTFHub: true}
   console.log('Successfully loaded model');
 
   // Create an object from Tensorflow.js data API which could capture image
@@ -23,8 +23,7 @@ async function app() {
 
     // Get the intermediate activation of MobileNet 'conv_preds' and pass that
     // to the KNN classifier.
-    // const activation = net.infer(img, true);
-    const activation = model.infer(img, true);
+    const activation = net.infer(img, true);
 
     // Pass the intermediate activation to the classifier.
     classifier.addExample(activation, classId);
@@ -43,8 +42,7 @@ async function app() {
       const img = await webcam.capture();
 
       // Get the activation from mobilenet from the webcam.
-      // const activation = net.infer(img, 'conv_preds');
-      const activation = model.infer(img, 'conv_preds');
+      const activation = net.infer(img, 'conv_preds');
       // Get the most likely class and confidence from the classifier module.
       const result = await classifier.predictClass(activation);
 
@@ -59,7 +57,7 @@ async function app() {
     }
 
     await tf.nextFrame();
-    await model.save('localstorage://my-model');
+    // await model.save('localstorage://my-model');
   }
 }
 
