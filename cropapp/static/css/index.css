@@ -1,5 +1,6 @@
 .console{
     text-align: center;
+    font-weight: bold; 
 }
 
 #result{
@@ -23,7 +24,7 @@
 
 .btn-outline-dark{
     display: block;
-    top: 20px;
+    margin: 10 auto;
     color: #fff;
     background-color: #eb6100;
     border-radius: 100vh;
