@@ -1,22 +1,6 @@
 let net;
 const classifier = knnClassifier.create();
 var webcamElement = document.getElementById('webcam');
-var constraints = {
-  audio: false,
-  video: {
-      // スマホのバックカメラを使用
-      facingMode: 'environment'
-  }
-};
-//  カメラの映像を取得
-navigator.mediaDevices.getUserMedia(constraints)
-  .then((stream) => {
-      webcamElement.srcObject = stream;
-      app();
-  })
-  .catch((err) => {
-      window.alert(err.name + ': ' + err.message);
-  });
 
 async function app() {
   console.log('Loading mobilenet..');
@@ -27,7 +11,7 @@ async function app() {
 
   // Create an object from Tensorflow.js data API which could capture image
   // from the web camera as Tensor.
-  const webcam = await tf.data.webcam(webcamElement);
+  const webcam = await tf.data.webcam(webcamElement, FaceingMode='environment');
 
   // Reads an image from the webcam and associates it with a specific class
   // index.
