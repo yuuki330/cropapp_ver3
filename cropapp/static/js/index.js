@@ -21,7 +21,7 @@ media = navigator.mediaDevices.getUserMedia({
   }
 }).then(function(stream) {
   webcamElement.srcObject = stream;
-  await app();
+  app();
 });
 
 async function app() {
@@ -35,6 +35,7 @@ async function app() {
   // from the web camera as Tensor.
   // const webcam = await tf.data.webcam(webcamElement, facingMode='environment');
   const webcam = await tf.data.webcam(webcamElement);
+  console.log(webcam);
   // const webcam = await tf.data.webcam(webcamElement, deviceId=deviceid);
 
   // Reads an image from the webcam and associates it with a specific class
