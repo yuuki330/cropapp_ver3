@@ -54,8 +54,7 @@ async function app() {
       let probability;
       probability = Math.floor(result.confidences[result.label] * 100);
       document.getElementById('result').innerText = `
-        予測: ${classes[result.label]}\n
-        確率: ${probability}%
+        予測: ${classes[result.label]}    確率: ${probability}%
       `;
 
       // Dispose the tensor to release the memory.
