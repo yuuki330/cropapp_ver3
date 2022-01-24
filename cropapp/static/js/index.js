@@ -2,6 +2,7 @@ let net;
 const classifier = knnClassifier.create();
 var webcamElement = document.getElementById('webcam');
 var deviceid;
+const WEBCAM_CONFIG = {facingMode: "environment"};
 
 // // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
 // navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
@@ -32,7 +33,7 @@ async function app() {
 
   // Create an object from Tensorflow.js data API which could capture image
   // from the web camera as Tensor.
-  const webcam = await tf.data.webcam(webcamElement, facingMode='environment');
+  const webcam = await tf.data.webcam(webcamElement, WEBCAM_CONFIG);
   // const webcam = await tf.data.webcam(webcamElement);
   console.log(webcam);
   // const webcam = await tf.data.webcam(webcamElement, deviceId=deviceid);
