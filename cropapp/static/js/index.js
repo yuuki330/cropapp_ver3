@@ -90,7 +90,7 @@ async function load() {
  console.log(tensorObj); 
  //covert back to tensor
  Object.keys(tensorObj).forEach((key) => {
-  tensorObj[key] = tf.tensor(tensorObj[key], [tensorObj[key].length / 3072, 1024])
+  tensorObj[key] = tf.tensor(tensorObj[key], [tensorObj[key].length / 1024, 1024])
   // tensorObj[key] = tf.tensor(tensorObj[key])
   console.log(tensorObj[key]); 
   // tensorObj[key] = tensorObj[key].reshape([3, 1024])
