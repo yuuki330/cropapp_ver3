@@ -74,8 +74,8 @@ async function save() {
     // instead of object e.g {0:"0.1", 1:"-0.2"...}
     // console.log(data);
     datasetObj[key] = Array.from(data); 
-    // console.log(datasetObj);
   });
+  console.log(datasetObj);
   let jsonStr = JSON.stringify(datasetObj)
   //can be change to other source
   // console.log(jsonStr);
@@ -90,9 +90,8 @@ async function load() {
  //covert back to tensor
  Object.keys(tensorObj).forEach((key) => {
   //  tensorObj[key] = tf.tensor(tensorObj[key], [tensorObj[key].length / 1000, 1000])
-  console.log(key.length);
-  console.log(tensorObj.length); 
-  tensorObj[key] = tf.tensor(tensorObj[key], [tensorObj[key].length])
+  console.log((1, tensorObj[key].length)); 
+  tensorObj[key] = tf.tensor(tensorObj[key], shape=(1, tensorObj[key].length))
  })
  console.log(tensorObj);
  classifier.setClassifierDataset(tensorObj);
