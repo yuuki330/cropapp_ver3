@@ -91,7 +91,7 @@ async function load() {
  Object.keys(tensorObj).forEach((key) => {
   //  tensorObj[key] = tf.tensor(tensorObj[key], [tensorObj[key].length / 1000, 1000])
   console.log(tensorObj[key]); 
-  tensorObj[key] = tf.tensor(tensorObj[key], shape=(3, 1024))
+  tensorObj[key] = tf.tensor(tensorObj[key], [3, 1024])
  })
  console.log(tensorObj);
  classifier.setClassifierDataset(tensorObj);
