@@ -3,25 +3,25 @@ const classifier = knnClassifier.create();
 var webcamElement = document.getElementById('webcam');
 var deviceid;
 
-// 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
-navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
-  // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
-  var videoSroucesArray = sourcesInfo.filter(function(elem) {
-      return elem.kind == 'videoinput';
-  });
-  // console.log(videoSroucesArray[2]["deviceId"]);
-  // deviceid = videoSroucesArray[2]["deviceId"];
-});
+// // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
+// navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
+//   // 取得できたカメラとマイクを含むデバイスからカメラだけをフィルターする
+//   var videoSroucesArray = sourcesInfo.filter(function(elem) {
+//       return elem.kind == 'videoinput';
+//   });
+//   // console.log(videoSroucesArray[2]["deviceId"]);
+//   // deviceid = videoSroucesArray[2]["deviceId"];
+// });
 
-media = navigator.mediaDevices.getUserMedia({
-  audio: false,
-  video: {
-    // deviceId: deviceid,
-    facingMode : "environment",
-  }
-}).then(function(stream) {
-  webcamElement.srcObject = stream;
-});
+// media = navigator.mediaDevices.getUserMedia({
+//   audio: false,
+//   video: {
+//     // deviceId: deviceid,
+//     facingMode : "environment",
+//   }
+// }).then(function(stream) {
+//   webcamElement.srcObject = stream;
+// });
 
 async function app() {
   console.log('Loading mobilenet..');
