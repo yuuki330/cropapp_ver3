@@ -16,7 +16,8 @@ navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
 media = navigator.mediaDevices.getUserMedia({
   audio: false,
   video: {
-    deviceId: deviceid,
+    // deviceId: deviceid,
+    facingMode : "environment",
   }
 }).then(function(stream) {
   webcamElement.srcObject = stream;
@@ -32,8 +33,8 @@ async function app() {
 
   // Create an object from Tensorflow.js data API which could capture image
   // from the web camera as Tensor.
-  // const webcam = await tf.data.webcam(webcamElement, facingMode='environment');
-  const webcam = await tf.data.webcam(webcamElement, deviceId=deviceid);
+  const webcam = await tf.data.webcam(webcamElement, facingMode='environment');
+  // const webcam = await tf.data.webcam(webcamElement, deviceId=deviceid);
 
   // Reads an image from the webcam and associates it with a specific class
   // index.
