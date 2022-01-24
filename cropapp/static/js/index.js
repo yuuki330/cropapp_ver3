@@ -1,6 +1,7 @@
 let net;
 const classifier = knnClassifier.create();
 var webcamElement = document.getElementById('webcam');
+var deviceid;
 
 // 接続されているカメラとマイクのMediaStreamオブジェクトを取得する
 navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
