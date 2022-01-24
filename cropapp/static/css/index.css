@@ -1,9 +1,13 @@
+.webcam{
+    margin: 0 auto;
+}
+
 .btn-group{
     margin: 0 auto;
 }
     
 .btn-outline-dark{
-    margin: 0 auto;
+    /* margin: 0 auto; */
     color: #fff;
     background-color: #eb6100;
     border-radius: 100vh;
