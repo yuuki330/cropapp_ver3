@@ -41,7 +41,7 @@ async function app() {
   document.getElementById('class-b').addEventListener('click', () => addExample(1));
   document.getElementById('class-c').addEventListener('click', () => addExample(2));
   document.getElementById('SAVE').addEventListener('click', () => net1.save('indexeddb://my-model'));
-  document.getElementById('LOAD').addEventListener('click', () => net.model=tf.loadLayersModel('indexeddb://my-model'));
+  document.getElementById('LOAD').addEventListener('click', () => net.model=tf.loadGraphModel('indexeddb://my-model'));
 
   while (true) {
     if (classifier.getNumClasses() > 0) {
