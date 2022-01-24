@@ -12,6 +12,7 @@ var constraints = {
 navigator.mediaDevices.getUserMedia(constraints)
   .then((stream) => {
       webcamElement.srcObject = stream;
+      app();
   })
   .catch((err) => {
       window.alert(err.name + ': ' + err.message);
@@ -115,5 +116,3 @@ async function load() {
 //  console.log(tensorObj);
  classifier.setClassifierDataset(tensorObj);
 }
-
-app();
