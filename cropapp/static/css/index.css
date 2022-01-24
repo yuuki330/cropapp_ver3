@@ -1,4 +1,5 @@
 .console{
+    top: 10px;
     text-align: center;
     font-weight: bold; 
 }
@@ -33,7 +34,7 @@
     background-color: #eb6100;
     border-radius: 100vh;
     width: 350px;
-    height: 100px;
+    height: 150px;
     font-size: 48px;
 }
 
