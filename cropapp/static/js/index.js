@@ -9,8 +9,8 @@ navigator.mediaDevices.enumerateDevices().then(function(sourcesInfo) {
   var videoSroucesArray = sourcesInfo.filter(function(elem) {
       return elem.kind == 'videoinput';
   });
-  console.log(videoSroucesArray[0]["deviceId"]);
-  deviceid = videoSroucesArray[0]["deviceId"];
+  console.log(videoSroucesArray[1]["deviceId"]);
+  deviceid = videoSroucesArray[1]["deviceId"];
 });
 
 media = navigator.mediaDevices.getUserMedia({
