@@ -78,13 +78,16 @@ async function save() {
   });
   let jsonStr = JSON.stringify(datasetObj)
   //can be change to other source
+  console.log(jsonStr);
   localStorage.setItem("myData", jsonStr);
 }
 
 async function load() {
   //can be change to other source
  let dataset = localStorage.getItem("myData")
+ console.log(dataset);
  let tensorObj = JSON.parse(dataset)
+ console.log(tensorObj);
  //covert back to tensor
  Object.keys(tensorObj).forEach((key) => {
    tensorObj[key] = tf.tensor(tensorObj[key], [tensorObj[key].length / 1000, 1000])
