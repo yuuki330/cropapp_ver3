@@ -13,7 +13,7 @@ async function app() {
   // const model = await tf.loadGraphModel(modelUrl, {fromTFHub: true}
   console.log('Successfully loaded model');
   console.log(net);
-  await net1.save('indexeddb://my-model');
+  // await net1.save('indexeddb://my-model');
 
   // Create an object from Tensorflow.js data API which could capture image
   // from the web camera as Tensor.
@@ -40,6 +40,8 @@ async function app() {
   document.getElementById('class-a').addEventListener('click', () => addExample(0));
   document.getElementById('class-b').addEventListener('click', () => addExample(1));
   document.getElementById('class-c').addEventListener('click', () => addExample(2));
+  document.getElementById('SAVE').addEventListener('click', () => net1.save('indexeddb://my-model'));
+  document.getElementById('LOAD').addEventListener('click', () => net.model=tf.loadLayersModel('indexeddb://my-model'));
 
   while (true) {
     if (classifier.getNumClasses() > 0) {
