@@ -46,12 +46,20 @@
     font-size: 48px;
 }    
 
-label > input {
-    display:none; /* アップロードボタンのスタイルを無効にする */
-    }
-    label {
-    color: #ffffff; /* ラベルテキストの色を指定する */
-    background-color: #42ffa1;/* ラベルの背景色を指定する */
-    padding: 10px; /* ラベルとテキスト間の余白を指定する */
-    border: double 4px #ffffff;/* ラベルのボーダーを指定する */
-    }
+.upload-label {
+    display: inline-block;
+    cursor: pointer; /* カーソルを指に */
+    margin: 1em 0; /* まわりの余白 */
+    padding: .7em 1em; /* 文字まわりの余白 */
+    line-height: 1.4; /* 行間 */
+    background: #3eff58; /* 背景色 */
+    color: #FFF; /* 文字色 */
+    font-size: 48px; /* フォントサイズ */
+    border-radius: 2.5em; /* 角の丸み */
+    transition: 0.2s; /* ホバーをなめらかに */
+}
+
+/* inputは隠す */
+.upload-label input {
+    display: none;
+}
