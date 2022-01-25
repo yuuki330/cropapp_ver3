@@ -40,16 +40,18 @@
 
 .btn-outline-dark2{
     color: #fff;
-    background-color: #1beb00;
+    background-color: #8da1f8;
     width: 350px;
     height: 100px;
     font-size: 48px;
 }    
 
-.file-btn{
-    /* color: #fff; */
-    /* background-color: #1beb00; */
-    width: 350px;
-    height: 100px;
-    font-size: 48px;
-}
+label > input {
+    display:none; /* アップロードボタンのスタイルを無効にする */
+    }
+    label {
+    color: #ffffff; /* ラベルテキストの色を指定する */
+    background-color: #42ffa1;/* ラベルの背景色を指定する */
+    padding: 10px; /* ラベルとテキスト間の余白を指定する */
+    border: double 4px #ffffff;/* ラベルのボーダーを指定する */
+    }
