@@ -39,7 +39,7 @@
     transition: .5s;
 }
 
-.btn-outline-dark:active{
+.btn-outline-dark:hover{
     background: #8d8d8d;
 }
 
@@ -52,7 +52,7 @@
     transition: .5s;
 }    
 
-.btn-outline-dark2:active{
+.btn-outline-dark2:hover{
     background: #8d8d8d;
 }
 
