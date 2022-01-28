@@ -36,7 +36,6 @@
     width: 350px;
     height: 125px;
     font-size: 48px;
-    transition: .5s;
 }
 
 .btn-outline-dark:active{
@@ -49,7 +48,6 @@
     width: 350px;
     height: 100px;
     font-size: 48px;
-    transition: .5s;
 }    
 
 .btn-outline-dark2:active{
