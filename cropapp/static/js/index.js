@@ -67,25 +67,6 @@ async function app() {
 };
 
 
-//save and load function
-// async function save() {
-//   let dataset = classifier.getClassifierDataset()
-//   console.log(dataset);
-//   var datasetObj = {0:'A', 1:'B', 2:'C'}
-//   Object.keys(dataset).forEach((key) => {
-//     let data = dataset[key].dataSync();
-//     // use Array.from() so when JSON.stringify() it covert to an array string e.g [0.1,-0.2...] 
-//     // instead of object e.g {0:"0.1", 1:"-0.2"...}
-//     // console.log(data);
-//     datasetObj[key] = Array.from(data); 
-//   });
-//   console.log(datasetObj);
-//   let jsonStr = JSON.stringify(datasetObj)
-//   //can be change to other source
-//   // console.log(jsonStr);
-//   localStorage.setItem("myData", jsonStr);
-// }
-
 async function save() {
   let dataset = classifier.getClassifierDataset()
   console.log(dataset);
@@ -112,24 +93,6 @@ async function save() {
   a.remove();
   URL.revokeObjectURL(url);
 }
-
-// async function load() {
-//   //can be change to other source
-//  let dataset = localStorage.getItem("myData")
-// //  console.log(dataset);
-//  let tensorObj = JSON.parse(dataset)
-//  console.log(tensorObj); 
-//  //covert back to tensor
-//  Object.keys(tensorObj).forEach((key) => {
-//   tensorObj[key] = tf.tensor(tensorObj[key], [tensorObj[key].length / 1024, 1024])
-//   // tensorObj[key] = tf.tensor(tensorObj[key])
-//   console.log(tensorObj[key]); 
-//   // tensorObj[key] = tensorObj[key].reshape([3, 1024])
-//   // console.log(tensorObj[key]); 
-//  })
-// //  console.log(tensorObj);
-//  classifier.setClassifierDataset(tensorObj);
-// }
 
 async function load(fileReader) {
   //can be change to other source
