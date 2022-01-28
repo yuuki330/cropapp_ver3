@@ -39,9 +39,7 @@
 }
 
 .btn-outline-dark:active{
-    box-shadow: none;
-    position: relative;
-    top: 10px;
+    background: #ff2d2d;
 }
 
 .btn-outline-dark2{
@@ -54,9 +52,7 @@
 }    
 
 .btn-outline-dark2:active{
-    box-shadow: none;
-    position: relative;
-    top: 10px;
+    background: #ff2d2d;
 }
 
 .upload-label {
