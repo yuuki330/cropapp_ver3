@@ -38,8 +38,8 @@
     font-size: 48px;
 }
 
-.btn-outline-dark:active{
-    background: #ff2d2d;
+.btn-outline-dark:hover{
+    background: #8d8d8d;
 }
 
 .btn-outline-dark2{
@@ -51,8 +51,8 @@
     
 }    
 
-.btn-outline-dark2:active{
-    background: #ff2d2d;
+.btn-outline-dark2:hover{
+    background: #8d8d8d;
 }
 
 .upload-label {
