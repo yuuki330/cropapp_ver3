@@ -83,7 +83,7 @@ async function save() {
   console.log(datasetObj);
   let jsonStr = JSON.stringify(datasetObj)
   //can be change to other source
-  // console.log(jsonStr);
+  console.log(jsonStr);
   // localStorage.setItem("myData", jsonStr);
   const blob = new Blob([jsonStr], {type: 'text/plain'});
   const url = URL.createObjectURL(blob);
