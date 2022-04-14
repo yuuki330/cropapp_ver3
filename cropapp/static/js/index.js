@@ -1,55 +1,57 @@
+// 初期化
+/* 
+net           : mobilenetの学習済みモデルを格納
+classifier    : 分類器を格納(knn分類器)
+webcamElement : webcamの要素を格納
+WEBCAM_CONFIG : フロントカメラ(user)・リアカメラ(environment)切り替え
+*/
+
 let net;
 const classifier = knnClassifier.create();
 var webcamElement = document.getElementById('webcam');
-var deviceid;
+//var deviceid;
 const WEBCAM_CONFIG = {facingMode: "environment"};
 
 async function app() {
   console.log('Loading mobilenet..');
 
-  // Load the model.
+  // mobilenetのモデル読み込み
   net = await mobilenet.load();
   console.log('Successfully loaded model');
 
-  // Create an object from Tensorflow.js data API which could capture image
-  // from the web camera as Tensor.
+  // ウェブカメラの映像をキャプチャし、テンソルとして格納
   const webcam = await tf.data.webcam(webcamElement, WEBCAM_CONFIG);
 
-  // Reads an image from the webcam and associates it with a specific class
-  // index.
+  // ウェブカメラから読み出した画像を特定のクラス番号と結びつける
   const addExample = async classId => {
-    // Capture an image from the web camera.
+    // ウェブカメラの映像をキャプチャ
     const img = await webcam.capture();
 
-    // Get the intermediate activation of MobileNet 'conv_preds' and pass that
-    // to the KNN classifier.
+    // mobilenetの学習モデルの出力層にKNN分類器を接続(転移学習)
     const activation = net.infer(img, true);
-
-    // Pass the intermediate activation to the classifier.
     classifier.addExample(activation, classId);
 
-    // Dispose the tensor to release the memory.
+    // メモリ確保のためにテンソルデータを削除
     img.dispose();
   };
 
-  // When clicking a button, add an example for that class.
+  // ボタンが押されたときに、それぞれのクラスに学習させる機能を追加
   document.getElementById('class-1').addEventListener('click', () => addExample(0));
   document.getElementById('class-2').addEventListener('click', () => addExample(1));
   document.getElementById('class-3').addEventListener('click', () => addExample(2));
   document.getElementById('class-4').addEventListener('click', () => addExample(3));
   document.getElementById('class-5').addEventListener('click', () => addExample(4));
   document.getElementById('SAVE').addEventListener('click', () => save());
-  // document.getElementById('LOAD').addEventListener('click', () => load());
 
   while (true) {
     if (classifier.getNumClasses() > 0) {
       const img = await webcam.capture();
 
-      // Get the activation from mobilenet from the webcam.
+      // ウェブカメラの映像をキャプチャし、推論を行う
       const activation = net.infer(img, 'conv_preds');
-      // Get the most likely class and confidence from the classifier module.
       const result = await classifier.predictClass(activation);
 
+      // 推論から予測される結果を確率と共に表示
       const classes = ['Level_1', 'Level2', 'Level3', 'Level4', 'Level5'];
       let probability;
       probability = Math.floor(result.confidences[result.label] * 100);
@@ -57,12 +59,12 @@ async function app() {
         予測: ${classes[result.label]}    確率: ${probability}%
       `;
 
-      // Dispose the tensor to release the memory.
+      // メモリ確保のためにテンソルデータを削除
       img.dispose();
     }
 
+    // 画面更新の度にこの関数を動かす
     await tf.nextFrame();
-    // await model.save('localstorage://my-model');
   }
 };
 
@@ -75,7 +77,7 @@ async function save() {
     let data = dataset[key].dataSync();
     // use Array.from() so when JSON.stringify() it covert to an array string e.g [0.1,-0.2...] 
     // instead of object e.g {0:"0.1", 1:"-0.2"...}
-    // console.log(data);
+    console.log(data);
     datasetObj[key] = Array.from(data); 
   });
   console.log(datasetObj);

@@ -2,17 +2,24 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <!-- Load the latest version of TensorFlow.js -->
+    <!-- TensorFlow.jsを用いるために必要なcdn -->
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
     <script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/knn-classifier"></script>
+
+    <!-- cssファイルの読み込み -->
     <link href="{% static 'css/index.css' %}" rel="stylesheet">
   </head>
   <body>
       <div class="console">
+        <!-- アプリ見出し -->
         <p id="result">🍅トマトの色を覚えさせてね🍅</p>
       </div>
+
+      <!-- カメラ設定 -->
       <video autoplay playsinline muted id="webcam" width="850" height="850"></video>
+
+      <!-- クラス登録用ボタン設定 -->
       <div class="btn-group1">
         <button class="btn btn-outline-dark" ontouchstart="" id="class-1">Level_1</button>
         <button class="btn btn-outline-dark" ontouchstart="" id="class-2">Level_2</button>
@@ -20,16 +27,19 @@
         <button class="btn btn-outline-dark" ontouchstart="" id="class-4">Level_4</button>
         <button class="btn btn-outline-dark" ontouchstart="" id="class-5">Level_5</button>
       </div>
+
+      <!-- セーブ用ボタン設定 -->
       <div class="btn-group2">
         <button class="btn btn-outline-dark2" ontouchstart="" id="SAVE">SAVE</button>
-        <!-- <button class="btn btn-outline-dark2" id="LOAD">LOAD</button> -->
+
+        <!-- ロード機能設定 -->
         <label class="upload-label">
           ファイルを選択
           <input type="file" id="file">
         </label>
       </div>
     
-    <!-- Load index.js after the content of the page -->
+    <!-- jsファイル読み込み -->
     <script src="{% static 'js/index.js' %}"></script>
   </body>
 </html>
