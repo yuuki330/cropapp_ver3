@@ -100,17 +100,18 @@ async function load(fileReader) {
   //can be change to other source
  let dataset = fileReader.result;
 //  console.log(dataset);
- let tensorObj = JSON.parse(dataset)
- console.log(tensorObj); 
+ let tensorObj = JSON.parse(dataset);
+//  console.log(tensorObj); 
  //covert back to tensor
  Object.keys(tensorObj).forEach((key) => {
-  tensorObj[key] = tf.tensor(tensorObj[key], [tensorObj[key].length / 1024, 1024])
+  // console.log(tensorObj[key].length); 
+  tensorObj[key] = tf.tensor(tensorObj[key], [tensorObj[key].length / 1024, 1024]);
   // tensorObj[key] = tf.tensor(tensorObj[key])
-  console.log(tensorObj[key]); 
-  // tensorObj[key] = tensorObj[key].reshape([3, 1024])
   // console.log(tensorObj[key]); 
+
+  // tensorObj[key] = tensorObj[key].reshape([3, 1024])
  })
-//  console.log(tensorObj);
+ console.log(tensorObj);
  classifier.setClassifierDataset(tensorObj);
 }
 
