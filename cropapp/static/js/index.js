@@ -89,7 +89,9 @@ async function save() {
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
   document.body.appendChild(a);
-  a.download = 'save_model.txt';
+  let fname = document.getElementById('fname').value;
+  // a.download = 'save_model.txt';
+  a.download = fname + ".txt";
   a.href = url;
   a.click();
   a.remove();
