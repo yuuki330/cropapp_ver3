@@ -77,14 +77,12 @@ async function save() {
     let data = dataset[key].dataSync();
     // use Array.from() so when JSON.stringify() it covert to an array string e.g [0.1,-0.2...] 
     // instead of object e.g {0:"0.1", 1:"-0.2"...}
-    console.log(data);
+    // console.log(data);
     datasetObj[key] = Array.from(data); 
   });
-  console.log(datasetObj);
+  // console.log(datasetObj);
   let jsonStr = JSON.stringify(datasetObj)
   //can be change to other source
-  console.log(jsonStr);
-  // localStorage.setItem("myData", jsonStr);
   const blob = new Blob([jsonStr], {type: 'text/plain'});
   const url = URL.createObjectURL(blob);
   const a = document.createElement("a");
