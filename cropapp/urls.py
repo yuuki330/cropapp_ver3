@@ -1,9 +1,9 @@
 from django.urls import path
-from.views import IndexView, HomeView, Index
+from.views import IndexView, HomeView
 
 urlpatterns = [
     # path('', home, name = 'home'),
     path('', HomeView.as_view()),
-    path('index/', Index, name='index'),
+    path('index/', HomeView.as_view(), name="index"),
     # path('webcam/', webcam, name = 'webcam'),
 ]
