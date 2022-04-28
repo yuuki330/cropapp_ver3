@@ -22,10 +22,10 @@
 } */
 
 #fname{
-    width: 100px;
-    height: 50px;
+    width: 200px;
+    height: 100px;
     position:  relative;
-    left: 100px
+    left: 200px
 }
 
 .btn-group2{
