@@ -24,7 +24,8 @@
 #fname{
     width: 100px;
     height: 50px;
-    text-align: center;
+    position:  relative;
+    left: 100px
 }
 
 .btn-group2{
