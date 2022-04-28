@@ -21,6 +21,10 @@
     align-items: center;
 } */
 
+.save_text{
+    text-align: center;
+}
+
 .btn-group2{
     margin-top: 10px;
     text-align: center;
