@@ -52,7 +52,7 @@ async function app() {
       const result = await classifier.predictClass(activation);
 
       // 推論から予測される結果を確率と共に表示
-      const classes = ['Level_1', 'Level_2', 'Level_3', 'Level_4', 'Level_5'];
+      const classes = ['Class_1', 'Class_2', 'Class_3', 'Class_4', 'Class_5'];
       let probability;
       probability = Math.floor(result.confidences[result.label] * 100);
       document.getElementById('result').innerText = `
@@ -119,9 +119,9 @@ let fileInput = document.getElementById('file');
 let fileReader = new FileReader();
 fileInput.onchange = () => {
   let file = fileInput.files[0];
-  console.log(file.name);
-  console.log(file.size);
-  console.log(file.type);
+  // console.log(file.name);
+  // console.log(file.size);
+  // console.log(file.type);
   fileReader.readAsText(file);
 };
 
