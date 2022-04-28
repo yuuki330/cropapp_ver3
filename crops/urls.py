@@ -22,5 +22,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("cropapp.urls")),
     path('about/', include("cropapp.urls")),
-    path('index/', include("cropapp.urls")),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

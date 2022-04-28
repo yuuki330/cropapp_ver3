@@ -8,4 +8,4 @@ class HomeView(TemplateView):
     template_name = "cropapp/home.html"
 
 def Index(request):
-    return render(request, '[cropapp]/index.html')
+    return render(request, 'cropapp/index.html')
