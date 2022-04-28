@@ -13,27 +13,11 @@ var webcamElement = document.getElementById('webcam');
 const WEBCAM_CONFIG = {facingMode: "environment"};
 
 async function app() {
-  performance.mark('myPerformanceStart') // 開始点
-  yourFunction(); // 計測する処理
-  performance.mark('myPerformanceEnd') // 終了点
-
   console.log('Loading mobilenet..');
 
   // mobilenetのモデル読み込み
   net = await mobilenet.load();
   console.log('Successfully loaded model');
-
-  performance.measure(
-    'myPerformance', // 計測名
-    'myPerformanceStart', // 計測開始点
-    'myPerformanceEnd' // 計測終了点
-  );
-
-  // 結果の取得
-  const results = performance.getEntriesByName('myPerformance');
-
-  // 表示
-  console.log(results[0]);
 
   // ウェブカメラの映像をキャプチャし、テンソルとして格納
   const webcam = await tf.data.webcam(webcamElement, WEBCAM_CONFIG);
