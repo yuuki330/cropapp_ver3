@@ -52,7 +52,7 @@ async function app() {
       const result = await classifier.predictClass(activation);
 
       // 推論から予測される結果を確率と共に表示
-      const classes = ['Level_1', 'Level2', 'Level3', 'Level4', 'Level5'];
+      const classes = ['Level_1', 'Level_2', 'Level_3', 'Level_4', 'Level_5'];
       let probability;
       probability = Math.floor(result.confidences[result.label] * 100);
       document.getElementById('result').innerText = `
@@ -72,7 +72,7 @@ async function app() {
 async function save() {
   let dataset = classifier.getClassifierDataset()
   console.log(dataset);
-  var datasetObj = {0:'A', 1:'B', 2:'C'}
+  var datasetObj = {0:'A'}
   Object.keys(dataset).forEach((key) => {
     let data = dataset[key].dataSync();
     // use Array.from() so when JSON.stringify() it covert to an array string e.g [0.1,-0.2...] 
