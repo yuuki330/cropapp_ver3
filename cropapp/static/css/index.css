@@ -1,7 +1,8 @@
 .console{
     position: absolute;
     top: 0px;
-    text-align: center;
+    /* text-align: center; */
+    left: 50%;
     font-weight: bold; 
     z-index: 100;
 }
