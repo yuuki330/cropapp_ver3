@@ -4,8 +4,8 @@ $('.slider').slick({
     autoplaySpeed: 3000,  // 次のスライドに切り替わる待ち時間
     speed: 1000,  // スライドの動きのスピード
     infinite: false,  // スライドをループさせるかどうか
-    slidesToShow: 1,  // スライドを画面に2枚見せる
-    slidesToScroll: 1,  // 1回のスクロールで3枚の写真を移動して見せる
+    // slidesToShow: 1,  // スライドを画面に2枚見せる
+    // slidesToScroll: 1,  // 1回のスクロールで3枚の写真を移動して見せる
     arrows: false,  // 左右の矢印あり
     prevArrow: '<div class="slick-prev"></div>',  // 矢印部分PreviewのHTMLを変更
     nextArrow: '<div class="slick-next"></div>',  // 矢印部分NextのHTMLを変更
