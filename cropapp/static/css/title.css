@@ -4,7 +4,7 @@
     top: 0;
     left: 0;
     right: 0;
-    /* margin: auto; */
+    margin: auto;
     height: 100%;
     width: 100%;
     z-index: 9000;
@@ -12,9 +12,9 @@
 
 .start p {
     position: fixed;
-    left: 50%;
+    left: 45%;
     top: 50%;
-    /* transform: translate(-50%, -50%); */
+    transform: translate(-50%, -50%);
     display: none;
     z-index: 9999;
     width: 280px;
