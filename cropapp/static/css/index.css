@@ -29,7 +29,7 @@
 
 .num{
     position: relative;
-    top: -100px;
+    top: 0;
     right: 10%;
     margin: 0 auto;
     text-align: end;
