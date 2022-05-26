@@ -43,14 +43,19 @@ async function app() {
   // ボタンが押された回数を保持、更新
   document.getElementById('class-1').addEventListener('click', () => addExample(0));
   document.getElementById('class-1').addEventListener('click', () => n_1++);
+  document.getElementById('class-1').addEventListener('click', () => document.getElementById('num_1').innerHTML = n_1);
   document.getElementById('class-2').addEventListener('click', () => addExample(1));
   document.getElementById('class-2').addEventListener('click', () => n_2++);
+  document.getElementById('class-2').addEventListener('click', () => document.getElementById('num_2').innerHTML = n_2);
   document.getElementById('class-3').addEventListener('click', () => addExample(2));
   document.getElementById('class-3').addEventListener('click', () => n_3++);
+  document.getElementById('class-3').addEventListener('click', () => document.getElementById('num_3').innerHTML = n_3);
   document.getElementById('class-4').addEventListener('click', () => addExample(3));
   document.getElementById('class-4').addEventListener('click', () => n_4++);
+  document.getElementById('class-4').addEventListener('click', () => document.getElementById('num_4').innerHTML = n_4);
   document.getElementById('class-5').addEventListener('click', () => addExample(4));
   document.getElementById('class-5').addEventListener('click', () => n_5++);
+  document.getElementById('class-5').addEventListener('click', () => document.getElementById('num_5').innerHTML = n_5);
   document.getElementById('SAVE').addEventListener('click', () => save());
 
   while (true) {
