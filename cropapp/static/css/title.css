@@ -3,8 +3,8 @@
     position: absolute;
     top: 0;
     left: 0;
-    right: 50;
-    margin: auto;
+    right: 0;
+    /* margin: auto; */
     height: 100%;
     width: 100%;
     z-index: 9000;
