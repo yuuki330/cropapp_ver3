@@ -5,14 +5,14 @@
     left: 0;
     right: 0;
     margin: auto;
-    height: 200%;
+    height: 150%;
     width: 100%;
     z-index: 9000;
 }
 
 .start p {
     position: fixed;
-    left: 43%;
+    left: 40%;
     top: 50%;
     transform: translate(-50%, -50%);
     display: none;
