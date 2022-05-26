@@ -35,12 +35,22 @@ async function app() {
     img.dispose();
   };
 
+  // ボタンが押された回数を保持する変数を宣言
+  var n_1, n_2, n_3, n_4, n_5 = 0;
+  
+
   // ボタンが押されたときに、それぞれのクラスに学習させる機能を追加
+  // ボタンが押された回数を保持、更新
   document.getElementById('class-1').addEventListener('click', () => addExample(0));
+  document.getElementById('class-1').addEventListener('click', () => n_1++);
   document.getElementById('class-2').addEventListener('click', () => addExample(1));
+  document.getElementById('class-2').addEventListener('click', () => n_2++);
   document.getElementById('class-3').addEventListener('click', () => addExample(2));
+  document.getElementById('class-3').addEventListener('click', () => n_3++);
   document.getElementById('class-4').addEventListener('click', () => addExample(3));
+  document.getElementById('class-4').addEventListener('click', () => n_4++);
   document.getElementById('class-5').addEventListener('click', () => addExample(4));
+  document.getElementById('class-5').addEventListener('click', () => n_5++);
   document.getElementById('SAVE').addEventListener('click', () => save());
 
   while (true) {
